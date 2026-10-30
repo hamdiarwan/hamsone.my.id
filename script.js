@@ -1,4 +1,11 @@
 // © 2026 HamsOne, All Rights Reserved.
+// Reveal animations only hide content once this script is actually
+// running — so a future script error can never blank the whole page.
+document.documentElement.classList.add('js');
+// NOTE: TESTI_API_URL must be defined before any code that uses it —
+// a const used before its definition kills the whole script (and with
+// it the scroll-reveal, so the page looks empty).
+const TESTI_API_URL = 'https://script.google.com/macros/s/AKfycbzDbDVR10WpZ41FwOS2rSDHSme8zFoWQ1GPS22TgXAdYicgyJwp87lnC2ftyhHoxh5PTg/exec';
 // Anonymous visit count (once per browser session, skipped when
 // Do Not Track is on). No cookies, no personal data.
 if (TESTI_API_URL && navigator.doNotTrack !== '1') {
@@ -206,7 +213,6 @@ starBtns.forEach(b => b.addEventListener('click', () => { selectedRating = Numbe
 paintStars();
 // Public real-time testimonials: set this to your Google Apps Script web app URL
 // (see testimonial-backend.gs). While empty, submissions only show on the sender's own browser.
-const TESTI_API_URL = 'https://script.google.com/macros/s/AKfycbzDbDVR10WpZ41FwOS2rSDHSme8zFoWQ1GPS22TgXAdYicgyJwp87lnC2ftyhHoxh5PTg/exec';
 const testiList = document.getElementById('testiList');
 let testiAuto = null;
 function setupTestiCarousel(items) {
