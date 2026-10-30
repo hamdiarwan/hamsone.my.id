@@ -191,7 +191,8 @@ function renderTestis() {
   let items = [];
   try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (e) { items = []; }
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  testiList.innerHTML = items.map(t => `<article class="testi-card"><span class="testi-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</span><strong>${esc(t.name)}</strong><p>${esc(t.message)}</p></article>`).join('');
+  const maskEmail = e => { const s = String(e || ''); return s.length <= 3 ? s + '*****' : s.slice(0, 3) + '*****'; };
+  testiList.innerHTML = items.map(t => `<article class="testi-card"><span class="testi-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</span><strong>${esc(t.name)}</strong><span class="small">${esc(maskEmail(t.email))}</span><p>${esc(t.message)}</p></article>`).join('');
 }
 renderTestis();
 const testiForm = document.getElementById('testiForm');
