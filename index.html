@@ -6,22 +6,23 @@
 <title>HamsOne — Bot &amp; Website Developer</title>
 <meta name="description" content="HamsOne builds bots that sell, answer, and automate — while you sleep. Discord, Telegram, WhatsApp bots and websites. Jakarta, Indonesia. Open Freelance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="bg-grid" aria-hidden="true"></div>
 <header class="nav">
-  <a class="logo" href="#top">HamsOne<span class="dot">.</span></a>
+  <a class="logo" href="#top"><span class="logo-mark">◆</span> HamsOne</a>
   <nav class="nav-links">
+    <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
     <a href="#services" data-en="Services" data-id="Jasa">Services</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#process" data-en="Process" data-id="Proses">Process</a>
-    <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
     <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
   </nav>
   <div class="nav-actions">
     <button id="langBtn" class="pill" type="button">ID</button>
-    <button id="themeBtn" class="pill" type="button" aria-label="Toggle theme">☀️ / 🌙</button>
+    <button id="themeBtn" class="theme-pill" type="button" aria-label="Toggle theme"><span class="sun">☀️</span><span class="moon">🌙</span><span class="knob"></span></button>
     <a class="btn btn-small" href="#contact" data-en="Start a project" data-id="Mulai proyek">Start a project</a>
   </div>
 </header>
@@ -29,110 +30,167 @@
 <main id="top">
 <section class="hero">
   <div class="hero-text">
-    <p class="eyebrow">Jakarta, Indonesia • <span data-en="Open Freelance" data-id="Open Freelance">Open Freelance</span></p>
+    <p class="eyebrow"><span class="live-dot"></span> Jakarta, Indonesia • <span data-en="Open Freelance" data-id="Open Freelance">Open Freelance</span></p>
     <h1>HamsOne</h1>
-    <p class="role" data-en="Bot & Website Developer" data-id="Bot & Website Developer">Bot &amp; Website Developer</p>
-    <p class="tagline" data-en="I build bots that sell, answer, and automate — while you sleep." data-id="Gue bikin bot yang jualan, jawab chat, dan otomasi — selagi lu tidur.">I build bots that sell, answer, and automate — while you sleep.</p>
-    <p class="bio" data-en="Jakarta-based bot and website developer. I focus on bots and automation because I genuinely enjoy it — from a Discord shop with QRIS payments to tools that turn a photo into a logged report. Every build is tested on my own server before go-live, then maintained after launch." data-id="Developer bot dan website dari Jakarta. Gue fokus ke bot dan otomasi karena memang suka — dari toko Discord dengan pembayaran QRIS sampai tools yang mengubah foto jadi log tercatat. Setiap build dites di server gue sendiri sebelum go-live, lalu dirawat setelah live.">Jakarta-based bot and website developer. I focus on bots and automation because I genuinely enjoy it — from a Discord shop with QRIS payments to tools that turn a photo into a logged report. Every build is tested on my own server before go-live, then maintained after launch.</p>
+    <h2 class="hero-role">Bot &amp; Website <span>Developer</span></h2>
+    <p class="hero-sub" data-en="I build bots that sell, answer, and automate — while you sleep. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report." data-id="Saya membuat bot yang berjualan, menjawab chat, dan mengotomasi pekerjaan — selagi kamu tidur. Dari toko Discord live dengan pembayaran QRIS sampai web tools yang mengubah foto menjadi log tercatat.">I build bots that sell, answer, and automate — while you sleep. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report.</p>
     <div class="hero-cta">
-      <a class="btn" href="#contact" data-en="Tell me what you need" data-id="Ceritain kebutuhan lu">Tell me what you need</a>
-      <a class="btn btn-ghost" href="#projects" data-en="See real projects" data-id="Lihat proyek nyata">See real projects</a>
+      <a class="btn" href="#projects" data-en="View Projects" data-id="Lihat Proyek">View Projects</a>
+      <a class="btn btn-ghost" href="https://github.com/hamdiarwan" target="_blank" rel="noopener">⎇ GitHub</a>
     </div>
-    <p class="pricing-note" data-en="Pricing: chat first — price adjusts to difficulty." data-id="Harga: chat dulu — harga menyesuaikan tingkat kesulitan.">Pricing: chat first — price adjusts to difficulty.</p>
+    <div class="hero-chips"><span>Discord API</span><span>Python</span><span>QRIS / Webhook</span><span>Linux VPS</span></div>
   </div>
-  <div class="hero-avatar">
-    <img src="avatar.gif" alt="HamsOne pixel avatar" width="320" height="320">
-    <p class="avatar-note" data-en="Pixel avatar — intentionally coarse, not a photo." data-id="Avatar pixel — sengaja dibuat kasar, bukan foto.">Pixel avatar — intentionally coarse, not a photo.</p>
+  <div class="hero-visual reveal">
+    <div class="avatar-card">
+      <img src="avatar.gif" alt="HamsOne pixel avatar" width="320" height="320">
+      <div class="avatar-status"><span class="live-dot"></span><span data-en="Available for freelance" data-id="Tersedia untuk freelance">Available for freelance</span></div>
+      <p class="avatar-note" data-en="Pixel avatar — intentionally coarse, not a photo." data-id="Avatar pixel — sengaja dibuat kasar, bukan foto.">Pixel avatar — intentionally coarse, not a photo.</p>
+    </div>
   </div>
 </section>
 
+<section class="terminal-section reveal">
+  <div class="window">
+    <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="window-title">TERMINAL — bot.py</span><span class="window-badge">LIVE</span></div>
+    <div class="window-body">
+      <pre id="typedTerminal" class="terminal" aria-live="off"></pre>
+      <div class="terminal-actions">
+        <button class="chip-btn" data-cmd="/stock" type="button">/stock</button>
+        <button class="chip-btn" data-cmd="/buy" type="button">/buy</button>
+        <button class="chip-btn" data-cmd="/setup" type="button">/setup</button>
+      </div>
+      <p id="cmdOutput" class="cmd-output" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section class="proof-strip reveal">
+  <div class="proof"><strong data-en="Live since 29 Oct 2026" data-id="Live sejak 29 Okt 2026">Live since 29 Oct 2026</strong><span>Disokin Store</span></div>
+  <div class="proof"><strong data-en="First real order delivered via DM" data-id="Order pertama asli terkirim lewat DM">First real order delivered via DM</strong><span>Disokin Store</span></div>
+  <div class="proof"><strong data-en="QRIS payments via webhook" data-id="Pembayaran QRIS lewat webhook">QRIS payments via webhook</strong><span>Discord shop</span></div>
+  <div class="proof"><strong data-en="Tested on my own server first" data-id="Dites di server saya sendiri dulu">Tested on my own server first</strong><span>Every build</span></div>
+</section>
+
 <section id="services" class="section">
-  <h2 data-en="What I build" data-id="Yang gue bikin">What I build</h2>
-  <p class="section-sub" data-en="Not just Discord. Pick a platform, tell me what it should do, and I will build the system around it." data-id="Bukan cuma Discord. Pilih platformnya, ceritain maunya apa, dan gue bikinin sistemnya.">Not just Discord. Pick a platform, tell me what it should do, and I will build the system around it.</p>
+  <h2 class="section-title" data-en="What I build" data-id="Yang saya buat">What I build</h2>
+  <p class="section-sub" data-en="Not just Discord. Click a service to start your inquiry with that platform already selected." data-id="Bukan hanya Discord. Klik salah satu jasa untuk memulai inquiry dengan platform itu sudah terpilih.">Not just Discord. Click a service to start your inquiry with that platform already selected.</p>
   <div class="grid">
-    <article class="card"><h3>Discord Bot</h3><p data-en="Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs." data-id="Bot toko, stok dan order, pembayaran QRIS, kirim lewat DM, dashboard admin dan log.">Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs.</p></article>
-    <article class="card"><h3>Telegram Bot</h3><p data-en="Automation, notifications, customer-service flows and tools that run inside Telegram." data-id="Otomasi, notifikasi, alur customer service, dan tools yang jalan di dalam Telegram.">Automation, notifications, customer-service flows and tools that run inside Telegram.</p></article>
-    <article class="card"><h3>WhatsApp Bot</h3><p data-en="Automated replies, order flows and notifications on the app your customers already use." data-id="Balasan otomatis, alur order, dan notifikasi di aplikasi yang udah dipakai pelanggan lu.">Automated replies, order flows and notifications on the app your customers already use.</p></article>
-    <article class="card"><h3>Website</h3><p data-en="Fast, clean landing pages and web tools — including photo-to-log apps and dashboards." data-id="Landing page cepat dan bersih, plus web tools — termasuk aplikasi foto-jadi-log dan dashboard.">Fast, clean landing pages and web tools — including photo-to-log apps and dashboards.</p></article>
+    <article class="card service-card reveal" data-platform="Discord"><div class="card-icon">💬</div><h3>Discord Bot</h3><p data-en="Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs." data-id="Bot toko, stok dan order, pembayaran QRIS, pengiriman lewat DM, dashboard admin, dan log.">Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs.</p><span class="card-link" data-en="Start with Discord →" data-id="Mulai dengan Discord →">Start with Discord →</span></article>
+    <article class="card service-card reveal" data-platform="Telegram"><div class="card-icon">✈️</div><h3>Telegram Bot</h3><p data-en="Automation, notifications, customer-service flows and tools that run inside Telegram." data-id="Otomasi, notifikasi, alur customer service, dan tools yang berjalan di dalam Telegram.">Automation, notifications, customer-service flows and tools that run inside Telegram.</p><span class="card-link" data-en="Start with Telegram →" data-id="Mulai dengan Telegram →">Start with Telegram →</span></article>
+    <article class="card service-card reveal" data-platform="WhatsApp"><div class="card-icon">📱</div><h3>WhatsApp Bot</h3><p data-en="Automated replies, order flows and notifications on the app your customers already use." data-id="Balasan otomatis, alur order, dan notifikasi di aplikasi yang sudah dipakai pelanggan kamu.">Automated replies, order flows and notifications on the app your customers already use.</p><span class="card-link" data-en="Start with WhatsApp →" data-id="Mulai dengan WhatsApp →">Start with WhatsApp →</span></article>
+    <article class="card service-card reveal" data-platform="Website"><div class="card-icon">🌐</div><h3>Website</h3><p data-en="Fast, clean landing pages and web tools — including photo-to-log apps and dashboards." data-id="Landing page cepat dan bersih, plus web tools — termasuk aplikasi foto menjadi log dan dashboard.">Fast, clean landing pages and web tools — including photo-to-log apps and dashboards.</p><span class="card-link" data-en="Start with Website →" data-id="Mulai dengan Website →">Start with Website →</span></article>
   </div>
   <div class="skills"><span>Python</span><span>Discord API</span><span>JavaScript</span><span>HTML / CSS</span><span>PHP</span><span>SQLite</span><span>Linux VPS</span><span>Caddy</span><span>QRIS / Webhook</span></div>
 </section>
 
 <section id="demo" class="section">
-  <h2 data-en="See how it works" data-id="Lihat cara kerjanya">See how it works</h2>
-  <div class="tabs" role="tablist">
-    <button class="tab active" data-tab="terminal" type="button">Terminal</button>
-    <button class="tab" data-tab="livedemo" type="button">Live Demo</button>
+  <h2 class="section-title" data-en="Try the shop flow — live demo" data-id="Coba alur tokonya — demo langsung">Try the shop flow — live demo</h2>
+  <p class="section-sub" data-en="This is an interactive simulation of the real Disokin shop flow. Click the steps in order, or let it run on its own." data-id="Ini simulasi interaktif dari alur toko Disokin yang asli. Klik langkah-langkahnya secara berurutan, atau biarkan berjalan sendiri.">This is an interactive simulation of the real Disokin shop flow. Click the steps in order, or let it run on its own.</p>
+  <div class="demo-steps-bar">
+    <span class="demo-step active" data-step="0">1. /stock</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="1">2. /buy</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="2">3. QRIS</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="3">4. Paid</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="4">5. DM delivery</span>
   </div>
-  <div id="terminal" class="panel active">
-    <pre class="terminal"><code>$ hamsone --help
-bot for discord · telegram · whatsapp · website
-
-$ /stock
-&gt; Stock available. Ready to buy.
-
-$ /buy
-&gt; Stock locked for 10 minutes.
-&gt; Pay via QRIS to complete the order.
-
-$ /setup
-&gt; Shop configured. Ready for go-live.</code></pre>
-    <p class="panel-note" data-en="Real commands from a real shop bot. No invented server or order counts." data-id="Command asli dari bot toko asli. Tanpa angka server atau order yang dikarang.">Real commands from a real shop bot. No invented server or order counts.</p>
+  <div class="demo-grid">
+    <div class="window demo-window reveal">
+      <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="window-title">#toko — Disokin Store</span><span id="lockBadge" class="window-badge hidden">🔒 Locked <span id="lockTimer">10:00</span></span></div>
+      <div id="chatLog" class="chat-log">
+        <div class="msg bot"><strong>Disokin Bot</strong><span data-en="Welcome to Disokin Store. Type /stock to check stock." data-id="Selamat datang di Disokin Store. Ketik /stock untuk cek stok.">Welcome to Disokin Store. Type /stock to check stock.</span></div>
+      </div>
+      <div class="demo-controls">
+        <button class="btn btn-small" data-demo="stock" type="button">/stock</button>
+        <button class="btn btn-small" data-demo="buy" type="button">/buy</button>
+        <button class="btn btn-small" data-demo="qris" type="button">Pay QRIS</button>
+        <button class="btn btn-small" data-demo="auto" type="button" data-en="▶ Run full demo" data-id="▶ Jalankan demo penuh">▶ Run full demo</button>
+        <button class="btn btn-ghost btn-small" data-demo="reset" type="button" data-en="Reset" data-id="Ulangi">Reset</button>
+      </div>
+      <p class="panel-note"><em data-en="Demo simulation, not a real payment. No real account is sent here." data-id="Demo simulasi, bukan pembayaran asli. Tidak ada akun asli yang dikirim di sini.">Demo simulation, not a real payment. No real account is sent here.</em></p>
+    </div>
+    <div class="demo-side reveal">
+      <h3 data-en="What happens behind it" data-id="Yang terjadi di belakangnya">What happens behind it</h3>
+      <ul>
+        <li><strong>/stock</strong> — <span data-en="live stock from the database, not a static list" data-id="stok live dari database, bukan daftar statis">live stock from the database, not a static list</span></li>
+        <li><strong>/buy</strong> — <span data-en="stock locked for 10 minutes so nobody else can take it" data-id="stok dikunci 10 menit supaya tidak diambil orang lain">stock locked for 10 minutes so nobody else can take it</span></li>
+        <li><strong>QRIS</strong> — <span data-en="payment confirmed by webhook, not by screenshot" data-id="pembayaran dikonfirmasi webhook, bukan dari screenshot">payment confirmed by webhook, not by screenshot</span></li>
+        <li><strong>DM</strong> — <span data-en="account delivered privately, with a log for the owner" data-id="akun dikirim secara privat, dengan log untuk pemiliknya">account delivered privately, with a log for the owner</span></li>
+      </ul>
+    </div>
   </div>
-  <div id="livedemo" class="panel">
-    <ol class="demo-steps">
-      <li><strong>/stock</strong> — <span data-en="buyer checks stock" data-id="pembeli cek stok">buyer checks stock</span></li>
-      <li><strong>/buy</strong> — <span data-en="stock locked for 10 minutes" data-id="stok dikunci 10 menit">stock locked for 10 minutes</span></li>
-      <li><strong>QRIS</strong> — <span data-en="buyer pays" data-id="pembeli bayar">buyer pays</span></li>
-      <li><strong>Paid</strong> — <span data-en="webhook confirms payment" data-id="webhook konfirmasi pembayaran">webhook confirms payment</span></li>
-      <li><strong>DM delivery</strong> — <span data-en="account delivered via DM" data-id="akun dikirim lewat DM">account delivered via DM</span></li>
-    </ol>
-    <p class="panel-note"><em data-en="Demo simulation, not a real payment." data-id="Demo simulasi, bukan pembayaran beneran.">Demo simulation, not a real payment.</em></p>
-    <button id="runDemo" class="btn btn-small" type="button" data-en="Run demo" data-id="Jalankan demo">Run demo</button>
-    <p id="demoStatus" class="demo-status" aria-live="polite"></p>
+</section>
+
+<section id="projects" class="section">
+  <h2 class="section-title" data-en="Real projects, shown properly" data-id="Proyek asli, ditampilkan dengan benar">Real projects, shown properly</h2>
+  <div class="project reveal">
+    <div class="project-info">
+      <p class="project-tag">Discord shop bot • QRIS • Live</p>
+      <h3>Disokin Store</h3>
+      <p><strong data-en="Problem:" data-id="Masalah:">Problem:</strong> <span data-en="A shop owner had to reply manually, track stock himself, and missed orders while sleeping." data-id="Pemilik toko harus membalas manual, mencatat stok sendiri, dan order terlewat saat tidur.">A shop owner had to reply manually, track stock himself, and missed orders while sleeping.</span></p>
+      <p><strong data-en="Solution:" data-id="Solusi:">Solution:</strong> <span data-en="A Discord bot with /stock, /buy, a 10-minute stock lock, QRIS payment via webhook, delivery via DM, and an admin dashboard." data-id="Bot Discord dengan /stock, /buy, kunci stok 10 menit, pembayaran QRIS lewat webhook, pengiriman lewat DM, dan dashboard admin.">A Discord bot with /stock, /buy, a 10-minute stock lock, QRIS payment via webhook, delivery via DM, and an admin dashboard.</span></p>
+      <p><strong data-en="Result:" data-id="Hasil:">Result:</strong> <span data-en="Live since 29 October 2026. The first real buyer order was delivered via DM. Showcased with the owner's permission." data-id="Live sejak 29 Oktober 2026. Order pertama dari pembeli asli sudah dikirim lewat DM. Ditampilkan dengan izin pemiliknya.">Live since 29 October 2026. The first real buyer order was delivered via DM. Showcased with the owner's permission.</span></p>
+      <p class="small" data-en="Price shown in the shop: Rp65,000 per account. That is the shop's live price, not a public price list for new clients." data-id="Harga di toko: Rp65.000 per akun. Itu harga live toko itu, bukan daftar harga publik untuk klien baru.">Price shown in the shop: Rp65,000 per account. That is the shop's live price, not a public price list for new clients.</p>
+    </div>
+    <div class="mock-ui">
+      <div class="mock-bar"><span>#toko</span><span>Disokin Store</span></div>
+      <div class="mock-embed">
+        <strong>🛒 Stock — Account</strong>
+        <p>Ready • QRIS • <span data-en="Delivery via DM" data-id="Kirim lewat DM">Delivery via DM</span></p>
+        <div class="mock-btns"><span class="mock-buy">Buy</span><span class="mock-stock">/stock</span></div>
+      </div>
+      <div class="mock-log"><span>#log-transaksi</span><p>✓ <span data-en="Order delivered via DM" data-id="Order terkirim lewat DM">Order delivered via DM</span></p></div>
+      <p class="small mock-note" data-en="UI illustration of the real shop flow. Send me real screenshots and I will replace this panel with them." data-id="Ilustrasi UI dari alur toko asli. Kirim screenshot asli ke saya dan panel ini akan saya ganti dengan screenshot itu.">UI illustration of the real shop flow. Send me real screenshots and I will replace this panel with them.</p>
+    </div>
+  </div>
+  <div class="project reveal">
+    <div class="project-info">
+      <p class="project-tag">PHP / SQLite • Web App</p>
+      <h3 data-en="Calorie Tracking Web" data-id="Web Tracking Kalori">Calorie Tracking Web</h3>
+      <p><strong data-en="What it does:" data-id="Fungsinya:">What it does:</strong> <span data-en="Report via a web photo form or WhatsApp. A food photo becomes a logged report, with a daily recap." data-id="Lapor lewat form foto di web atau WhatsApp. Foto makanan menjadi log tercatat, dengan rekap harian.">Report via a web photo form or WhatsApp. A food photo becomes a logged report, with a daily recap.</span></p>
+      <p data-en="Shown by features only. No personal calorie or weight data is published here." data-id="Ditampilkan fitur-fiturnya saja. Tidak ada data kalori atau berat pribadi yang dipublikasikan di sini.">Shown by features only. No personal calorie or weight data is published here.</p>
+    </div>
+    <div class="mock-ui">
+      <div class="mock-bar"><span>📸 Photo report</span><span>Web form</span></div>
+      <div class="mock-embed">
+        <strong>🍽️ <span data-en="Food photo received" data-id="Foto makanan diterima">Food photo received</span></strong>
+        <p>→ <span data-en="Logged report" data-id="Log tercatat">Logged report</span> → <span data-en="Daily recap" data-id="Rekap harian">Daily recap</span></p>
+        <div class="mock-progress"><span></span></div>
+      </div>
+      <p class="small mock-note" data-en="UI illustration of the real web flow, features only." data-id="Ilustrasi UI dari alur web asli, fitur saja.">UI illustration of the real web flow, features only.</p>
+    </div>
   </div>
 </section>
 
 <section id="process" class="section">
-  <h2 data-en="A clear, fast process" data-id="Proses yang jelas dan cepat">A clear, fast process</h2>
-  <ol class="process">
-    <li><strong>Brief</strong><span data-en="Tell me your need: platform, purpose, details." data-id="Ceritain kebutuhan lu: platform, tujuan, detail.">Tell me your need: platform, purpose, details.</span></li>
-    <li><strong>Build</strong><span data-en="I build the bot or website." data-id="Gue bangun bot atau website-nya.">I build the bot or website.</span></li>
-    <li><strong>Test</strong><span data-en="Tested on my own server first." data-id="Dites di server gue sendiri dulu.">Tested on my own server first.</span></li>
-    <li><strong>Go-Live</strong><span data-en="Launched on your server / domain." data-id="Live di server / domain lu.">Launched on your server / domain.</span></li>
-    <li><strong>Maintenance</strong><span data-en="Maintained after launch." data-id="Dirawat setelah live.">Maintained after launch.</span></li>
-  </ol>
+  <h2 class="section-title" data-en="A clear, fast process" data-id="Proses yang jelas dan cepat">A clear, fast process</h2>
+  <div class="process-tabs" role="tablist">
+    <button class="process-tab active" data-process="0" type="button">1. Brief</button>
+    <button class="process-tab" data-process="1" type="button">2. Build</button>
+    <button class="process-tab" data-process="2" type="button">3. Test</button>
+    <button class="process-tab" data-process="3" type="button">4. Go-Live</button>
+    <button class="process-tab" data-process="4" type="button">5. Maintenance</button>
+  </div>
+  <p id="processText" class="process-text" data-en="Tell me your need: platform, purpose, and details. Price is discussed first, adjusted to difficulty — no surprise fees." data-id="Ceritakan kebutuhan kamu: platform, tujuan, dan detailnya. Harga dibahas dulu, menyesuaikan tingkat kesulitan — tanpa biaya kejutan.">Tell me your need: platform, purpose, and details. Price is discussed first, adjusted to difficulty — no surprise fees.</p>
 </section>
 
-<section id="projects" class="section">
-  <h2 data-en="Real projects" data-id="Proyek nyata">Real projects</h2>
-  <div class="grid">
-    <article class="card project">
-      <h3>Disokin Store</h3>
-      <p class="project-tag" data-en="Discord shop bot • QRIS • Live" data-id="Bot toko Discord • QRIS • Live">Discord shop bot • QRIS • Live</p>
-      <p><strong data-en="Problem:" data-id="Masalah:">Problem:</strong> <span data-en="A shop owner had to reply manually, track stock himself, and missed orders while sleeping." data-id="Pemilik toko harus balas manual, catat stok sendiri, dan order kelewat pas tidur.">A shop owner had to reply manually, track stock himself, and missed orders while sleeping.</span></p>
-      <p><strong data-en="Solution:" data-id="Solusi:">Solution:</strong> <span data-en="A Discord bot with /stock, /buy, a 10-minute stock lock, QRIS payment via webhook, and delivery via DM, plus an admin dashboard." data-id="Bot Discord dengan /stock, /buy, kunci stok 10 menit, bayar QRIS lewat webhook, dan kirim lewat DM, plus dashboard admin.">A Discord bot with /stock, /buy, a 10-minute stock lock, QRIS payment via webhook, and delivery via DM, plus an admin dashboard.</span></p>
-      <p><strong data-en="Result:" data-id="Hasil:">Result:</strong> <span data-en="Live since 29 October 2026. The first real buyer order was delivered via DM. Showcased with the owner's permission." data-id="Live sejak 29 Oktober 2026. Order pertama dari pembeli beneran sudah dikirim lewat DM. Ditampilkan dengan izin pemiliknya.">Live since 29 October 2026. The first real buyer order was delivered via DM. Showcased with the owner's permission.</span></p>
-      <p class="small" data-en="Price shown in the shop: Rp65,000 per account. That is the shop's live price, not a public price list for new clients." data-id="Harga di toko: Rp65.000 per akun. Itu harga live toko itu, bukan daftar harga publik untuk klien baru.">Price shown in the shop: Rp65,000 per account. That is the shop's live price, not a public price list for new clients.</p>
-    </article>
-    <article class="card project">
-      <h3 data-en="Calorie Tracking Web" data-id="Web Tracking Kalori">Calorie Tracking Web</h3>
-      <p class="project-tag">PHP / SQLite • Web App</p>
-      <p><strong data-en="What it does:" data-id="Fungsinya:">What it does:</strong> <span data-en="Report via a web photo form or WhatsApp. A food photo becomes a logged report, with a daily recap." data-id="Lapor lewat form foto di web atau WhatsApp. Foto makanan jadi log tercatat, dengan rekap harian.">Report via a web photo form or WhatsApp. A food photo becomes a logged report, with a daily recap.</span></p>
-      <p data-en="Shown by features only. No personal calorie or weight data is published here." data-id="Ditampilkan fitur-fiturnya saja. Tidak ada data kalori atau berat pribadi yang dipublikasikan di sini.">Shown by features only. No personal calorie or weight data is published here.</p>
-    </article>
+<section class="section">
+  <h2 class="section-title" data-en="Questions, answered" data-id="Pertanyaan, dijawab">Questions, answered</h2>
+  <div class="faq reveal">
+    <details open><summary data-en="How much does it cost?" data-id="Berapa biayanya?">How much does it cost?</summary><p data-en="Chat first — price adjusts to difficulty, scope, and platform. You get a clear price before I build anything." data-id="Chat dulu — harga menyesuaikan kesulitan, ruang lingkup, dan platform. Kamu mendapat harga yang jelas sebelum saya membangun apa pun.">Chat first — price adjusts to difficulty, scope, and platform. You get a clear price before I build anything.</p></details>
+    <details><summary data-en="Do you only build Discord bots?" data-id="Apakah hanya bot Discord?">Do you only build Discord bots?</summary><p data-en="No. Discord, Telegram, WhatsApp bots, and websites — including dashboards and photo-to-log tools." data-id="Tidak. Bot Discord, Telegram, WhatsApp, dan website — termasuk dashboard dan tools foto menjadi log.">No. Discord, Telegram, WhatsApp bots, and websites — including dashboards and photo-to-log tools.</p></details>
+    <details><summary data-en="What happens after go-live?" data-id="Apa yang terjadi setelah go-live?">What happens after go-live?</summary><p data-en="The build is maintained after launch. Bugs found in testing are owned and fixed, not handed back to you." data-id="Build dirawat setelah live. Bug yang ditemukan saat testing menjadi tanggung jawab saya dan diperbaiki, bukan dikembalikan ke kamu.">The build is maintained after launch. Bugs found in testing are owned and fixed, not handed back to you.</p></details>
   </div>
 </section>
 
 <section id="testimonials" class="section">
-  <h2 data-en="Testimonials" data-id="Testimoni">Testimonials</h2>
-  <div class="card">
-    <p data-en="No public testimonials yet — be the first client." data-id="Belum ada testimoni publik — jadi klien pertama.">No public testimonials yet — be the first client.</p>
-    <p class="small" data-en="I do not publish fake testimonials. If you are a real client, you can submit one below. Submissions do not auto-publish — they are moderated, and I verify with you via WhatsApp or email before anything goes live." data-id="Gue tidak mempublikasikan testimoni palsu. Kalau lu klien beneran, lu bisa kirim testimoni di bawah. Kiriman tidak auto-publish — dimoderasi dulu, dan gue verifikasi ke lu lewat WhatsApp atau email sebelum tayang.">I do not publish fake testimonials. If you are a real client, you can submit one below. Submissions do not auto-publish — they are moderated, and I verify with you via WhatsApp or email before anything goes live.</p>
+  <h2 class="section-title" data-en="Testimonials" data-id="Testimoni">Testimonials</h2>
+  <div class="card reveal">
+    <p data-en="No public testimonials yet — be the first client." data-id="Belum ada testimoni publik — jadilah klien pertama.">No public testimonials yet — be the first client.</p>
+    <p class="small" data-en="I do not publish fake testimonials. If you are a real client, you can submit one below. Submissions do not auto-publish — they are moderated, and I verify with you via WhatsApp or email before anything goes live." data-id="Saya tidak mempublikasikan testimoni palsu. Kalau kamu klien asli, kamu bisa mengirim testimoni di bawah. Kiriman tidak auto-publish — dimoderasi dulu, dan saya verifikasi ke kamu lewat WhatsApp atau email sebelum tayang.">I do not publish fake testimonials. If you are a real client, you can submit one below. Submissions do not auto-publish — they are moderated, and I verify with you via WhatsApp or email before anything goes live.</p>
     <form id="testiForm" class="form">
-      <label data-en="Your name" data-id="Nama lu">Your name <input name="name" required></label>
-      <label data-en="Your email" data-id="Email lu">Your email <input name="email" type="email" required></label>
-      <label data-en="Your testimonial (1–2 sentences)" data-id="Testimoni lu (1–2 kalimat)">Your testimonial (1–2 sentences) <textarea name="message" rows="3" required></textarea></label>
+      <label><span data-en="Your name" data-id="Nama kamu">Your name</span> <input name="name" required></label>
+      <label><span data-en="Your email" data-id="Email kamu">Your email</span> <input name="email" type="email" required></label>
+      <label><span data-en="Your testimonial (1–2 sentences)" data-id="Testimoni kamu (1–2 kalimat)">Your testimonial (1–2 sentences)</span> <textarea name="message" rows="3" required></textarea></label>
       <button class="btn btn-small" type="submit" data-en="Submit for moderation" data-id="Kirim untuk moderasi">Submit for moderation</button>
       <p id="testiStatus" class="small" aria-live="polite"></p>
     </form>
@@ -140,9 +198,9 @@ $ /setup
 </section>
 
 <section id="contact" class="section">
-  <h2 data-en="Start with your need, not with a platform guess" data-id="Mulai dari kebutuhan lu, bukan tebakan platform">Start with your need, not with a platform guess</h2>
-  <form id="inquiryForm" class="form card">
-    <label data-en="Bot / website for what platform?" data-id="Bot / website untuk platform apa?">Bot / website for what platform?
+  <h2 class="section-title" data-en="Start with your need, not with a platform guess" data-id="Mulai dari kebutuhan kamu, bukan tebakan platform">Start with your need, not with a platform guess</h2>
+  <form id="inquiryForm" class="form card reveal">
+    <label><span data-en="Bot / website for what platform?" data-id="Bot / website untuk platform apa?">Bot / website for what platform?</span>
       <select id="platform" required>
         <option value="Discord">Discord</option>
         <option value="Telegram">Telegram</option>
@@ -151,7 +209,7 @@ $ /setup
         <option value="Not sure yet">Not sure yet</option>
       </select>
     </label>
-    <label data-en="What should it do?" data-id="Fungsinya buat apa?">What should it do?
+    <label><span data-en="What should it do?" data-id="Fungsinya untuk apa?">What should it do?</span>
       <select id="purpose" required>
         <option value="Sell products">Sell products</option>
         <option value="Answer chats automatically">Answer chats automatically</option>
@@ -159,9 +217,9 @@ $ /setup
         <option value="Something else">Something else</option>
       </select>
     </label>
-    <label data-en="Describe your need" data-id="Jelasin kebutuhan lu">Describe your need <textarea id="need" rows="4" required placeholder="Example: I sell game accounts and want orders handled automatically."></textarea></label>
+    <label><span data-en="Describe your need" data-id="Jelaskan kebutuhan kamu">Describe your need</span> <textarea id="need" rows="4" required placeholder="Example: I sell game accounts and want orders handled automatically."></textarea></label>
     <button class="btn" type="submit" data-en="Send via WhatsApp" data-id="Kirim lewat WhatsApp">Send via WhatsApp</button>
-    <p class="small" data-en="This opens WhatsApp with your answers prefilled. Nothing is sent until you press send in WhatsApp." data-id="Ini membuka WhatsApp dengan jawaban lu sudah terisi. Nggak ada yang terkirim sampai lu tekan kirim di WhatsApp.">This opens WhatsApp with your answers prefilled. Nothing is sent until you press send in WhatsApp.</p>
+    <p class="small" data-en="This opens WhatsApp with your answers prefilled. Nothing is sent until you press send in WhatsApp." data-id="Ini membuka WhatsApp dengan jawaban kamu sudah terisi. Tidak ada yang terkirim sampai kamu tekan kirim di WhatsApp.">This opens WhatsApp with your answers prefilled. Nothing is sent until you press send in WhatsApp.</p>
   </form>
   <div class="contacts">
     <a class="btn btn-ghost" href="https://wa.me/6281289002318" target="_blank" rel="noopener">WhatsApp: 081289002318</a>
@@ -169,7 +227,7 @@ $ /setup
     <button id="copyDiscord" class="btn btn-ghost" type="button">Copy Discord: hmd__</button>
     <a class="btn btn-ghost" href="mailto:hamdiarwanyt@gmail.com">hamdiarwanyt@gmail.com</a>
     <a class="btn btn-ghost" href="https://github.com/hamdiarwan" target="_blank" rel="noopener">GitHub</a>
-    <p class="small" data-en="Discord note: strangers without a shared server or friendship can only send a friend request first, not a direct DM. WhatsApp is the fastest contact." data-id="Catatan Discord: orang asing tanpa server bersama atau pertemanan cuma bisa kirim friend request dulu, bukan DM langsung. WhatsApp adalah kontak tercepat.">Discord note: strangers without a shared server or friendship can only send a friend request first, not a direct DM. WhatsApp is the fastest contact.</p>
+    <p class="small" data-en="Discord note: strangers without a shared server or friendship can only send a friend request first, not a direct DM. WhatsApp is the fastest contact." data-id="Catatan Discord: orang asing tanpa server bersama atau pertemanan hanya bisa mengirim friend request dulu, bukan DM langsung. WhatsApp adalah kontak tercepat.">Discord note: strangers without a shared server or friendship can only send a friend request first, not a direct DM. WhatsApp is the fastest contact.</p>
   </div>
 </section>
 </main>
