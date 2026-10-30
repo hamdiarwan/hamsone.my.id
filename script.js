@@ -1,4 +1,22 @@
 // © 2026 HamsOne, All Rights Reserved.
+// Anonymous visit count (once per browser session, skipped when
+// Do Not Track is on). No cookies, no personal data.
+if (TESTI_API_URL && navigator.doNotTrack !== '1') {
+  try {
+    if (!sessionStorage.getItem('hamsone-view-logged')) {
+      sessionStorage.setItem('hamsone-view-logged', '1');
+      fetch(TESTI_API_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          type: 'view',
+          path: location.pathname || '/',
+          referrer: document.referrer || '',
+        }),
+      }).catch(() => {});
+    }
+  } catch (err) { /* counting must never break the page */ }
+}
 // Theme + language, remembered per visitor
 const root = document.documentElement;
 const themeBtn = document.getElementById('themeBtn');
