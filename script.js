@@ -157,8 +157,8 @@ document.querySelectorAll('.process-tab').forEach(tab => {
 const copyBtn = document.getElementById('copyDiscord');
 if (copyBtn) {
   copyBtn.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText('hmd__'); copyBtn.textContent = lang === 'en' ? 'Copied: hmd__' : 'Tersalin: hmd__'; }
-    catch (e) { copyBtn.textContent = 'hmd__'; }
+    try { await navigator.clipboard.writeText('hmd__'); copyBtn.textContent = lang === 'en' ? 'Copied!' : 'Tersalin!'; }
+    catch (e) { copyBtn.textContent = lang === 'en' ? 'Copy Discord username' : 'Salin username Discord'; }
   });
 }
 
