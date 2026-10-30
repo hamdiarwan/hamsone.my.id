@@ -185,20 +185,42 @@ function paintStars() {
 }
 starBtns.forEach(b => b.addEventListener('click', () => { selectedRating = Number(b.dataset.star); paintStars(); }));
 paintStars();
+// Public real-time testimonials: set this to your Google Apps Script web app URL
+// (see testimonial-backend.gs). While empty, submissions only show on the sender's own browser.
+const TESTI_API_URL = '';
 const testiList = document.getElementById('testiList');
-function renderTestis() {
+async function renderTestis() {
   if (!testiList) return;
   let items = [];
-  try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (e) { items = []; }
+  if (TESTI_API_URL) {
+    try {
+      const res = await fetch(TESTI_API_URL);
+      const data = await res.json();
+      if (Array.isArray(data)) items = data;
+    } catch (e) { /* fall back to local below */ }
+  }
+  if (!items.length) {
+    try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (e) { items = []; }
+  }
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const maskEmail = e => { const s = String(e || ''); return s.length <= 3 ? s + '*****' : s.slice(0, 3) + '*****'; };
+  const maskEmail = e => {
+    const s = String(e || '');
+    const at = s.indexOf('@');
+    if (at < 0) return s.length <= 3 ? s + '*****' : s.slice(0, 3) + '*****';
+    const local = s.slice(0, at), rest = s.slice(at + 1);
+    const dot = rest.lastIndexOf('.');
+    const domain = dot < 0 ? rest : rest.slice(0, dot), tld = dot < 0 ? '' : rest.slice(dot);
+    const mLocal = local.slice(0, 3) + '*'.repeat(Math.max(1, local.length - 3));
+    const mDomain = domain.slice(0, 2) + '*'.repeat(Math.max(1, domain.length - 2));
+    return `${mLocal}@${mDomain}${tld}`;
+  };
   testiList.innerHTML = items.map(t => `<article class="testi-card"><span class="testi-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</span><strong>${esc(t.name)}</strong><span class="small">${esc(maskEmail(t.email))}</span><p>${esc(t.message)}</p></article>`).join('');
 }
 renderTestis();
 const testiForm = document.getElementById('testiForm');
 const testiStatus = document.getElementById('testiStatus');
 if (testiForm) {
-  testiForm.addEventListener('submit', (e) => {
+  testiForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(testiForm);
     const entry = { name: data.get('name'), email: data.get('email'), message: data.get('message'), rating: selectedRating };
@@ -206,6 +228,11 @@ if (testiForm) {
     try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (err) { items = []; }
     items.unshift(entry);
     localStorage.setItem('hamsone-testimonials', JSON.stringify(items));
+    if (TESTI_API_URL) {
+      try {
+        await fetch(TESTI_API_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(entry) });
+      } catch (err) { /* local display above still works */ }
+    }
     renderTestis();
     const subject = encodeURIComponent('Testimonial submission — ' + entry.name + ' (' + entry.rating + '/5)');
     const body = encodeURIComponent(`Name: ${entry.name}\nEmail: ${entry.email}\nRating: ${entry.rating}/5\nTestimonial:\n${entry.message}\n\nPlease add this permanently to the site after verification.`);
