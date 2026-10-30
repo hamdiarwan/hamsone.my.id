@@ -187,7 +187,7 @@ starBtns.forEach(b => b.addEventListener('click', () => { selectedRating = Numbe
 paintStars();
 // Public real-time testimonials: set this to your Google Apps Script web app URL
 // (see testimonial-backend.gs). While empty, submissions only show on the sender's own browser.
-const TESTI_API_URL = '';
+const TESTI_API_URL = 'https://script.google.com/macros/s/AKfycbzDbDVR10WpZ41FwOS2rSDHSme8zFoWQ1GPS22TgXAdYicgyJwp87lnC2ftyhHoxh5PTg/exec';
 const testiList = document.getElementById('testiList');
 async function renderTestis() {
   if (!testiList) return;
