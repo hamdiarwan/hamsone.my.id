@@ -79,12 +79,12 @@ const demoTexts = {
   stock: { user: '/stock', botEn: 'Stock available. 1 account ready. Type /buy to lock it for 10 minutes.', botId: 'Stok tersedia. 1 akun ready. Ketik /buy untuk menguncinya selama 10 menit.' },
   buy: { user: '/buy', botEn: 'Stock locked for 10 minutes. Please pay via QRIS to complete the order.', botId: 'Stok dikunci 10 menit. Silakan bayar lewat QRIS untuk menyelesaikan order.' },
   qris: { user: 'Pay QRIS', botEn: 'Payment received via webhook. Delivering your account via DM…', botId: 'Pembayaran diterima lewat webhook. Akun kamu sedang dikirim lewat DM…' },
-  delivered: { botEn: '✓ Delivered via DM. Thank you for shopping at Disokin Store.', botId: '✓ Terkirim lewat DM. Terima kasih sudah berbelanja di Disokin Store.' },
+  delivered: { botEn: '✓ Delivered via DM. Thank you for shopping.', botId: '✓ Terkirim lewat DM. Terima kasih sudah berbelanja.' },
 };
 function addMsg(kind, text) {
   const div = document.createElement('div');
   div.className = 'msg ' + kind;
-  div.innerHTML = kind === 'bot' ? `<strong>Disokin Bot</strong><span>${text}</span>` : `<span>${text}</span>`;
+  div.innerHTML = kind === 'bot' ? `<strong>Shop Bot</strong><span>${text}</span>` : `<span>${text}</span>`;
   chatLog.appendChild(div);
   chatLog.scrollTop = chatLog.scrollHeight;
 }
@@ -109,7 +109,7 @@ function startLock() {
 function demoStep(kind) {
   if (kind === 'reset') {
     chatLog.innerHTML = '';
-    addMsg('bot', lang === 'en' ? 'Welcome to Disokin Store. Type /stock to check stock.' : 'Selamat datang di Disokin Store. Ketik /stock untuk cek stok.');
+    addMsg('bot', lang === 'en' ? 'Welcome to the shop. Type /stock to check stock.' : 'Selamat datang di toko. Ketik /stock untuk cek stok.');
     demoState = 0; markStep(0); lockBadge.classList.add('hidden'); clearInterval(lockInterval);
     return;
   }
