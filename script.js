@@ -189,6 +189,31 @@ paintStars();
 // (see testimonial-backend.gs). While empty, submissions only show on the sender's own browser.
 const TESTI_API_URL = 'https://script.google.com/macros/s/AKfycbzDbDVR10WpZ41FwOS2rSDHSme8zFoWQ1GPS22TgXAdYicgyJwp87lnC2ftyhHoxh5PTg/exec';
 const testiList = document.getElementById('testiList');
+let testiAuto = null;
+function setupTestiCarousel(items) {
+  if (!testiList) return;
+  const controls = document.getElementById('testiControls');
+  clearInterval(testiAuto);
+  // 1 testimonial: static, no animation. 2+: horizontal auto-running carousel.
+  const isCarousel = items.length >= 2;
+  testiList.classList.toggle('carousel', isCarousel);
+  if (controls) controls.classList.toggle('hidden', !isCarousel);
+  if (!isCarousel) return;
+  const step = () => {
+    const card = testiList.querySelector('.testi-card');
+    const w = card ? card.offsetWidth + 12 : 332;
+    if (testiList.scrollLeft + testiList.clientWidth >= testiList.scrollWidth - 10) testiList.scrollTo({ left: 0, behavior: 'smooth' });
+    else testiList.scrollBy({ left: w, behavior: 'smooth' });
+  };
+  const start = () => { clearInterval(testiAuto); testiAuto = setInterval(step, 4000); };
+  const stop = () => clearInterval(testiAuto);
+  start();
+  testiList.onmouseenter = stop; testiList.onmouseleave = start;
+  testiList.onfocusin = stop; testiList.onfocusout = start;
+  const prev = document.getElementById('testiPrev'), next = document.getElementById('testiNext');
+  if (prev) prev.onclick = () => { stop(); const card = testiList.querySelector('.testi-card'); testiList.scrollBy({ left: -(card ? card.offsetWidth + 12 : 332), behavior: 'smooth' }); start(); };
+  if (next) next.onclick = () => { stop(); step(); start(); };
+}
 async function renderTestis() {
   if (!testiList) return;
   let items = [];
@@ -203,6 +228,7 @@ async function renderTestis() {
     try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (e) { items = []; }
   }
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  setupTestiCarousel(items);
   const maskEmail = e => {
     const s = String(e || '');
     const at = s.indexOf('@');

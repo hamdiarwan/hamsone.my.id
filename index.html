@@ -187,6 +187,11 @@
     <p data-en="No public testimonials yet — be the first client." data-id="Belum ada testimoni publik — jadilah klien pertama.">No public testimonials yet — be the first client.</p>
     <p class="small" data-en="I do not publish fake testimonials. If you are a real client, you can submit one below with a star rating. Your testimonial will appear below on this page, and a copy is sent to me via Gmail for verification — approved testimonials are then added permanently so all visitors can see them." data-id="Saya tidak mempublikasikan testimoni palsu. Kalau kamu klien asli, kamu bisa mengirim testimoni di bawah dengan rating bintang. Testimoni kamu akan tampil di bawah pada halaman ini, dan salinannya dikirim ke saya lewat Gmail untuk verifikasi — testimoni yang disetujui kemudian ditambahkan permanen supaya semua pengunjung bisa melihatnya.">I do not publish fake testimonials. If you are a real client, you can submit one below with a star rating. Your testimonial will appear below on this page, and a copy is sent to me via Gmail for verification — approved testimonials are then added permanently so all visitors can see them.</p>
     <div id="testiList" class="testi-list"></div>
+    <div id="testiControls" class="testi-controls hidden">
+      <button id="testiPrev" class="btn btn-ghost btn-small" type="button" aria-label="Testimoni sebelumnya">← <span data-en="Prev" data-id="Sebelumnya">Prev</span></button>
+      <button id="testiNext" class="btn btn-ghost btn-small" type="button" aria-label="Testimoni berikutnya"><span data-en="Next" data-id="Berikutnya">Next</span> →</button>
+      <span class="small" data-en="Auto-running — hover to pause" data-id="Berjalan otomatis — arahkan kursor untuk jeda">Auto-running — hover to pause</span>
+    </div>
     <form id="testiForm" class="form">
       <label><span data-en="Your rating" data-id="Rating kamu">Your rating</span>
         <span class="stars" id="starRating" role="radiogroup" aria-label="Rating">

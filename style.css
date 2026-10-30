@@ -27,6 +27,8 @@ main{max-width:1120px;margin:0 auto;padding:0 24px 40px;position:relative}.secti
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:12px}.faq summary{cursor:pointer;font-weight:700}
 .stars{display:flex;gap:6px;margin-top:8px}.star{background:transparent;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;font-size:22px;color:var(--muted);cursor:pointer;line-height:1}.star.selected,.star:hover{background:rgba(16,185,129,.15);color:#facc15;border-color:var(--accent)}
 .testi-list{display:grid;gap:12px;margin:16px 0}.testi-card{background:var(--bg2);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:16px}.testi-card .testi-stars{color:#facc15;letter-spacing:2px}.testi-card strong{display:block}.testi-card p{margin:8px 0 0}
+.testi-list.carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}.testi-list.carousel::-webkit-scrollbar{display:none}.testi-list.carousel .testi-card{flex:0 0 320px;max-width:85vw;scroll-snap-align:start}
+.testi-controls{display:flex;gap:10px;align-items:center;margin:4px 0 16px;flex-wrap:wrap}
 .form{display:grid;gap:14px}.form input,.form select,.form textarea{width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
 .contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}footer{max-width:1120px;margin:0 auto;padding:28px 24px;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.reveal.visible{opacity:1;transform:none}
