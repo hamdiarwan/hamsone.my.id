@@ -5,7 +5,7 @@
 .bg-grid{position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.12;mask-image:radial-gradient(ellipse at top,black 20%,transparent 75%)}
 a{color:var(--accent)}h1,h2,h3{font-family:"Chakra Petch","Plus Jakarta Sans",sans-serif;line-height:1.1;letter-spacing:-.01em}
 .nav{position:sticky;top:0;z-index:20;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 24px;background:color-mix(in srgb,var(--bg) 86%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
-.logo{font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:22px;color:var(--text);text-decoration:none;display:flex;gap:8px;align-items:center}.logo-mark{color:var(--accent)}
+.logo{font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:22px;color:var(--text);text-decoration:none;display:flex;gap:8px;align-items:center}img.logo-mark{width:28px;height:28px;display:block;border-radius:8px}
 .nav-links{display:flex;gap:20px}.nav-links a{color:var(--text);text-decoration:none;font-weight:500}.nav-links a:hover{color:var(--accent)}
 .nav-actions{display:flex;gap:10px;align-items:center}
 .mobile-nav{display:none}
