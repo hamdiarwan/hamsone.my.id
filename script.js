@@ -176,7 +176,7 @@ if (inquiryForm) {
   });
 }
 
-// Testimonial: star rating + visible on this page + Gmail copy for verification
+// Testimonial: star rating + visible on this page, stored in the Sheet (no email step)
 let selectedRating = 5;
 const starBtns = document.querySelectorAll('#starRating .star');
 const starLabel = document.getElementById('starLabel');
@@ -229,6 +229,8 @@ async function renderTestis() {
     try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (e) { items = []; }
   }
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const emptyEl = document.getElementById('testiEmpty');
+  if (emptyEl) emptyEl.classList.toggle('hidden', items.length > 0);
   setupTestiCarousel(items);
   const maskEmail = e => {
     const s = String(e || '');
@@ -261,12 +263,9 @@ if (testiForm) {
       } catch (err) { /* local display above still works */ }
     }
     renderTestis();
-    const subject = encodeURIComponent('Testimonial submission — ' + entry.name + ' (' + entry.rating + '/5)');
-    const body = encodeURIComponent(`Name: ${entry.name}\nEmail: ${entry.email}\nRating: ${entry.rating}/5\nTestimonial:\n${entry.message}\n\nPlease add this permanently to the site after verification.`);
-    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=hamdiarwanyt@gmail.com&su=${subject}&body=${body}`, '_blank');
     testiStatus.textContent = lang === 'en'
-      ? 'Thanks — your testimonial is now shown above, and a copy was sent via Gmail for verification and permanent publishing.'
-      : 'Terima kasih — testimoni kamu sekarang tampil di atas, dan salinannya dikirim lewat Gmail untuk verifikasi dan publikasi permanen.';
+      ? 'Thanks — your testimonial is now live above for all visitors.'
+      : 'Terima kasih — testimoni kamu sekarang tampil di atas untuk semua pengunjung.';
     testiForm.reset();
     selectedRating = 5; paintStars();
   });
