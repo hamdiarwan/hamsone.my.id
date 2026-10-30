@@ -36,12 +36,24 @@ themeBtn.addEventListener('click', () => {
 });
 let lang = localStorage.getItem('hamsone-lang') || 'en';
 const langBtn = document.getElementById('langBtn');
+// Process tab texts live here (before applyLang runs) so a language
+// switch keeps the currently selected tab instead of resetting to Brief.
+let activeProcess = 0;
+const processTexts = [
+  { en: 'Tell me your need: platform, purpose, and details. Price is discussed first, adjusted to difficulty — no surprise fees.', id: 'Ceritakan kebutuhan kamu: platform, tujuan, dan detailnya. Harga dibahas dulu, menyesuaikan tingkat kesulitan — tanpa biaya kejutan.' },
+  { en: 'I build the bot or website on my own setup, with QRIS, database, and logs wired in from the start.', id: 'Saya membangun bot atau website di setup saya sendiri, dengan QRIS, database, dan log sudah terpasang dari awal.' },
+  { en: 'Tested on my own server first — including a real order flow — before anything touches your server.', id: 'Dites di server saya sendiri dulu — termasuk alur order asli — sebelum apa pun menyentuh server kamu.' },
+  { en: 'Launched on your server or domain, with DNS and HTTPS checked, like this portfolio at hamsone.my.id.', id: 'Diluncurkan di server atau domain kamu, dengan DNS dan HTTPS dicek, seperti portfolio ini di hamsone.my.id.' },
+  { en: 'Maintained after launch. If something breaks, tell me and I fix it — that is part of the service.', id: 'Dirawat setelah live. Kalau ada yang rusak, beri tahu saya dan saya perbaiki — itu bagian dari layanannya.' },
+];
 function applyLang() {
   document.documentElement.lang = lang;
   langBtn.textContent = lang === 'en' ? 'ID' : 'EN';
   document.querySelectorAll('[data-en]').forEach(el => {
     el.textContent = lang === 'en' ? el.dataset.en : el.dataset.id;
   });
+  const processTextEl = document.getElementById('processText');
+  if (processTextEl) processTextEl.textContent = lang === 'en' ? processTexts[activeProcess].en : processTexts[activeProcess].id;
 }
 langBtn.addEventListener('click', () => {
   lang = lang === 'en' ? 'id' : 'en';
@@ -163,18 +175,12 @@ document.querySelectorAll('.service-card').forEach(card => {
 });
 
 // Process tabs
-const processTexts = [
-  { en: 'Tell me your need: platform, purpose, and details. Price is discussed first, adjusted to difficulty — no surprise fees.', id: 'Ceritakan kebutuhan kamu: platform, tujuan, dan detailnya. Harga dibahas dulu, menyesuaikan tingkat kesulitan — tanpa biaya kejutan.' },
-  { en: 'I build the bot or website on my own setup, with QRIS, database, and logs wired in from the start.', id: 'Saya membangun bot atau website di setup saya sendiri, dengan QRIS, database, dan log sudah terpasang dari awal.' },
-  { en: 'Tested on my own server first — including a real order flow — before anything touches your server.', id: 'Dites di server saya sendiri dulu — termasuk alur order asli — sebelum apa pun menyentuh server kamu.' },
-  { en: 'Launched on your server or domain, with DNS and HTTPS checked, like this portfolio at hamsone.my.id.', id: 'Diluncurkan di server atau domain kamu, dengan DNS dan HTTPS dicek, seperti portfolio ini di hamsone.my.id.' },
-  { en: 'Maintained after launch. If something breaks, tell me and I fix it — that is part of the service.', id: 'Dirawat setelah live. Kalau ada yang rusak, beri tahu saya dan saya perbaiki — itu bagian dari layanannya.' },
-];
 document.querySelectorAll('.process-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.process-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const txt = processTexts[Number(tab.dataset.process)];
+    activeProcess = Number(tab.dataset.process);
+    const txt = processTexts[activeProcess];
     document.getElementById('processText').textContent = lang === 'en' ? txt.en : txt.id;
   });
 });
@@ -251,6 +257,17 @@ async function renderTestis() {
   }
   if (!items.length) {
     try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (e) { items = []; }
+  } else {
+    // Merge this browser's own submissions that the API GET may have
+    // missed (POST/GET race right after submit) — deduplicated, so a
+    // submission never shows twice once the API has caught up.
+    try {
+      const local = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]');
+      const key = t => `${String(t.email || '').trim().toLowerCase()}|${String(t.message || '').trim()}`;
+      const seen = new Set(items.map(key));
+      const missing = local.filter(t => !seen.has(key(t)));
+      if (missing.length) items = [...missing, ...items];
+    } catch (e) { /* ignore corrupt local data */ }
   }
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const emptyEl = document.getElementById('testiEmpty');
@@ -267,7 +284,10 @@ async function renderTestis() {
     const mDomain = domain.slice(0, 2) + '*'.repeat(Math.max(1, domain.length - 2));
     return `${mLocal}@${mDomain}${tld}`;
   };
-  testiList.innerHTML = items.map(t => `<article class="testi-card"><span class="testi-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</span><strong>${esc(t.name)}</strong><span class="small">${esc(maskEmail(t.email))}</span><p>${esc(t.message)}</p></article>`).join('');
+  testiList.innerHTML = items.map(t => {
+    const r = Math.min(5, Math.max(1, Number(t.rating) || 5));
+    return `<article class="testi-card"><span class="testi-stars">${'★'.repeat(r)}${'☆'.repeat(5 - r)}</span><strong>${esc(t.name)}</strong><span class="small">${esc(maskEmail(t.email))}</span><p>${esc(t.message)}</p></article>`;
+  }).join('');
 }
 renderTestis();
 const testiForm = document.getElementById('testiForm');
