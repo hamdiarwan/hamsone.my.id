@@ -252,7 +252,7 @@ if (testiForm) {
   testiForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(testiForm);
-    const entry = { name: data.get('name'), email: data.get('email'), message: data.get('message'), rating: selectedRating };
+    const entry = { name: data.get('name'), email: data.get('email'), message: data.get('message'), rating: selectedRating, website: data.get('website') || '' };
     let items = [];
     try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (err) { items = []; }
     items.unshift(entry);
