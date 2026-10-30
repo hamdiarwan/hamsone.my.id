@@ -175,18 +175,44 @@ if (inquiryForm) {
   });
 }
 
-// Testimonial: moderated only, via email — never auto-published
+// Testimonial: star rating + visible on this page + Gmail copy for verification
+let selectedRating = 5;
+const starBtns = document.querySelectorAll('#starRating .star');
+const starLabel = document.getElementById('starLabel');
+function paintStars() {
+  starBtns.forEach(b => b.classList.toggle('selected', Number(b.dataset.star) <= selectedRating));
+  if (starLabel) starLabel.textContent = `${selectedRating} / 5`;
+}
+starBtns.forEach(b => b.addEventListener('click', () => { selectedRating = Number(b.dataset.star); paintStars(); }));
+paintStars();
+const testiList = document.getElementById('testiList');
+function renderTestis() {
+  if (!testiList) return;
+  let items = [];
+  try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (e) { items = []; }
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  testiList.innerHTML = items.map(t => `<article class="testi-card"><span class="testi-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</span><strong>${esc(t.name)}</strong><p>${esc(t.message)}</p></article>`).join('');
+}
+renderTestis();
 const testiForm = document.getElementById('testiForm');
 const testiStatus = document.getElementById('testiStatus');
 if (testiForm) {
   testiForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(testiForm);
-    const subject = encodeURIComponent('Testimonial submission for moderation — ' + data.get('name'));
-    const body = encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\nTestimonial:\n${data.get('message')}\n\nNote: I understand this does not auto-publish and will be verified before anything goes live.`);
-    window.location.href = `mailto:hamdiarwanyt@gmail.com?subject=${subject}&body=${body}`;
+    const entry = { name: data.get('name'), email: data.get('email'), message: data.get('message'), rating: selectedRating };
+    let items = [];
+    try { items = JSON.parse(localStorage.getItem('hamsone-testimonials') || '[]'); } catch (err) { items = []; }
+    items.unshift(entry);
+    localStorage.setItem('hamsone-testimonials', JSON.stringify(items));
+    renderTestis();
+    const subject = encodeURIComponent('Testimonial submission — ' + entry.name + ' (' + entry.rating + '/5)');
+    const body = encodeURIComponent(`Name: ${entry.name}\nEmail: ${entry.email}\nRating: ${entry.rating}/5\nTestimonial:\n${entry.message}\n\nPlease add this permanently to the site after verification.`);
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=hamdiarwanyt@gmail.com&su=${subject}&body=${body}`, '_blank');
     testiStatus.textContent = lang === 'en'
-      ? 'Thanks — your submission opens in email for moderation. It will not appear on the site until verified and approved.'
-      : 'Terima kasih — kiriman kamu dibuka lewat email untuk moderasi. Tidak akan tayang sebelum diverifikasi dan disetujui.';
+      ? 'Thanks — your testimonial is now shown above, and a copy was sent via Gmail for verification and permanent publishing.'
+      : 'Terima kasih — testimoni kamu sekarang tampil di atas, dan salinannya dikirim lewat Gmail untuk verifikasi dan publikasi permanen.';
+    testiForm.reset();
+    selectedRating = 5; paintStars();
   });
 }

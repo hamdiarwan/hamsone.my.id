@@ -185,8 +185,19 @@
   <h2 class="section-title" data-en="Testimonials" data-id="Testimoni">Testimonials</h2>
   <div class="card reveal">
     <p data-en="No public testimonials yet — be the first client." data-id="Belum ada testimoni publik — jadilah klien pertama.">No public testimonials yet — be the first client.</p>
-    <p class="small" data-en="I do not publish fake testimonials. If you are a real client, you can submit one below. Submissions do not auto-publish — they are moderated, and I verify with you via WhatsApp or email before anything goes live." data-id="Saya tidak mempublikasikan testimoni palsu. Kalau kamu klien asli, kamu bisa mengirim testimoni di bawah. Kiriman tidak auto-publish — dimoderasi dulu, dan saya verifikasi ke kamu lewat WhatsApp atau email sebelum tayang.">I do not publish fake testimonials. If you are a real client, you can submit one below. Submissions do not auto-publish — they are moderated, and I verify with you via WhatsApp or email before anything goes live.</p>
+    <p class="small" data-en="I do not publish fake testimonials. If you are a real client, you can submit one below with a star rating. Your testimonial will appear below on this page, and a copy is sent to me via Gmail for verification — approved testimonials are then added permanently so all visitors can see them." data-id="Saya tidak mempublikasikan testimoni palsu. Kalau kamu klien asli, kamu bisa mengirim testimoni di bawah dengan rating bintang. Testimoni kamu akan tampil di bawah pada halaman ini, dan salinannya dikirim ke saya lewat Gmail untuk verifikasi — testimoni yang disetujui kemudian ditambahkan permanen supaya semua pengunjung bisa melihatnya.">I do not publish fake testimonials. If you are a real client, you can submit one below with a star rating. Your testimonial will appear below on this page, and a copy is sent to me via Gmail for verification — approved testimonials are then added permanently so all visitors can see them.</p>
+    <div id="testiList" class="testi-list"></div>
     <form id="testiForm" class="form">
+      <label><span data-en="Your rating" data-id="Rating kamu">Your rating</span>
+        <span class="stars" id="starRating" role="radiogroup" aria-label="Rating">
+          <button type="button" class="star" data-star="1" aria-label="1 star">★</button>
+          <button type="button" class="star" data-star="2" aria-label="2 stars">★</button>
+          <button type="button" class="star" data-star="3" aria-label="3 stars">★</button>
+          <button type="button" class="star" data-star="4" aria-label="4 stars">★</button>
+          <button type="button" class="star selected" data-star="5" aria-label="5 stars">★</button>
+        </span>
+        <span id="starLabel" class="small">5 / 5</span>
+      </label>
       <label><span data-en="Your name" data-id="Nama kamu">Your name</span> <input name="name" required></label>
       <label><span data-en="Your email" data-id="Email kamu">Your email</span> <input name="email" type="email" required></label>
       <label><span data-en="Your testimonial (1–2 sentences)" data-id="Testimoni kamu (1–2 kalimat)">Your testimonial (1–2 sentences)</span> <textarea name="message" rows="3" required></textarea></label>
@@ -224,7 +235,7 @@
     <a class="btn btn-ghost" href="https://wa.me/6281289002318" target="_blank" rel="noopener">WhatsApp</a>
     <a class="btn btn-ghost" href="https://discord.com/users/406423375377072148" target="_blank" rel="noopener">Discord profile</a>
     <button id="copyDiscord" class="btn btn-ghost" type="button" data-en="Copy Discord username" data-id="Salin username Discord">Copy Discord username</button>
-    <a class="btn btn-ghost" href="mailto:hamdiarwanyt@gmail.com">Email</a>
+    <a class="btn btn-ghost" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hamdiarwanyt@gmail.com" target="_blank" rel="noopener">Email</a>
     <a class="btn btn-ghost" href="https://github.com/hamdiarwan" target="_blank" rel="noopener">GitHub</a>
     <p class="small" data-en="Discord note: strangers without a shared server or friendship can only send a friend request first, not a direct DM. WhatsApp is the fastest contact." data-id="Catatan Discord: orang asing tanpa server bersama atau pertemanan hanya bisa mengirim friend request dulu, bukan DM langsung. WhatsApp adalah kontak tercepat.">Discord note: strangers without a shared server or friendship can only send a friend request first, not a direct DM. WhatsApp is the fastest contact.</p>
   </div>
