@@ -1,3 +1,4 @@
+/* © 2026 HamsOne, All Rights Reserved. */
 :root{--bg:#0a0f1e;--bg2:#0e1628;--card:#121e33;--card2:#16233d;--text:#eef2f7;--muted:#a7b0c2;--line:#243049;--accent:#10b981;--accent2:#34d399;--accent-dark:#059669;--shadow:0 18px 50px rgba(0,0,0,.45)}
 [data-theme="light"]{--bg:#f6f7f2;--bg2:#ffffff;--card:#ffffff;--card2:#f1f5f1;--text:#111827;--muted:#4b5563;--line:#dbe3e0;--accent:#059669;--accent2:#047857;--accent-dark:#047857;--shadow:0 18px 50px rgba(17,24,39,.14)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}

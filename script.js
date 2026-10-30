@@ -1,3 +1,4 @@
+// © 2026 HamsOne, All Rights Reserved.
 // Theme + language, remembered per visitor
 const root = document.documentElement;
 const themeBtn = document.getElementById('themeBtn');
