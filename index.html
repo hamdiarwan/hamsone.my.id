@@ -5,17 +5,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HamsOne — Bot &amp; Website Developer</title>
-<meta name="description" content="HamsOne builds bots that sell, answer, and automate — while you sleep. Discord, Telegram, WhatsApp bots and websites. Jakarta, Indonesia. Open Freelance.">
+<meta name="description" content="HamsOne builds bots that sell, answer, and automate — tested before launch, maintained after it ships. Discord, Telegram, WhatsApp bots and websites. Jakarta, Indonesia. Open Freelance.">
 <meta name="theme-color" content="#0a0f1e">
 <link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HamsOne — Bot & Website Developer">
-<meta property="og:description" content="I build bots that sell, answer, and automate — while you sleep. Discord, Telegram, WhatsApp bots and websites. Jakarta, Indonesia. Open Freelance.">
+<meta property="og:description" content="I build bots that sell, answer, and automate — tested before launch, maintained after it ships. Discord, Telegram, WhatsApp bots and websites. Jakarta, Indonesia. Open Freelance.">
 <meta property="og:url" content="https://hamsone.my.id/">
 <meta property="og:image" content="https://hamsone.my.id/avatar.gif">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HamsOne — Bot & Website Developer">
-<meta name="twitter:description" content="I build bots that sell, answer, and automate — while you sleep. Discord, Telegram, WhatsApp bots and websites.">
+<meta name="twitter:description" content="I build bots that sell, answer, and automate — tested before launch, maintained after it ships. Discord, Telegram, WhatsApp bots and websites.">
 <meta name="twitter:image" content="https://hamsone.my.id/avatar.gif">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -27,8 +27,8 @@
   <a class="logo" href="#top"><img class="logo-mark" src="logo.svg" alt="" width="28" height="28"> HamsOne</a>
   <nav class="nav-links">
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
-    <a href="#services" data-en="Services" data-id="Jasa">Services</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
+    <a href="#services" data-en="Services" data-id="Jasa">Services</a>
     <a href="#process" data-en="Process" data-id="Proses">Process</a>
     <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
   </nav>
@@ -39,8 +39,8 @@
   </div>
   <nav class="mobile-nav" aria-label="Sections">
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
-    <a href="#services" data-en="Services" data-id="Jasa">Services</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
+    <a href="#services" data-en="Services" data-id="Jasa">Services</a>
     <a href="#process" data-en="Process" data-id="Proses">Process</a>
     <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
   </nav>
@@ -52,7 +52,7 @@
     <p class="eyebrow"><span class="live-dot"></span> Jakarta, Indonesia • <span data-en="Open Freelance" data-id="Open Freelance">Open Freelance</span></p>
     <h1>HamsOne</h1>
     <h2 class="hero-role">Bot &amp; Website <span>Developer</span></h2>
-    <p class="hero-sub" data-en="I build bots that sell, answer, and automate — while you sleep. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report." data-id="Saya membuat bot yang berjualan, menjawab chat, dan mengotomasi pekerjaan — selagi kamu tidur. Dari toko Discord live dengan pembayaran QRIS sampai web tools yang mengubah foto menjadi log tercatat.">I build bots that sell, answer, and automate — while you sleep. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report.</p>
+    <p class="hero-sub" data-en="I build bots that sell, answer, and automate — tested before launch, maintained after it ships. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report." data-id="Saya membuat bot yang berjualan, menjawab chat, dan mengotomasi pekerjaan — dites sebelum rilis, dirawat setelah jalan. Dari toko Discord live dengan pembayaran QRIS sampai web tools yang mengubah foto menjadi log tercatat.">I build bots that sell, answer, and automate — tested before launch, maintained after it ships. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report.</p>
     <div class="hero-cta">
       <a class="btn" href="#projects" data-en="View Projects" data-id="Lihat Proyek">View Projects</a>
       <a class="btn btn-ghost" href="https://github.com/hamdiarwan" target="_blank" rel="noopener">⎇ GitHub</a>
@@ -61,7 +61,10 @@
   </div>
   <div class="hero-visual reveal">
     <div class="avatar-card">
-      <img src="avatar.gif" alt="HamsOne pixel avatar" width="320" height="320">
+      <div class="bot-stage" id="botStage">
+        <img id="botFallback" src="avatar.gif" alt="HamsOne pixel avatar" width="320" height="320">
+        <span class="bot-status" id="botStatus">Loading 3D bot…</span>
+      </div>
       <div class="avatar-status"><span class="live-dot"></span><span data-en="Available for freelance" data-id="Tersedia untuk freelance">Available for freelance</span></div>
     </div>
   </div>
@@ -87,55 +90,6 @@
   <div class="proof"><strong data-en="Tested Before Launch" data-id="Dites Sebelum Live">Tested Before Launch</strong><span data-en="On my own server first" data-id="Di server saya sendiri dulu">On my own server first</span></div>
   <div class="proof"><strong data-en="Payments &amp; Automation" data-id="Pembayaran &amp; Otomasi">Payments &amp; Automation</strong><span data-en="QRIS, webhooks, databases" data-id="QRIS, webhook, database">QRIS, webhooks, databases</span></div>
   <div class="proof"><strong data-en="Maintained After Launch" data-id="Dirawat Setelah Live">Maintained After Launch</strong><span data-en="Support included" data-id="Dukungan termasuk">Support included</span></div>
-</section>
-
-<section id="services" class="section">
-  <h2 class="section-title" data-en="What I build" data-id="Yang saya buat">What I build</h2>
-  <p class="section-sub" data-en="Not just Discord. Click a service to start your inquiry with that platform already selected." data-id="Bukan hanya Discord. Klik salah satu jasa untuk memulai inquiry dengan platform itu sudah terpilih.">Not just Discord. Click a service to start your inquiry with that platform already selected.</p>
-  <div class="grid">
-    <article class="card service-card reveal" data-platform="Discord"><div class="card-icon">💬</div><h3>Discord Bot</h3><p data-en="Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs." data-id="Bot toko, stok dan order, pembayaran QRIS, pengiriman lewat DM, dashboard admin, dan log.">Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs.</p><span class="card-link" data-en="Start with Discord →" data-id="Mulai dengan Discord →">Start with Discord →</span></article>
-    <article class="card service-card reveal" data-platform="Telegram"><div class="card-icon">✈️</div><h3>Telegram Bot</h3><p data-en="Automation, notifications, customer-service flows and tools that run inside Telegram." data-id="Otomasi, notifikasi, alur customer service, dan tools yang berjalan di dalam Telegram.">Automation, notifications, customer-service flows and tools that run inside Telegram.</p><span class="card-link" data-en="Start with Telegram →" data-id="Mulai dengan Telegram →">Start with Telegram →</span></article>
-    <article class="card service-card reveal" data-platform="WhatsApp"><div class="card-icon">📱</div><h3>WhatsApp Bot</h3><p data-en="Automated replies, order flows and notifications on the app your customers already use." data-id="Balasan otomatis, alur order, dan notifikasi di aplikasi yang sudah dipakai pelanggan kamu.">Automated replies, order flows and notifications on the app your customers already use.</p><span class="card-link" data-en="Start with WhatsApp →" data-id="Mulai dengan WhatsApp →">Start with WhatsApp →</span></article>
-    <article class="card service-card reveal" data-platform="Website"><div class="card-icon">🌐</div><h3>Website</h3><p data-en="Fast, clean landing pages and web tools — including photo-to-log apps and dashboards." data-id="Landing page cepat dan bersih, plus web tools — termasuk aplikasi foto menjadi log dan dashboard.">Fast, clean landing pages and web tools — including photo-to-log apps and dashboards.</p><span class="card-link" data-en="Start with Website →" data-id="Mulai dengan Website →">Start with Website →</span></article>
-  </div>
-  <div class="skills"><span>Python</span><span>Discord API</span><span>JavaScript</span><span>HTML / CSS</span><span>PHP</span><span>SQLite</span><span>Linux VPS</span><span>Caddy</span><span>QRIS / Webhook</span></div>
-</section>
-
-<section id="demo" class="section">
-  <h2 class="section-title" data-en="Try the shop flow — live demo" data-id="Coba alur tokonya — demo langsung">Try the shop flow — live demo</h2>
-  <p class="section-sub" data-en="This is an interactive simulation of a real shop flow. Click the steps in order, or let it run on its own." data-id="Ini simulasi interaktif dari alur toko yang asli. Klik langkah-langkahnya secara berurutan, atau biarkan berjalan sendiri.">This is an interactive simulation of a real shop flow. Click the steps in order, or let it run on its own.</p>
-  <div class="demo-steps-bar">
-    <span class="demo-step active" data-step="0">1. /stock</span><span class="demo-arrow">→</span>
-    <span class="demo-step" data-step="1">2. /buy</span><span class="demo-arrow">→</span>
-    <span class="demo-step" data-step="2">3. QRIS</span><span class="demo-arrow">→</span>
-    <span class="demo-step" data-step="3">4. Paid</span><span class="demo-arrow">→</span>
-    <span class="demo-step" data-step="4">5. DM delivery</span>
-  </div>
-  <div class="demo-grid">
-    <div class="window demo-window reveal">
-      <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="window-title">#toko — Shop Demo</span><span id="lockBadge" class="window-badge hidden">🔒 Locked <span id="lockTimer">10:00</span></span></div>
-      <div id="chatLog" class="chat-log">
-        <div class="msg bot"><strong>Shop Bot</strong><span data-en="Welcome to the shop. Type /stock to check stock." data-id="Selamat datang di toko. Ketik /stock untuk cek stok.">Welcome to the shop. Type /stock to check stock.</span></div>
-      </div>
-      <div class="demo-controls">
-        <button class="btn btn-small" data-demo="stock" type="button">/stock</button>
-        <button class="btn btn-small" data-demo="buy" type="button">/buy</button>
-        <button class="btn btn-small" data-demo="qris" type="button">Pay QRIS</button>
-        <button class="btn btn-small" data-demo="auto" type="button" data-en="▶ Run full demo" data-id="▶ Jalankan demo penuh">▶ Run full demo</button>
-        <button class="btn btn-ghost btn-small" data-demo="reset" type="button" data-en="Reset" data-id="Ulangi">Reset</button>
-      </div>
-      <p class="panel-note"><em data-en="Demo simulation, not a real payment. No real account is sent here." data-id="Demo simulasi, bukan pembayaran asli. Tidak ada akun asli yang dikirim di sini.">Demo simulation, not a real payment. No real account is sent here.</em></p>
-    </div>
-    <div class="demo-side reveal">
-      <h3 data-en="What happens behind it" data-id="Yang terjadi di belakangnya">What happens behind it</h3>
-      <ul>
-        <li><strong>/stock</strong> — <span data-en="live stock from the database, not a static list" data-id="stok live dari database, bukan daftar statis">live stock from the database, not a static list</span></li>
-        <li><strong>/buy</strong> — <span data-en="stock locked for 10 minutes so nobody else can take it" data-id="stok dikunci 10 menit supaya tidak diambil orang lain">stock locked for 10 minutes so nobody else can take it</span></li>
-        <li><strong>QRIS</strong> — <span data-en="payment confirmed by webhook, not by screenshot" data-id="pembayaran dikonfirmasi webhook, bukan dari screenshot">payment confirmed by webhook, not by screenshot</span></li>
-        <li><strong>DM</strong> — <span data-en="account delivered privately, with a log for the owner" data-id="akun dikirim secara privat, dengan log untuk pemiliknya">account delivered privately, with a log for the owner</span></li>
-      </ul>
-    </div>
-  </div>
 </section>
 
 <section id="projects" class="section">
@@ -184,7 +138,56 @@
   </div>
 </section>
 
-<section id="process" class="section">
+<section id="demo" class="section">
+  <h2 class="section-title" data-en="Try the shop flow — live demo" data-id="Coba alur tokonya — demo langsung">Try the shop flow — live demo</h2>
+  <p class="section-sub" data-en="This is an interactive simulation of a real shop flow. Click the steps in order, or let it run on its own." data-id="Ini simulasi interaktif dari alur toko yang asli. Klik langkah-langkahnya secara berurutan, atau biarkan berjalan sendiri.">This is an interactive simulation of a real shop flow. Click the steps in order, or let it run on its own.</p>
+  <div class="demo-steps-bar">
+    <span class="demo-step active" data-step="0">1. /stock</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="1">2. /buy</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="2">3. QRIS</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="3">4. Paid</span><span class="demo-arrow">→</span>
+    <span class="demo-step" data-step="4">5. DM delivery</span>
+  </div>
+  <div class="demo-grid">
+    <div class="window demo-window reveal">
+      <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="window-title">#toko — Shop Demo</span><span id="lockBadge" class="window-badge hidden">🔒 Locked <span id="lockTimer">10:00</span></span></div>
+      <div id="chatLog" class="chat-log">
+        <div class="msg bot"><strong>Shop Bot</strong><span data-en="Welcome to the shop. Type /stock to check stock." data-id="Selamat datang di toko. Ketik /stock untuk cek stok.">Welcome to the shop. Type /stock to check stock.</span></div>
+      </div>
+      <div class="demo-controls">
+        <button class="btn btn-small" data-demo="stock" type="button">/stock</button>
+        <button class="btn btn-small" data-demo="buy" type="button">/buy</button>
+        <button class="btn btn-small" data-demo="qris" type="button">Pay QRIS</button>
+        <button class="btn btn-small" data-demo="auto" type="button" data-en="▶ Run full demo" data-id="▶ Jalankan demo penuh">▶ Run full demo</button>
+        <button class="btn btn-ghost btn-small" data-demo="reset" type="button" data-en="Reset" data-id="Ulangi">Reset</button>
+      </div>
+      <p class="panel-note"><em data-en="Demo simulation, not a real payment. No real account is sent here." data-id="Demo simulasi, bukan pembayaran asli. Tidak ada akun asli yang dikirim di sini.">Demo simulation, not a real payment. No real account is sent here.</em></p>
+    </div>
+    <div class="demo-side reveal">
+      <h3 data-en="What happens behind it" data-id="Yang terjadi di belakangnya">What happens behind it</h3>
+      <ul>
+        <li><strong>/stock</strong> — <span data-en="live stock from the database, not a static list" data-id="stok live dari database, bukan daftar statis">live stock from the database, not a static list</span></li>
+        <li><strong>/buy</strong> — <span data-en="stock locked for 10 minutes so nobody else can take it" data-id="stok dikunci 10 menit supaya tidak diambil orang lain">stock locked for 10 minutes so nobody else can take it</span></li>
+        <li><strong>QRIS</strong> — <span data-en="payment confirmed by webhook, not by screenshot" data-id="pembayaran dikonfirmasi webhook, bukan dari screenshot">payment confirmed by webhook, not by screenshot</span></li>
+        <li><strong>DM</strong> — <span data-en="account delivered privately, with a log for the owner" data-id="akun dikirim secara privat, dengan log untuk pemiliknya">account delivered privately, with a log for the owner</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <h2 class="section-title" data-en="What I build" data-id="Yang saya buat">What I build</h2>
+  <p class="section-sub" data-en="Pick a platform — every build ships tested, with a dashboard and logs you can actually check." data-id="Pilih platform — setiap build dikirim sudah dites, dengan dashboard dan log yang benar-benar bisa dicek.">Pick a platform — every build ships tested, with a dashboard and logs you can actually check.</p>
+  <div class="grid">
+    <article class="card service-card reveal" data-platform="Discord"><div class="card-icon">💬</div><h3>Discord Bot</h3><p data-en="Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs." data-id="Bot toko, stok dan order, pembayaran QRIS, pengiriman lewat DM, dashboard admin, dan log.">Shop bots, stock and orders, QRIS payments, delivery via DM, admin dashboard and logs.</p><span class="card-link" data-en="Start with Discord →" data-id="Mulai dengan Discord →">Start with Discord →</span></article>
+    <article class="card service-card reveal" data-platform="Telegram"><div class="card-icon">✈️</div><h3>Telegram Bot</h3><p data-en="Order flows with inline buttons, payment confirmations, and stock alerts — built around how your shop already runs, not a generic chatbot." data-id="Alur order dengan tombol inline, konfirmasi pembayaran, dan notif stok — dibangun mengikuti cara tokomu sudah berjalan, bukan chatbot generik.">Order flows with inline buttons, payment confirmations, and stock alerts — built around how your shop already runs, not a generic chatbot.</p><span class="card-link" data-en="Start with Telegram →" data-id="Mulai dengan Telegram →">Start with Telegram →</span></article>
+    <article class="card service-card reveal" data-platform="WhatsApp"><div class="card-icon">📱</div><h3>WhatsApp Bot</h3><p data-en="Replies, order confirmations, and follow-ups on the app your customers already open — so no order sits unread in a personal chat." data-id="Balasan, konfirmasi order, dan follow-up di aplikasi yang sudah dibuka pelangganmu — supaya tidak ada order yang mengendap tak terbaca di chat pribadi.">Replies, order confirmations, and follow-ups on the app your customers already open — so no order sits unread in a personal chat.</p><span class="card-link" data-en="Start with WhatsApp →" data-id="Mulai dengan WhatsApp →">Start with WhatsApp →</span></article>
+    <article class="card service-card reveal" data-platform="Website"><div class="card-icon">🌐</div><h3>Website</h3><p data-en="Landing pages and web tools with real backends — photo-to-log forms, dashboards, and Sheets/API integrations, not just a pretty page." data-id="Landing page dan web tools dengan backend beneran — form foto menjadi log, dashboard, dan integrasi Sheets/API, bukan sekadar halaman cantik.">Landing pages and web tools with real backends — photo-to-log forms, dashboards, and Sheets/API integrations, not just a pretty page.</p><span class="card-link" data-en="Start with Website →" data-id="Mulai dengan Website →">Start with Website →</span></article>
+  </div>
+  <div class="skills"><span>Python</span><span>Discord API</span><span>JavaScript</span><span>HTML / CSS</span><span>PHP</span><span>SQLite</span><span>Linux VPS</span><span>Caddy</span><span>QRIS / Webhook</span></div>
+</section>
+
+<section id=\"process\" class="section">
   <h2 class="section-title" data-en="A clear, fast process" data-id="Proses yang jelas dan cepat">A clear, fast process</h2>
   <div class="process-tabs" role="tablist">
     <button class="process-tab active" data-process="0" type="button">1. Brief</button>
@@ -277,5 +280,64 @@
 </footer>
 
 <script src="script.js"></script>
+
+<script type="importmap">
+{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+const stage = document.getElementById("botStage");
+const fallback = document.getElementById("botFallback");
+const status = document.getElementById("botStatus");
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
+catch (e) { status.textContent = "3D unavailable — showing avatar"; }
+if (renderer) {
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(stage.clientWidth, stage.clientHeight);
+  stage.prepend(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, stage.clientWidth / stage.clientHeight, 0.1, 100);
+  camera.position.set(0.4, 0.4, 9.5);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(4, 6, 6); scene.add(key);
+  const rim = new THREE.DirectionalLight(0x10b981, 1.8); rim.position.set(-5, 3, -4); scene.add(rim);
+  let model = null, targetY = 0, targetX = 0, dragX = 0, dragY = 0, dragging = false, px = 0, py = 0;
+  new GLTFLoader().load("hamsone-bot-hero.glb", (gltf) => {
+    model = gltf.scene;
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    model.position.sub(center);
+    model.position.y += 0.15;
+    camera.position.z = Math.max(size.x, size.y) * 1.05;
+    scene.add(model);
+    fallback.classList.add("hidden");
+    stage.classList.add("loaded");
+  }, undefined, () => { status.textContent = "3D model unavailable — showing avatar"; });
+  window.addEventListener("pointermove", (e) => {
+    targetY = (e.clientX / window.innerWidth - 0.5) * 0.6;
+    targetX = (e.clientY / window.innerHeight - 0.5) * 0.25;
+  });
+  stage.addEventListener("pointerdown", (e) => { dragging = true; px = e.clientX; py = e.clientY; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener("pointerup", () => { dragging = false; });
+  stage.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    dragY += (e.clientX - px) * 0.008; dragX += (e.clientY - py) * 0.004; px = e.clientX; py = e.clientY;
+  });
+  const clock = new THREE.Clock();
+  (function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+    if (model) {
+      model.rotation.y = targetY + dragY + Math.sin(t * 0.25) * 0.12;
+      model.rotation.x = targetX + dragX;
+      model.position.y = 0.15 + Math.sin(t * 1.4) * 0.06;
+    }
+    renderer.render(scene, camera);
+  })();
+}
+</script>
 </body>
 </html>
