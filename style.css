@@ -88,3 +88,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-
 .card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(16,185,129,.16),transparent 65%)}
 .card > *{position:relative}
 .card:hover::before{opacity:1}
+.wa-mock{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:16px}
+.wa-mock img{width:100%;border-radius:12px;display:block;border:1px solid var(--line)}
+.wa-bubble{max-width:85%;padding:10px 14px;border-radius:14px;margin-top:12px;font-size:14px}
+.wa-bubble.user{margin-left:auto;background:rgba(16,185,129,.16);border:1px solid var(--accent)}
+.wa-bubble.bot{background:var(--card);border:1px solid var(--line)}
+.wa-bubble strong{display:block;color:var(--accent);font-size:12px}
+.wa-note{margin-top:12px}
