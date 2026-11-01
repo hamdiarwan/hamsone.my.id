@@ -310,8 +310,9 @@ if (renderer) {
     const center = box.getCenter(new THREE.Vector3());
     const size = box.getSize(new THREE.Vector3());
     model.position.sub(center);
-    model.position.y += 0.15;
-    camera.position.z = Math.max(size.x, size.y) * 1.05;
+    model.userData.baseY = model.position.y;
+    camera.position.z = size.length() * 1.05;
+    camera.lookAt(0, 0, 0);
     scene.add(model);
     fallback.classList.add("hidden");
     stage.classList.add("loaded");
@@ -333,7 +334,7 @@ if (renderer) {
     if (model) {
       model.rotation.y = targetY + dragY + Math.sin(t * 0.25) * 0.12;
       model.rotation.x = targetX + dragX;
-      model.position.y = 0.15 + Math.sin(t * 1.4) * 0.06;
+      model.position.y = (model.userData.baseY || 0) + Math.sin(t * 1.4) * 0.06;
     }
     renderer.render(scene, camera);
   })();
