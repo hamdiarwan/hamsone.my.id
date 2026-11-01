@@ -353,3 +353,31 @@ if (testiForm) {
   render();
   auto();
 })();
+
+// Terminal input — visitor can type the real commands
+const termForm = document.getElementById('termForm');
+const termInput = document.getElementById('termInput');
+if (termForm && termInput) {
+  termForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const cmd = termInput.value.trim().toLowerCase();
+    if (!cmd) return;
+    if (cmd === 'help') {
+      cmdOutput.textContent = lang === 'id' ? '> Tersedia: /stock, /buy, /setup' : '> Available: /stock, /buy, /setup';
+    } else if (cmdReplies[cmd]) {
+      cmdOutput.textContent = cmdReplies[cmd][lang];
+    } else {
+      cmdOutput.textContent = lang === 'id' ? '> Perintah tidak dikenal. Coba /stock, /buy, atau /setup.' : '> Unknown command. Try /stock, /buy, or /setup.';
+    }
+    termInput.value = '';
+  });
+}
+
+// Card spotlight follows the cursor
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('pointermove', (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});

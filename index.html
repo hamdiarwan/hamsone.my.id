@@ -69,6 +69,7 @@
       <div class="bot-stage" id="botStage">
         <img id="botFallback" src="avatar.gif" alt="HamsOne pixel avatar" width="320" height="320">
         <span class="bot-status" id="botStatus">Loading 3D bot…</span>
+        <span class="bot-bubble" id="botBubble" hidden></span>
       </div>
       <div class="avatar-status"><span class="live-dot"></span><span data-en="Available for freelance" data-id="Tersedia untuk freelance">Available for freelance</span></div>
     </div>
@@ -85,6 +86,10 @@
         <button class="chip-btn" data-cmd="/buy" type="button">/buy</button>
         <button class="chip-btn" data-cmd="/setup" type="button">/setup</button>
       </div>
+      <form class="term-form" id="termForm">
+        <span class="term-prompt">$</span>
+        <input class="term-input" id="termInput" type="text" placeholder="/stock, /buy, /setup" autocomplete="off" spellcheck="false" aria-label="Type a terminal command">
+      </form>
       <p id="cmdOutput" class="cmd-output" aria-live="polite"></p>
     </div>
   </div>
@@ -156,6 +161,12 @@
       <p><strong data-en="Problem:" data-id="Masalah:">Problem:</strong> <span data-en="A shop owner had to reply manually, track stock himself, and missed orders while sleeping." data-id="Pemilik toko harus membalas manual, mencatat stok sendiri, dan order terlewat saat tidur.">A shop owner had to reply manually, track stock himself, and missed orders while sleeping.</span></p>
       <p><strong data-en="Solution:" data-id="Solusi:">Solution:</strong> <span data-en="A Discord bot with /stock, /buy, a 10-minute stock lock, QRIS payment via webhook, delivery via DM, and an admin dashboard." data-id="Bot Discord dengan /stock, /buy, kunci stok 10 menit, pembayaran QRIS lewat webhook, pengiriman lewat DM, dan dashboard admin.">A Discord bot with /stock, /buy, a 10-minute stock lock, QRIS payment via webhook, delivery via DM, and an admin dashboard.</span></p>
       <p><strong data-en="Result:" data-id="Hasil:">Result:</strong> <span data-en="Live since 29 October 2026. The first real buyer order was delivered via DM. Showcased with the owner's permission." data-id="Live sejak 29 Oktober 2026. Order pertama dari pembeli asli sudah dikirim lewat DM. Ditampilkan dengan izin pemiliknya.">Live since 29 October 2026. The first real buyer order was delivered via DM. Showcased with the owner's permission.</span></p>
+      <ul class="timeline">
+        <li><strong data-en="Before:" data-id="Sebelumnya:">Before:</strong> <span data-en="The owner missed orders while asleep — replies and stock were manual." data-id="Pemilik kehilangan order saat tidur — balasan dan stok masih manual.">The owner missed orders while asleep — replies and stock were manual.</span></li>
+        <li><strong data-en="Build:" data-id="Dibangun:">Build:</strong> <span data-en="Bot, admin dashboard, and QRIS webhook — tested on my own server first." data-id="Bot, dashboard admin, dan webhook QRIS — dites di server saya sendiri dulu.">Bot, admin dashboard, and QRIS webhook — tested on my own server first.</span></li>
+        <li><strong data-en="Go-live:" data-id="Go-live:">Go-live:</strong> <span data-en="29 October 2026, on the owner's server." data-id="29 Oktober 2026, di server pemilik.">29 October 2026, on the owner's server.</span></li>
+        <li><strong data-en="First order:" data-id="Order pertama:">First order:</strong> <span data-en="The same evening, delivered via DM." data-id="Malam itu juga, dikirim lewat DM.">The same evening, delivered via DM.</span></li>
+      </ul>
       <p class="small" data-en="Price shown in the shop: Rp65,000 per account. That is the shop's live price, not a public price list for new clients." data-id="Harga di toko: Rp65.000 per akun. Itu harga live toko itu, bukan daftar harga publik untuk klien baru.">Price shown in the shop: Rp65,000 per account. That is the shop's live price, not a public price list for new clients.</p>
     </div>
     <div class="shot-gallery">
@@ -181,14 +192,24 @@
       <p><strong data-en="What it does:" data-id="Fungsinya:">What it does:</strong> <span data-en="Report via a web photo form or WhatsApp. A food photo becomes a logged report, with a daily recap." data-id="Lapor lewat form foto di web atau WhatsApp. Foto makanan menjadi log tercatat, dengan rekap harian.">Report via a web photo form or WhatsApp. A food photo becomes a logged report, with a daily recap.</span></p>
       <p data-en="Shown by features only. No personal calorie or weight data is published here." data-id="Ditampilkan fitur-fiturnya saja. Tidak ada data kalori atau berat pribadi yang dipublikasikan di sini.">Shown by features only. No personal calorie or weight data is published here.</p>
     </div>
-    <div class="mock-ui">
-      <div class="mock-bar"><span>📸 Photo report</span><span>Web form</span></div>
-      <div class="mock-embed">
-        <strong>🍽️ <span data-en="Food photo received" data-id="Foto makanan diterima">Food photo received</span></strong>
-        <p>→ <span data-en="Logged report" data-id="Log tercatat">Logged report</span> → <span data-en="Daily recap" data-id="Rekap harian">Daily recap</span></p>
-        <div class="mock-progress"><span></span></div>
-      </div>
-      <p class="small mock-note" data-en="UI illustration of the real web flow, features only." data-id="Ilustrasi UI dari alur web asli, fitur saja.">UI illustration of the real web flow, features only.</p>
+    <div class="shot-gallery">
+      <figure>
+        <img src="screenshots/calorie-header.png" alt="Calorie dashboard header" loading="lazy">
+        <figcaption data-en="Dashboard header — brand and auto-update badge" data-id="Header dashboard — merek dan badge update otomatis">Dashboard header — brand and auto-update badge</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/calorie-lapor.png" alt="Report form Makan and Gym buttons" loading="lazy">
+        <figcaption data-en="Report form — Makan or Gym, photo first" data-id="Form lapor — Makan atau Gym, foto dulu">Report form — Makan or Gym, photo first</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/calorie-range.png" alt="Graph range selector" loading="lazy">
+        <figcaption data-en="Graph range selector" data-id="Pemilih rentang grafik">Graph range selector</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/calorie-photo.jpg" alt="Food photo sent to be logged" loading="lazy">
+        <figcaption data-en="A food photo sent to be logged" data-id="Foto makanan yang dikirim untuk dicatat">A food photo sent to be logged</figcaption>
+      </figure>
+      <p class="small" data-en="Real crops from the live dashboard. Personal numbers are hidden on purpose." data-id="Potongan asli dari dashboard live. Angka pribadi sengaja disembunyikan.">Real crops from the live dashboard. Personal numbers are hidden on purpose.</p>
     </div>
   </div>
 </section>
@@ -336,6 +357,7 @@
 
 <footer>
   <p>© 2026 HamsOne • Jakarta, Indonesia • <span data-en="Open Freelance" data-id="Open Freelance">Open Freelance</span></p>
+  <p class="small" data-en="Built with vanilla HTML, CSS, and JavaScript — no framework, no template. Hosted on GitHub Pages. The robot mascot was modeled in code." data-id="Dibuat dengan HTML, CSS, dan JavaScript murni — tanpa framework, tanpa template. Dihosting di GitHub Pages. Maskot robot dibuat dari kode.">Built with vanilla HTML, CSS, and JavaScript — no framework, no template. Hosted on GitHub Pages. The robot mascot was modeled in code.</p>
 </footer>
 
 <script src="script.js"></script>
@@ -386,6 +408,21 @@ if (renderer) {
     targetY = (e.clientX / window.innerWidth - 0.5) * 0.6;
     targetX = (e.clientY / window.innerHeight - 0.5) * 0.25;
   });
+  const bubble = document.getElementById("botBubble");
+  const bubbleLines = {
+    en: ["Hi! I'm HamsOne's mascot.", "Try the demo below to see the shop run.", "I was modeled in code, not in Blender."],
+    id: ["Halo! Saya maskotnya HamsOne.", "Klik demo di bawah untuk melihat toko berjalan.", "Saya dibuat dari kode, bukan dari Blender."]
+  };
+  let bubbleIdx = 0, bubbleTimer = null, jump = 0, spinOffset = 0, spinBoost = 0;
+  stage.addEventListener("click", () => {
+    if (!pivot) return;
+    jump = 1; spinBoost = 2.4;
+    const lines = (localStorage.getItem("hamsone-lang") === "id") ? bubbleLines.id : bubbleLines.en;
+    bubble.textContent = lines[bubbleIdx % lines.length]; bubbleIdx++;
+    bubble.hidden = false;
+    clearTimeout(bubbleTimer);
+    bubbleTimer = setTimeout(() => { bubble.hidden = true; }, 3000);
+  });
   stage.addEventListener("pointerdown", (e) => { dragging = true; px = e.clientX; py = e.clientY; stage.setPointerCapture(e.pointerId); });
   stage.addEventListener("pointerup", () => { dragging = false; });
   stage.addEventListener("pointermove", (e) => {
@@ -397,9 +434,11 @@ if (renderer) {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
     if (pivot) {
-      pivot.rotation.y = targetY + dragY + Math.sin(t * 0.25) * 0.12;
+      pivot.rotation.y = targetY + dragY + Math.sin(t * 0.25) * 0.12 + spinOffset;
       pivot.rotation.x = targetX + dragX;
-      pivot.position.y = Math.sin(t * 1.4) * 0.06;
+      pivot.position.y = Math.sin(t * 1.4) * 0.06 + (jump > 0 ? Math.sin((1 - jump) * Math.PI) * 0.35 : 0);
+      if (jump > 0) { jump -= 0.02; if (jump < 0) jump = 0; }
+      if (spinBoost > 0.01) { spinOffset += spinBoost * 0.02; spinBoost *= 0.92; }
     }
     renderer.render(scene, camera);
   })();
