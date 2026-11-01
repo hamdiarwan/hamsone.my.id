@@ -314,3 +314,42 @@ if (testiForm) {
     selectedRating = 5; paintStars();
   });
 }
+
+(function () {
+  var flow = document.getElementById('coverflow');
+  if (!flow) return;
+  var cards = Array.prototype.slice.call(flow.querySelectorAll('.cf-card'));
+  var dotsWrap = document.getElementById('cfDots');
+  var prevBtn = document.getElementById('cfPrev');
+  var nextBtn = document.getElementById('cfNext');
+  var current = 0, timer = null;
+  var dots = cards.map(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'cf-dot-btn';
+    b.setAttribute('aria-label', 'Show card ' + (i + 1));
+    b.addEventListener('click', function () { go(i); });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+  function render() {
+    cards.forEach(function (card, i) {
+      var rel = (i - current + cards.length) % cards.length;
+      var cls = rel === 0 ? 'is-active' : rel === 1 ? 'is-next' : rel === cards.length - 1 ? 'is-prev' : 'is-hidden';
+      card.className = 'cf-card ' + cls;
+    });
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+  }
+  function go(n) { current = (n + cards.length) % cards.length; render(); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function auto() { stop(); timer = setInterval(function () { go(current + 1); }, 4000); }
+  cards.forEach(function (card, i) { card.addEventListener('click', function () { go(i); }); });
+  if (prevBtn) prevBtn.addEventListener('click', function () { go(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { go(current + 1); });
+  flow.addEventListener('mouseenter', stop);
+  flow.addEventListener('mouseleave', auto);
+  flow.addEventListener('focusin', stop);
+  flow.addEventListener('focusout', auto);
+  render();
+  auto();
+})();

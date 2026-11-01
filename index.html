@@ -30,6 +30,7 @@
   <a class="logo" href="#top"><img class="logo-mark" src="logo.svg" alt="" width="28" height="28"> HamsOne</a>
   <nav class="nav-links">
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
+    <a href="#showcase" data-en="Showcase" data-id="Etalase">Showcase</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#services" data-en="Services" data-id="Jasa">Services</a>
     <a href="#process" data-en="Process" data-id="Proses">Process</a>
@@ -42,6 +43,7 @@
   </div>
   <nav class="mobile-nav" aria-label="Sections">
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
+    <a href="#showcase" data-en="Showcase" data-id="Etalase">Showcase</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#services" data-en="Services" data-id="Jasa">Services</a>
     <a href="#process" data-en="Process" data-id="Proses">Process</a>
@@ -95,7 +97,57 @@
   <div class="proof"><strong data-en="Maintained After Launch" data-id="Dirawat Setelah Live">Maintained After Launch</strong><span data-en="Support included" data-id="Dukungan termasuk">Support included</span></div>
 </section>
 
+<section id="showcase" class="section">
+  <p class="section-eyebrow" data-en="Interfaces I build" data-id="Antarmuka yang saya buat">Interfaces I build</p>
+  <h2 class="section-title" data-en="One builder, every chat app" data-id="Satu pembuat, semua aplikasi chat">One builder, every chat app</h2>
+  <p class="section-sub" data-en="Mockup illustrations of the interfaces I build — Discord, Telegram and WhatsApp chats, plus a website. Click a card to bring it forward." data-id="Ilustrasi mockup antarmuka yang saya buat — chat Discord, Telegram, dan WhatsApp, plus sebuah website. Klik kartu untuk memunculkannya.">Mockup illustrations of the interfaces I build — Discord, Telegram and WhatsApp chats, plus a website. Click a card to bring it forward.</p>
+  <div class="coverflow" id="coverflow">
+    <article class="cf-card">
+      <div class="cf-head"><span class="cf-dot"></span><strong>Discord</strong><span class="cf-tag">#toko</span></div>
+      <div class="cf-body">
+        <div class="cf-msg"><strong>Shop Bot</strong><span>Welcome to the shop. Type /stock to check stock.</span></div>
+        <div class="cf-msg user"><span>/stock</span></div>
+        <div class="cf-msg"><strong>Shop Bot</strong><span>Ready stock available. Type /buy to order.</span></div>
+      </div>
+      <div class="cf-foot"><span>Type a command…</span><span class="cf-send">Send</span></div>
+    </article>
+    <article class="cf-card">
+      <div class="cf-head"><span class="cf-dot"></span><strong>Telegram</strong><span class="cf-tag">Shop Bot</span></div>
+      <div class="cf-body">
+        <div class="cf-msg"><strong>Shop Bot</strong><span>Your order is confirmed. Payment received by webhook.</span></div>
+        <div class="cf-msg user"><span>Check stock</span></div>
+        <div class="cf-msg"><strong>Shop Bot</strong><span>Stock updated. I will notify you when it changes.</span></div>
+      </div>
+      <div class="cf-foot"><span>Message…</span><span class="cf-send">Send</span></div>
+    </article>
+    <article class="cf-card">
+      <div class="cf-head"><span class="cf-dot"></span><strong>WhatsApp</strong><span class="cf-tag">Customer</span></div>
+      <div class="cf-body">
+        <div class="cf-msg user"><span>Is this still available?</span></div>
+        <div class="cf-msg"><strong>Auto reply</strong><span>Yes, it is ready. I can confirm your order right now.</span></div>
+        <div class="cf-msg user"><span>Great, confirm it please.</span></div>
+      </div>
+      <div class="cf-foot"><span>Message…</span><span class="cf-send">Send</span></div>
+    </article>
+    <article class="cf-card">
+      <div class="cf-head"><span class="cf-dot"></span><strong>Website</strong><span class="cf-tag">Landing page</span></div>
+      <div class="cf-webbar"><span>● ● ●</span><span>yourbusiness.example</span></div>
+      <div class="cf-webhero">Your business,<br>automated.</div>
+      <p class="small">Bots and web tools that sell, answer, and automate — tested before launch, maintained after it ships.</p>
+      <span class="cf-webbtn">Start a project →</span>
+    </article>
+  </div>
+  <div class="cf-controls">
+    <button class="btn btn-ghost btn-small" id="cfPrev" type="button">← <span data-en="Prev" data-id="Sebelumnya">Prev</span></button>
+    <div class="cf-dots" id="cfDots"></div>
+    <button class="btn btn-ghost btn-small" id="cfNext" type="button"><span data-en="Next" data-id="Berikutnya">Next</span> →</button>
+  </div>
+  <p class="small cf-note" data-en="Mockups only — no real chats or orders are shown here." data-id="Hanya mockup — tidak ada chat atau order asli yang ditampilkan di sini.">Mockups only — no real chats or orders are shown here.</p>
+</section>
+
+
 <section id="projects" class="section">
+    <p class="section-eyebrow" data-en="Proof first" data-id="Bukti dulu">Proof first</p>
   <h2 class="section-title" data-en="Real projects, shown properly" data-id="Proyek asli, ditampilkan dengan benar">Real projects, shown properly</h2>
   <div class="project reveal">
     <div class="project-info">
@@ -142,6 +194,7 @@
 </section>
 
 <section id="demo" class="section">
+    <p class="section-eyebrow" data-en="Try it live" data-id="Coba langsung">Try it live</p>
   <h2 class="section-title" data-en="Try the shop flow — live demo" data-id="Coba alur tokonya — demo langsung">Try the shop flow — live demo</h2>
   <p class="section-sub" data-en="This is an interactive simulation of a real shop flow. Click the steps in order, or let it run on its own." data-id="Ini simulasi interaktif dari alur toko yang asli. Klik langkah-langkahnya secara berurutan, atau biarkan berjalan sendiri.">This is an interactive simulation of a real shop flow. Click the steps in order, or let it run on its own.</p>
   <div class="demo-steps-bar">
@@ -180,6 +233,7 @@
 </section>
 
 <section id="services" class="section">
+    <p class="section-eyebrow" data-en="Services" data-id="Jasa">Services</p>
   <h2 class="section-title" data-en="What I build" data-id="Yang saya buat">What I build</h2>
   <p class="section-sub" data-en="Pick a platform — every build ships tested, with a dashboard and logs you can actually check." data-id="Pilih platform — setiap build dikirim sudah dites, dengan dashboard dan log yang benar-benar bisa dicek.">Pick a platform — every build ships tested, with a dashboard and logs you can actually check.</p>
   <div class="grid">
@@ -191,7 +245,8 @@
   <div class="skills"><span>Python</span><span>Discord API</span><span>JavaScript</span><span>HTML / CSS</span><span>PHP</span><span>SQLite</span><span>Linux VPS</span><span>Caddy</span><span>QRIS / Webhook</span></div>
 </section>
 
-<section id=\"process\" class="section">
+<section id="process" class="section">
+    <p class="section-eyebrow" data-en="Process" data-id="Proses">Process</p>
   <h2 class="section-title" data-en="A clear, fast process" data-id="Proses yang jelas dan cepat">A clear, fast process</h2>
   <div class="process-tabs" role="tablist">
     <button class="process-tab active" data-process="0" type="button">1. Brief</button>
