@@ -303,15 +303,22 @@ if (renderer) {
   scene.add(new THREE.AmbientLight(0xffffff, 0.55));
   const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(4, 6, 6); scene.add(key);
   const rim = new THREE.DirectionalLight(0x10b981, 1.8); rim.position.set(-5, 3, -4); scene.add(rim);
-  let model = null, targetY = 0, targetX = 0, dragX = 0, dragY = 0, dragging = false, px = 0, py = 0;
+  let model = null, pivot = null, targetY = 0, targetX = 0, dragX = 0, dragY = 0, dragging = false, px = 0, py = 0;
   new GLTFLoader().load("hamsone-bot-hero.glb", (gltf) => {
     model = gltf.scene;
     const box = new THREE.Box3().setFromObject(model);
     const center = box.getCenter(new THREE.Vector3());
     const size = box.getSize(new THREE.Vector3());
-    model.position.sub(center);
-    model.userData.baseY = model.position.y;
-    camera.position.z = size.length() * 1.05;
+    const fovRad = THREE.MathUtils.degToRad(35);
+    const aspect = stage.clientWidth / stage.clientHeight;
+    const fit = Math.max(size.y / (2 * Math.tan(fovRad / 2)), size.x / (2 * Math.tan(fovRad / 2) * aspect)) * 1.15;
+    const inner = new THREE.Group();
+    inner.position.copy(center).negate();
+    inner.add(model);
+    pivot = new THREE.Group();
+    pivot.add(inner);
+    scene.add(pivot);
+    camera.position.z = fit;
     camera.lookAt(0, 0, 0);
     scene.add(model);
     fallback.classList.add("hidden");
@@ -331,10 +338,10 @@ if (renderer) {
   (function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
-    if (model) {
-      model.rotation.y = targetY + dragY + Math.sin(t * 0.25) * 0.12;
-      model.rotation.x = targetX + dragX;
-      model.position.y = (model.userData.baseY || 0) + Math.sin(t * 1.4) * 0.06;
+    if (pivot) {
+      pivot.rotation.y = targetY + dragY + Math.sin(t * 0.25) * 0.12;
+      pivot.rotation.x = targetX + dragX;
+      pivot.position.y = Math.sin(t * 1.4) * 0.06;
     }
     renderer.render(scene, camera);
   })();
