@@ -320,7 +320,6 @@ if (renderer) {
     scene.add(pivot);
     camera.position.z = fit;
     camera.lookAt(0, 0, 0);
-    scene.add(model);
     fallback.classList.add("hidden");
     stage.classList.add("loaded");
   }, undefined, () => { status.textContent = "3D model unavailable — showing avatar"; });
