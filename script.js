@@ -29,6 +29,7 @@ const root = document.documentElement;
 const themeBtn = document.getElementById('themeBtn');
 const savedTheme = localStorage.getItem('hamsone-theme');
 if (savedTheme) root.setAttribute('data-theme', savedTheme);
+else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) root.setAttribute('data-theme', 'light');
 themeBtn.addEventListener('click', () => {
   const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   root.setAttribute('data-theme', next);
@@ -236,7 +237,7 @@ function setupTestiCarousel(items) {
     if (testiList.scrollLeft + testiList.clientWidth >= testiList.scrollWidth - 10) testiList.scrollTo({ left: 0, behavior: 'smooth' });
     else testiList.scrollBy({ left: w, behavior: 'smooth' });
   };
-  const start = () => { clearInterval(testiAuto); testiAuto = setInterval(step, 4000); };
+  const start = () => { clearInterval(testiAuto); if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; testiAuto = setInterval(step, 4000); };
   const stop = () => clearInterval(testiAuto);
   start();
   testiList.onmouseenter = stop; testiList.onmouseleave = start;
@@ -271,6 +272,8 @@ async function renderTestis() {
   }
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const emptyEl = document.getElementById('testiEmpty');
+  const sk = document.getElementById('testiSkeleton');
+  if (sk) sk.remove();
   if (emptyEl) emptyEl.classList.toggle('hidden', items.length > 0);
   setupTestiCarousel(items);
   const maskEmail = e => {
@@ -342,7 +345,7 @@ if (testiForm) {
   }
   function go(n) { current = (n + cards.length) % cards.length; render(); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
-  function auto() { stop(); timer = setInterval(function () { go(current + 1); }, 4000); }
+  function auto() { stop(); if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(function () { go(current + 1); }, 4000); }
   cards.forEach(function (card, i) { card.addEventListener('click', function () { go(i); }); });
   if (prevBtn) prevBtn.addEventListener('click', function () { go(current - 1); });
   if (nextBtn) nextBtn.addEventListener('click', function () { go(current + 1); });

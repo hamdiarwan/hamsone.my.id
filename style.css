@@ -126,3 +126,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-
 .nav-links a.active,.mobile-nav a.active{color:var(--accent)}
 @media(max-width:860px){.hero{grid-template-columns:1fr}.hero-visual{order:-1}.shot-gallery{grid-template-columns:1fr}}
 @media(max-width:560px){.hero h1{font-size:52px}.hero-role{font-size:32px}.ghost-num{font-size:64px;opacity:.35}.float-chip{font-size:11px;padding:5px 10px}}
+.hero{min-height:92vh}
+html,body{overflow-x:clip}
+#demo{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:64px calc(50vw - 50%) 40px;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.timeline-strip{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 24px;margin-bottom:20px}
+.timeline-strip .timeline{margin:0}
+.card-icon{color:var(--accent)}
+.card-icon svg{display:block}
+.testi-skeleton{border:1px dashed var(--line);border-radius:14px;padding:16px;color:var(--muted);animation:skPulse 1.6s ease-in-out infinite}
+@keyframes skPulse{50%{opacity:.45}}
+.coverflow{height:380px}
+@media (hover:none),(pointer:coarse){.bot-stage{touch-action:pan-y}}
+@media(max-width:560px){.coverflow{height:420px}.ghost-num{display:none}}
+@media (prefers-reduced-motion: reduce){.marquee-track,.float-chip,.live-dot,.testi-skeleton{animation:none}.cf-card{transition:none}}
