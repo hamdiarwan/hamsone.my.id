@@ -139,3 +139,6 @@ html,body{overflow-x:clip}
 @media (hover:none),(pointer:coarse){.bot-stage{touch-action:pan-y}}
 @media(max-width:560px){.coverflow{height:420px}.ghost-num{display:none}}
 @media (prefers-reduced-motion: reduce){.marquee-track,.float-chip,.live-dot,.testi-skeleton{animation:none}.cf-card{transition:none}}
+.btn-wa{display:none}
+.section{scroll-margin-top:90px}
+@media(max-width:860px){.btn-wa{display:inline-block}.mobile-nav a{padding:10px 2px}.section{scroll-margin-top:120px}}
