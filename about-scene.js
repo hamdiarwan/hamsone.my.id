@@ -30,9 +30,11 @@ export function createAboutScene({ renderer, scene, camera, world, hamdi, stage 
           .replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvHoloY = (modelMatrix * vec4(transformed, 1.0)).y;');
         shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nvarying float vHoloY; uniform float uHologram; uniform float uTime; uniform float uScan;')
           .replace('#include <dithering_fragment>', `#include <dithering_fragment>
-            float rim = pow(1.0 - max(dot(normalize(normal), normalize(vViewPosition)), 0.0), 2.0);
+            float facing = 1.0 - clamp(dot(normalize(normal), normalize(vViewPosition)), 0.0, 1.0);
+            float rim = facing * facing;
             float lines = 0.88 + 0.12 * sin(vHoloY * 110.0 - uTime * 1.2);
-            float sweep = exp(-pow((vHoloY - uScan * 4.65) * 6.0, 2.0));
+            float scanDistance = (vHoloY - uScan * 4.65) * 6.0;
+            float sweep = exp(-scanDistance * scanDistance);
             vec3 hologram = mix(gl_FragColor.rgb * 0.25, vec3(0.10, 0.76, 0.92), 0.66);
             hologram += vec3(0.10, 0.65, 0.82) * (rim * 0.75 + sweep * 0.65);
             gl_FragColor.rgb = mix(gl_FragColor.rgb, hologram * lines, uHologram);
