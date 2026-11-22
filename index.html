@@ -21,7 +21,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="navigation.css">
 <link rel="stylesheet" href="hero.css">
+<script src="navigation.js" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hamsone.my.id/#person","name":"Muhammad Hamdi Arwan Faruki","alternateName":"HamsOne","givenName":"Hamdi","familyName":"Arwan","jobTitle":"Bot & Website Developer","url":"https://hamsone.my.id/","sameAs":["https://github.com/hamdiarwan","https://discord.com/users/406423375377072148"]},{"@type":"ProfessionalService","name":"HamsOne","founder":{"@id":"https://hamsone.my.id/#person"},"description":"Bot & Website Developer — Discord, Telegram, WhatsApp bots and websites.","areaServed":"Jakarta, Indonesia","url":"https://hamsone.my.id/"}]}
 </script>
@@ -31,7 +33,7 @@
 <div class="bg-grid" aria-hidden="true"></div>
 <header class="nav">
   <a class="logo" href="#top"><img class="logo-mark" src="logo.svg" alt="" width="28" height="28"> HamsOne</a>
-  <nav class="nav-links">
+  <nav class="nav-links" aria-label="Main navigation">
     <a href="#showcase" data-en="Showcase" data-id="Etalase">Showcase</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
@@ -43,8 +45,11 @@
     <button id="langBtn" class="pill" type="button">ID</button>
     <button id="themeBtn" class="theme-pill" type="button" aria-label="Toggle theme"><span class="sun">☀️</span><span class="moon">🌙</span><span class="knob"></span></button>
     <a class="btn btn-small nav-cta" href="#contact" data-en="Start a project" data-id="Mulai proyek">Start a project</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-controls="mobileNavigation" aria-expanded="false" aria-label="Menu" hidden>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="nav-open-icon" d="M4 6h16M4 12h16M4 18h16"/><path class="nav-close-icon" d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
   </div>
-  <nav class="mobile-nav" aria-label="Sections">
+  <nav class="mobile-nav" id="mobileNavigation" aria-label="Mobile navigation">
     <a href="#showcase" data-en="Showcase" data-id="Etalase">Showcase</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>

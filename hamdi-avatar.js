@@ -62,8 +62,8 @@ export function createHamdiAvatar(kit) {
     const collar = box(avatar, [0.15, 0.33, 0.07], '#34464c', [side * 0.20, 2.16, 0.01], 0.035);
     collar.rotation.z = side * -0.28;
     limb(avatar, [side * 0.4, 2.14, -0.25], [side * 0.62, 1.77, -0.03], 0.18, '#25343b');
-    limb(avatar, [side * 0.62, 1.77, -0.03], [side * 0.46, 1.65, 0.59], 0.12, skinLight);
-    ball(avatar, [0.15, 0.085, 0.17], skinLight, [side * 0.46, 1.65, 0.65]);
+    limb(avatar, [side * 0.62, 1.77, -0.03], [side * 0.36, 1.79, 0.44], 0.12, skinLight);
+    ball(avatar, [0.15, 0.085, 0.17], skinLight, [side * 0.36, 1.80, 0.50]);
     limb(avatar, [side * 0.24, 1.51, -0.23], [side * 0.29, 1.19, 0.46], 0.205, '#324550');
     limb(avatar, [side * 0.29, 1.19, 0.46], [side * 0.29, 0.48, 0.58], 0.17, '#324550');
     box(avatar, [0.35, 0.12, 0.35], '#263942', [side * 0.29, 0.47, 0.58], 0.04);
@@ -74,7 +74,8 @@ export function createHamdiAvatar(kit) {
   ball(avatar, [0.18, 0.24, 0.17], skin, [0, 2.41, -0.25]);
   const head = new THREE.Group();
   head.position.set(0, 2.94, -0.23);
-  head.rotation.y = 0.12;
+  // Look slightly down and left toward the screen, not out at the viewer.
+  head.rotation.set(0.18, -0.10, 0);
   avatar.add(head);
   ball(head, [0.57, 0.62, 0.49], skinLight, [0, 0, 0]);
   for (const side of [-1, 1]) {

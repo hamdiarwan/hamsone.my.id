@@ -48,13 +48,14 @@
   <path d="m404 460 109-40 61 34-110 42Z" fill="#f2eedf" stroke="#d6d9c8" stroke-width="3"/>
   <g stroke="#b5c2ad" stroke-width="4"><path d="m419 460 94-34m-82 42 95-35m-82 42 95-34m-85-4 35 21m-19-27 35 21m-19-27 35 21m-19-27 35 21"/></g>
   <ellipse cx="586" cy="456" rx="15" ry="10" fill="#f7f0df" transform="rotate(-18 586 456)"/>
-  <!-- Monitor -->
+  <!-- Monitor back: the screen faces Hamdi, not the viewer. -->
   <path d="m297 424 53-20 41 23-53 20Z" fill="#344a4c"/>
   <path d="M341 402v-53" stroke="#344a4c" stroke-width="14"/>
   <path d="m239 259 179-28q14-2 14 13v131q0 12-12 15l-177 33q-13 2-13-12V275q0-14 9-16Z" fill="#2e434a"/>
-  <path d="m246 274 169-27v126l-169 31Z" fill="#142d35"/>
-  <path d="m257 291 142-23" stroke="#3b5557" stroke-width="12"/>
-  <g stroke-width="5" stroke-linecap="round"><path d="m261 316 95-16m-81 53 112-19m-126 39 65-12" stroke="#b9dd91"/><path d="m275 332 115-20m-115 59 106-19" stroke="#dbca9e"/></g>
+  <path d="m246 274 169-27v126l-169 31Z" fill="#344b50"/>
+  <path d="m312 305 37-6v37l-37 7Z" fill="#40595a"/>
+  <path d="m321 312 0 21m19-25 0 21m-19-10 19-4" fill="none" stroke="#8caaa0" stroke-width="3"/>
+  <path d="m282 377 8-1m9-2 8-1m9-2 8-1m9-2 8-1m9-2 8-1m9-2 8-1" stroke="#233c41" stroke-width="4" stroke-linecap="round"/>
   <!-- Robot figure -->
   <rect x="265" y="422" width="35" height="40" rx="8" fill="#bed999"/>
   <rect x="260" y="392" width="44" height="36" rx="10" fill="#eff0dc"/>

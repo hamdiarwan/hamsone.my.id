@@ -60,15 +60,20 @@ function startScene() {
   }
   box(world, [3.85, 0.15, 1.82], '#c3a67c', [0, 1.46, 0.43], 0.09);
   box(world, [3.93, 0.13, 1.89], '#f8f0de', [0, 1.56, 0.43], 0.10);
-  box(world, [1.78, 0.025, 0.73], '#7d9990', [0.08, 1.64, 0.78], 0.07);
-  // Screen positioned to one side so the avatar remains the hero.
+  box(world, [1.78, 0.025, 0.73], '#7d9990', [0.32, 1.64, 0.32], 0.07);
+  // Hamdi sits at negative Z: keyboard first, monitor beyond it. The screen
+  // faces him (-Z); the camera at +Z sees the back/side of the monitor.
   const monitor = new THREE.Group();
-  monitor.position.set(-0.9, 0, 0.12);
-  monitor.rotation.y = 0.10;
+  monitor.position.set(0.18, 0, 0.91);
+  monitor.rotation.y = Math.PI - 0.10;
   world.add(monitor);
   box(monitor, [0.65, 0.06, 0.39], '#34474c', [0, 1.67, 0], 0.05);
   box(monitor, [0.11, 0.42, 0.10], '#34474c', [0, 1.88, -0.1], 0.04);
   box(monitor, [1.49, 1.00, 0.14], '#293c43', [0, 2.30, -0.08], 0.08);
+  box(monitor, [0.30, 0.25, 0.025], '#344b50', [0, 2.34, -0.157], 0.045);
+  for (const x of [-0.065, 0.065]) box(monitor, [0.025, 0.12, 0.012], '#8caaa0', [x, 2.34, -0.176], 0.008);
+  box(monitor, [0.13, 0.023, 0.012], '#8caaa0', [0, 2.34, -0.176], 0.008);
+  for (let vent = 0; vent < 7; vent++) box(monitor, [0.07, 0.012, 0.01], '#20343a', [-0.27 + vent * 0.09, 2.03, -0.153], 0.004);
   const screenCanvas = document.createElement('canvas');
   screenCanvas.width = 768; screenCanvas.height = 448;
   const ctx = screenCanvas.getContext('2d');
@@ -101,11 +106,11 @@ function startScene() {
   monitor.add(screen);
   ball(monitor, [0.018, 0.018, 0.012], '#bce989', [0, 1.86, 0]);
   // Low-profile keyboard, lime escape key, and rounded mouse.
-  box(world, [1.02, 0.06, 0.39], '#e4e3d3', [0.13, 1.69, 0.83], 0.045);
+  box(world, [1.02, 0.06, 0.39], '#e4e3d3', [0.32, 1.69, 0.22], 0.045);
   for (let row = 0; row < 3; row++) for (let key = 0; key < 10; key++) {
-    box(world, [0.071, 0.025, 0.077], row === 0 && key === 0 ? '#b1da7b' : '#f9f4e8', [-0.29 + key * 0.094, 1.735, 0.72 + row * 0.105], 0.015);
+    box(world, [0.071, 0.025, 0.077], row === 0 && key === 0 ? '#b1da7b' : '#f9f4e8', [-0.10 + key * 0.094, 1.735, 0.115 + row * 0.105], 0.015);
   }
-  ball(world, [0.11, 0.066, 0.16], '#f3eddf', [0.97, 1.71, 0.82]);
+  ball(world, [0.11, 0.066, 0.16], '#f3eddf', [1.03, 1.71, 0.25]);
   // Coffee with a visible rim and a tiny curl of steam.
   cylinder(world, 0.16, 0.125, 0.29, '#c1df91', [1.47, 1.80, 0.76]);
   cylinder(world, 0.134, 0.134, 0.012, '#634a35', [1.47, 1.951, 0.76]);
@@ -145,7 +150,7 @@ function startScene() {
     renderer.setSize(width, height, false);
     // Fit both dimensions. No controls capture touch or compete with scrolling.
     const aspect = width / height;
-    const halfHeight = Math.max(2.42, 3.50 / aspect);
+    const halfHeight = Math.max(2.42, (compact.matches ? 3.50 : 3.25) / aspect);
     camera.left = -halfHeight * aspect; camera.right = halfHeight * aspect;
     camera.top = halfHeight; camera.bottom = -halfHeight;
     camera.position.set(5.5, 4.6, 8);

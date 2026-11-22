@@ -18,6 +18,8 @@ There are no configured pre-commit hooks.
 - `hamdi-avatar.js` builds the toy-like Hamdi likeness from `avatar.gif`.
 - `hero-scene.js` supplies the desk, lighting, idle motion, and parallax.
 - `hero.css` is scoped to the Phase 1 hero; lower sections are unchanged.
+- `navigation.css` / `navigation.js` provide the responsive hamburger menu
+  at 1100px and below, before translated desktop labels become crowded.
 - `assets/hamdi-desk.svg` is the always-available static fallback, including
   when JavaScript, WebGL, or module loading fails.
 - Three.js r160 and its license are vendored in `assets/vendor/`.
