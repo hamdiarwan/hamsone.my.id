@@ -1,5 +1,6 @@
 import * as THREE from './assets/vendor/three.module.min.js';
-import { createToyKit, createHamdiAvatar } from './hamdi-avatar.js';
+import { createToyKit, createHamdiAvatar, animateHamdi } from './hamdi-avatar.js';
+import { createAboutScene } from './about-scene.js';
 
 const stage = document.getElementById('heroStage');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -142,7 +143,8 @@ function startScene() {
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(8, 6), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(shadowCanvas), transparent: true, depthWrite: false }));
   ground.rotation.x = -Math.PI / 2; ground.position.y = -0.095; world.add(ground);
 
-  let frame = 0, visible = true, failed = false, lastFrame = 0;
+  const about = createAboutScene({ renderer, scene, camera, world, hamdi, stage });
+  let frame = 0, visible = true, failed = false, lastFrame = 0, time = 0;
   let targetX = 0, targetY = 0;
   function resize() {
     const width = stage.clientWidth, height = stage.clientHeight;
@@ -158,28 +160,21 @@ function startScene() {
     camera.updateProjectionMatrix();
     renderStill();
   }
-  function renderStill() { if (!failed) renderer.render(scene, camera); }
+  function renderStill() {
+    if (failed) return;
+    const standing = about.update(time, motion.matches);
+    animateHamdi(hamdi, time, standing, motion.matches);
+    steam.position.y = motion.matches ? 0 : Math.sin(time * 1.2) * 0.035;
+    renderer.render(scene, camera);
+  }
   function animate(now) {
     frame = 0;
     if (failed || !visible || document.hidden || motion.matches) return;
     // 30fps is ample for subtle idle motion and limits work on phones.
     if (now - lastFrame >= 1000 / 30) {
-      const t = now * 0.001;
+      time = now * 0.001;
       world.rotation.y += (targetX - world.rotation.y) * 0.065;
       world.rotation.x += (targetY - world.rotation.x) * 0.065;
-      const breath = Math.sin(t * 1.4);
-      hamdi.body.position.y = breath * 0.014;
-      hamdi.body.scale.set(1, 1 + breath * 0.003, 1 + breath * 0.012);
-      hamdi.head.rotation.z = Math.sin(t * 0.8) * 0.017;
-      hamdi.head.position.y = 2.94 + breath * 0.008;
-      // Alternate short elbow-led taps with a pause between typing bursts.
-      const typing = t % 8 < 5.6;
-      hamdi.typingArms.forEach((arm, index) => {
-        arm.rotation.x = typing ? -Math.max(0, Math.sin(t * 8.5 + index * Math.PI)) * 0.075 : 0;
-      });
-      const blink = t % 5.7;
-      hamdi.eyes.scale.y = blink > 5.5 ? 0.15 + Math.abs(blink - 5.6) * 8.5 : 1;
-      steam.position.y = Math.sin(t * 1.2) * 0.035;
       renderStill(); lastFrame = now;
     }
     frame = requestAnimationFrame(animate);
@@ -195,10 +190,20 @@ function startScene() {
     } else if (visible && !document.hidden && !failed) frame = requestAnimationFrame(animate);
   }
   const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(stage);
-  const visibilityObserver = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; syncAnimation(); });
+  const intersections = new Map();
+  const visibilityObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => intersections.set(entry.target, entry.isIntersecting));
+    visible = [...intersections.values()].some(Boolean);
+    syncAnimation();
+  });
   visibilityObserver.observe(stage);
+  visibilityObserver.observe(about.section);
   document.addEventListener('visibilitychange', syncAnimation);
   motion.addEventListener('change', syncAnimation);
+  // Reduced motion has no continuous RAF. A native scroll/resize can still
+  // place its single, static pose in the right section without animation.
+  window.addEventListener('scroll', () => { if (motion.matches && visible) renderStill(); }, { passive: true });
+  window.addEventListener('resize', () => { if (visible) renderStill(); }, { passive: true });
   stage.addEventListener('pointermove', (event) => {
     if (!finePointer.matches || motion.matches) return;
     const rect = stage.getBoundingClientRect();
@@ -206,11 +211,12 @@ function startScene() {
     targetY = ((event.clientY - rect.top) / rect.height - 0.5) * 0.05;
   });
   stage.addEventListener('pointerleave', () => { targetX = 0; targetY = 0; });
-  stage.addEventListener('webglcontextlost', (event) => {
+  renderer.domElement.addEventListener('webglcontextlost', (event) => {
     event.preventDefault(); failed = true; cancelAnimationFrame(frame);
     stage.classList.remove('scene-ready');
+    about.fail();
     resizeObserver.disconnect(); visibilityObserver.disconnect();
-  }, true);
+  });
   resize();
   stage.classList.add('scene-ready');
   syncAnimation();

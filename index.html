@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="navigation.css">
 <link rel="stylesheet" href="hero.css">
+<link rel="stylesheet" href="about.css">
 <script src="navigation.js" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hamsone.my.id/#person","name":"Muhammad Hamdi Arwan Faruki","alternateName":"HamsOne","givenName":"Hamdi","familyName":"Arwan","jobTitle":"Bot & Website Developer","url":"https://hamsone.my.id/","sameAs":["https://github.com/hamdiarwan","https://discord.com/users/406423375377072148"]},{"@type":"ProfessionalService","name":"HamsOne","founder":{"@id":"https://hamsone.my.id/#person"},"description":"Bot & Website Developer — Discord, Telegram, WhatsApp bots and websites.","areaServed":"Jakarta, Indonesia","url":"https://hamsone.my.id/"}]}
@@ -34,6 +35,7 @@
 <header class="nav">
   <a class="logo" href="#top"><img class="logo-mark" src="logo.svg" alt="" width="28" height="28"> HamsOne</a>
   <nav class="nav-links" aria-label="Main navigation">
+    <a href="#about" data-en="About" data-id="Tentang">About</a>
     <a href="#showcase" data-en="Showcase" data-id="Etalase">Showcase</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
@@ -50,6 +52,7 @@
     </button>
   </div>
   <nav class="mobile-nav" id="mobileNavigation" aria-label="Mobile navigation">
+    <a href="#about" data-en="About" data-id="Tentang">About</a>
     <a href="#showcase" data-en="Showcase" data-id="Etalase">Showcase</a>
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#projects" data-en="Projects" data-id="Proyek">Projects</a>
@@ -85,8 +88,42 @@
   </div>
   <div class="hero-footer">
     <p class="hero-location"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Jakarta, Indonesia</p>
-    <a class="hero-scroll" href="#showcase"><span data-en="Meet my work" data-id="Lihat karya saya">Meet my work</span><span aria-hidden="true">↓</span></a>
+    <a class="hero-scroll" href="#about"><span data-en="Meet the builder" data-id="Kenali pembuatnya">Meet the builder</span><span aria-hidden="true">↓</span></a>
     <p class="hero-availability"><span class="live-dot"></span><span data-en="Available for freelance" data-id="Tersedia untuk freelance">Available for freelance</span></p>
+  </div>
+</section>
+<section id="about" class="about" aria-labelledby="aboutTitle">
+  <div class="about-sticky">
+    <div class="about-header">
+      <div>
+        <p class="about-kicker" data-en="01 / Behind the build" data-id="01 / Di balik karya">01 / Behind the build</p>
+        <h2 id="aboutTitle"><span data-en="A little more" data-id="Lebih dekat">A little more</span><br><span data-en="human." data-id="dengan saya.">human.</span></h2>
+      </div>
+      <div class="scan-readout" aria-hidden="true">
+        <p data-en="Profile scan" data-id="Pindai profil">Profile scan</p>
+        <div class="scan-number"><span id="scanCount">100</span><small>/ 100</small></div>
+        <div class="scan-track"></div>
+      </div>
+    </div>
+    <div class="about-body">
+      <div class="about-stage" id="aboutStage" role="img" aria-label="Hamdi's toy-like avatar standing as a cyan hologram on a glowing circular platform.">
+        <img class="about-fallback" src="assets/hamdi-hologram.svg" alt="" width="500" height="600" loading="lazy">
+      </div>
+      <article class="about-card about-bio">
+        <span class="about-card-label" data-en="The person" data-id="Tentang saya">The person</span>
+        <h3>Hamdi Arwan<span aria-hidden="true"> ↗</span></h3>
+        <p class="about-full-name">Muhammad Hamdi Arwan Faruki / HamsOne</p>
+        <p data-en="Bot &amp; Website Developer from Jakarta, Indonesia. I build bots that sell, answer, and automate." data-id="Bot &amp; Website Developer dari Jakarta, Indonesia. Saya membuat bot yang berjualan, menjawab chat, dan mengotomasi pekerjaan.">Bot &amp; Website Developer from Jakarta, Indonesia. I build bots that sell, answer, and automate.</p>
+      </article>
+      <article class="about-card about-skills">
+        <span class="about-card-label" data-en="The toolkit" data-id="Keahlian">The toolkit</span>
+        <h3 data-en="Built to be useful." data-id="Dibuat untuk membantu.">Built to be useful.</h3>
+        <p data-en="Tested before launch, maintained after it ships." data-id="Dites sebelum rilis, dirawat setelah jalan.">Tested before launch, maintained after it ships.</p>
+        <div class="about-tags" aria-label="Skills"><span>Python</span><span>Discord API</span><span>Telegram</span><span>WhatsApp</span><span>QRIS / Webhook</span><span>Linux VPS</span><span>Websites</span></div>
+      </article>
+    </div>
+    <div class="about-location"><p>Jakarta, Indonesia</p><p data-en="Available for freelance" data-id="Tersedia untuk freelance">Available for freelance</p></div>
+    <p class="about-scroll" data-en="↓ Scroll to scan · same builder, another dimension" data-id="↓ Gulir untuk memindai · pembuat yang sama, dimensi berbeda">↓ Scroll to scan · same builder, another dimension</p>
   </div>
 </section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>DISCORD BOT • TELEGRAM BOT • WHATSAPP BOT • QRIS • DASHBOARD • DM DELIVERY • STOCK LOCK • WEB TOOLS • </span><span>DISCORD BOT • TELEGRAM BOT • WHATSAPP BOT • QRIS • DASHBOARD • DM DELIVERY • STOCK LOCK • WEB TOOLS • </span></div></div>

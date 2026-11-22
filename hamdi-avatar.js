@@ -56,6 +56,8 @@ export function createHamdiAvatar(kit) {
   const avatar = new THREE.Group();
   const body = new THREE.Group();
   const typingArms = [];
+  const shoulders = [];
+  const legs = [];
   avatar.add(body);
   const skin = '#bb805b', skinLight = '#c58b65', hair = '#202329';
   // Seated pose: overshirt, cream tee, denim, and chunky trainers.
@@ -64,20 +66,32 @@ export function createHamdiAvatar(kit) {
   for (const side of [-1, 1]) {
     const collar = box(body, [0.15, 0.33, 0.07], '#34464c', [side * 0.20, 2.16, 0.01], 0.035);
     collar.rotation.z = side * -0.28;
-    limb(body, [side * 0.4, 2.14, -0.25], [side * 0.62, 1.77, -0.03], 0.18, '#25343b');
+    const shoulder = new THREE.Group();
+    shoulder.position.set(side * 0.4, 2.14, -0.25);
+    body.add(shoulder);
+    shoulders.push(shoulder);
+    limb(shoulder, [0, 0, 0], [side * 0.22, -0.37, 0.22], 0.18, '#25343b');
     // Pivot each forearm at its elbow so key taps keep the arm connected.
     const forearm = new THREE.Group();
-    forearm.position.set(side * 0.62, 1.77, -0.03);
-    body.add(forearm);
+    forearm.position.set(side * 0.22, -0.37, 0.22);
+    shoulder.add(forearm);
     limb(forearm, [0, 0, 0], [-side * 0.26, 0.02, 0.47], 0.12, skinLight);
     ball(forearm, [0.15, 0.085, 0.17], skinLight, [-side * 0.26, 0.03, 0.53]);
     typingArms.push(forearm);
-    limb(avatar, [side * 0.24, 1.51, -0.23], [side * 0.29, 1.19, 0.46], 0.205, '#324550');
-    limb(avatar, [side * 0.29, 1.19, 0.46], [side * 0.29, 0.48, 0.58], 0.17, '#324550');
-    box(avatar, [0.35, 0.12, 0.35], '#263942', [side * 0.29, 0.47, 0.58], 0.04);
-    box(avatar, [0.39, 0.22, 0.66], '#f5efdf', [side * 0.29, 0.28, 0.73], 0.09);
-    box(avatar, [0.41, 0.075, 0.67], '#d5d9c7', [side * 0.29, 0.19, 0.73], 0.03);
-    box(avatar, [0.23, 0.05, 0.18], '#b3dc83', [side * 0.29, 0.39, 0.75], 0.02);
+    const thigh = new THREE.Group(), calf = new THREE.Group(), foot = new THREE.Group();
+    thigh.position.set(side * 0.24, 1.51, -0.23);
+    avatar.add(thigh);
+    limb(thigh, [0, 0, 0], [side * 0.05, -0.32, 0.69], 0.205, '#324550');
+    calf.position.set(side * 0.05, -0.32, 0.69);
+    thigh.add(calf);
+    limb(calf, [0, 0, 0], [0, -0.71, 0.12], 0.17, '#324550');
+    foot.position.set(0, -0.71, 0.12);
+    calf.add(foot);
+    box(foot, [0.35, 0.12, 0.35], '#263942', [0, -0.01, 0], 0.04);
+    box(foot, [0.39, 0.22, 0.66], '#f5efdf', [0, -0.20, 0.15], 0.09);
+    box(foot, [0.41, 0.075, 0.67], '#d5d9c7', [0, -0.29, 0.15], 0.03);
+    box(foot, [0.23, 0.05, 0.18], '#b3dc83', [0, -0.09, 0.17], 0.02);
+    legs.push({ thigh, calf, foot });
   }
   ball(body, [0.18, 0.24, 0.17], skin, [0, 2.41, -0.25]);
   const head = new THREE.Group();
@@ -120,5 +134,29 @@ export function createHamdiAvatar(kit) {
   }
   curve(head, [[-0.115, -0.31, 0.405], [0, -0.345, 0.426], [0.115, -0.31, 0.405]], 0.018, '#754532');
   ball(head, [0.065, 0.033, 0.017], '#513a2e', [0, -0.43, 0.347]);
-  return { avatar, body, head, eyes, typingArms };
+  return { avatar, body, head, eyes, typingArms, shoulders, legs };
+}
+
+// One motion rig, used by the desk pose and the standing hologram. Pose values
+// are absolute (not accumulated), so reverse scrolling never drifts the joints.
+export function animateHamdi(hamdi, time, standing = 0, reduced = false) {
+  const breath = reduced ? 0 : Math.sin(time * 1.4);
+  hamdi.body.position.y = breath * 0.032;
+  hamdi.body.scale.set(1, 1 + breath * 0.006, 1 + breath * 0.018);
+  hamdi.head.position.y = 2.94 + breath * 0.014;
+  hamdi.head.rotation.set(0.18 * (1 - standing), -0.10 * (1 - standing), reduced ? 0 : Math.sin(time * 0.8) * 0.024);
+  const burst = reduced ? 0 : Math.min(1, Math.max(0, Math.sin((time % 8) / 5.6 * Math.PI) * 5));
+  hamdi.typingArms.forEach((arm, index) => {
+    const tap = Math.max(0, Math.sin(time * 7 + index * Math.PI));
+    arm.rotation.x = standing * 1.075 - (1 - standing) * tap * burst * 0.14;
+    hamdi.shoulders[index].rotation.x = standing * 0.535;
+    hamdi.shoulders[index].rotation.z = standing * (index ? -0.07 : 0.07);
+  });
+  hamdi.legs.forEach(({ thigh, calf, foot }) => {
+    thigh.rotation.x = standing * Math.atan2(0.69, 0.32);
+    calf.rotation.x = standing * (Math.atan2(0.12, 0.71) - Math.atan2(0.69, 0.32));
+    foot.rotation.x = -standing * Math.atan2(0.12, 0.71);
+  });
+  const blink = time % 4.8;
+  hamdi.eyes.scale.y = !reduced && blink > 4.46 ? 1 - Math.sin((blink - 4.46) / 0.34 * Math.PI) * 0.96 : 1;
 }
