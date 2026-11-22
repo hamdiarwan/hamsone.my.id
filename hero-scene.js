@@ -169,7 +169,10 @@ function startScene() {
   }
   function animate(now) {
     frame = 0;
-    if (failed || !visible || document.hidden || motion.matches) return;
+    if (failed || !visible || document.hidden) return;
+    // A preference can update before its change event arrives. Settle the
+    // static pose/scan before stopping, rather than freezing mid-animation.
+    if (motion.matches) { syncAnimation(); return; }
     // 30fps is ample for subtle idle motion and limits work on phones.
     if (now - lastFrame >= 1000 / 30) {
       time = now * 0.001;
