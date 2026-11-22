@@ -19,8 +19,9 @@
 <meta name="twitter:description" content="I'm Hamdi Arwan, known as HamsOne. I build bots that sell, answer, and automate — tested before launch, maintained after it ships. Discord, Telegram, WhatsApp bots and websites.">
 <meta name="twitter:image" content="https://hamsone.my.id/avatar.gif">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="hero.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hamsone.my.id/#person","name":"Muhammad Hamdi Arwan Faruki","alternateName":"HamsOne","givenName":"Hamdi","familyName":"Arwan","jobTitle":"Bot & Website Developer","url":"https://hamsone.my.id/","sameAs":["https://github.com/hamdiarwan","https://discord.com/users/406423375377072148"]},{"@type":"ProfessionalService","name":"HamsOne","founder":{"@id":"https://hamsone.my.id/#person"},"description":"Bot & Website Developer — Discord, Telegram, WhatsApp bots and websites.","areaServed":"Jakarta, Indonesia","url":"https://hamsone.my.id/"}]}
 </script>
@@ -54,31 +55,33 @@
 </header>
 
 <main id="top">
-<section class="hero">
+<section class="hero" aria-labelledby="heroTitle">
   <div class="hero-text">
-    <p class="eyebrow"><span class="live-dot"></span> Jakarta, Indonesia • <span data-en="Open Freelance" data-id="Open Freelance">Open Freelance</span></p>
-    <h1>HamsOne</h1>
-    <h2 class="hero-role">Bot &amp; Website <span>Developer</span></h2>
+    <p class="hero-hello" data-en="A human behind the automation." data-id="Manusia di balik otomasi.">A human behind the automation.</p>
+    <h1 id="heroTitle">HamsOne<span class="hero-title-dot">.</span></h1>
+    <h2 class="hero-role">Bot &amp; Website<br><span>Developer</span><svg class="hero-scribble" viewBox="0 0 300 18" aria-hidden="true"><path d="M4 12 Q140 -2 294 7 M24 16 Q155 6 264 13"/></svg></h2>
     <p class="hero-sub" data-en="I'm Hamdi Arwan, known as HamsOne. I build bots that sell, answer, and automate — tested before launch, maintained after it ships. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report." data-id="Saya Hamdi Arwan, dikenal sebagai HamsOne. Saya membuat bot yang berjualan, menjawab chat, dan mengotomasi pekerjaan — dites sebelum rilis, dirawat setelah jalan. Dari toko Discord live dengan pembayaran QRIS sampai web tools yang mengubah foto menjadi log tercatat.">I'm Hamdi Arwan, known as HamsOne. I build bots that sell, answer, and automate — tested before launch, maintained after it ships. From a live Discord shop with QRIS payments to web tools that turn a photo into a logged report.</p>
     <div class="hero-cta">
-      <a class="btn" href="#projects" data-en="View Projects" data-id="Lihat Proyek">View Projects</a>
+      <a class="btn hero-primary" href="#projects"><span data-en="View Projects" data-id="Lihat Proyek">View Projects</span><span aria-hidden="true">↗</span></a>
       <a class="btn btn-ghost" href="https://github.com/hamdiarwan" target="_blank" rel="noopener">⎇ GitHub</a>
       <a class="btn btn-ghost btn-wa" href="https://wa.me/6281289002318" target="_blank" rel="noopener">WhatsApp</a>
     </div>
-    <div class="hero-chips"><span>Discord API</span><span>Python</span><span>QRIS / Webhook</span><span>Linux VPS</span></div>
+    <div class="hero-chips" aria-label="Technologies"><span>Discord API</span><span>Python</span><span>QRIS / Webhook</span><span>Linux VPS</span></div>
   </div>
-  <div class="hero-visual reveal">
-    <div class="avatar-card">
-      <div class="bot-stage" id="botStage">
-        <img id="botFallback" src="avatar.gif" alt="HamsOne pixel avatar" width="320" height="320">
-        <span class="bot-status" id="botStatus">Loading 3D bot…</span>
-        <span class="bot-bubble" id="botBubble" hidden></span>
-        <span class="float-chip chip-a">/buy ✓</span>
-        <span class="float-chip chip-b">QRIS ✓</span>
-        <span class="float-chip chip-c">DM ✓</span>
-      </div>
-      <div class="avatar-status"><span class="live-dot"></span><span data-en="Available for freelance" data-id="Tersedia untuk freelance">Available for freelance</span></div>
+  <div class="hero-visual">
+    <div class="hero-orbit" aria-hidden="true"></div>
+    <span class="hero-spark spark-one" aria-hidden="true">✳</span>
+    <span class="hero-spark spark-two" aria-hidden="true">+</span>
+    <div class="hero-name-tag"><span class="hero-tag-icon" aria-hidden="true">&lt;/&gt;</span><span data-en="Hi, I'm Hamdi!" data-id="Halo, saya Hamdi!">Hi, I'm Hamdi!</span><svg viewBox="0 0 80 55" aria-hidden="true"><path d="M4 4 Q68 0 65 44 M53 32 L65 47 L76 31"/></svg></div>
+    <div class="hero-stage" id="heroStage" role="img" aria-label="Toy-like 3D avatar of Hamdi with swept black hair and a dark overshirt, sitting at his developer desk with a monitor, keyboard, tiny robot, coffee, and plant.">
+      <img class="hero-fallback" src="assets/hamdi-desk.svg" alt="" width="900" height="780" fetchpriority="high">
     </div>
+    <div class="hero-desk-label" aria-hidden="true"><span class="hero-label-dot"></span> hamsone / workspace</div>
+  </div>
+  <div class="hero-footer">
+    <p class="hero-location"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Jakarta, Indonesia</p>
+    <a class="hero-scroll" href="#showcase"><span data-en="Meet my work" data-id="Lihat karya saya">Meet my work</span><span aria-hidden="true">↓</span></a>
+    <p class="hero-availability"><span class="live-dot"></span><span data-en="Available for freelance" data-id="Tersedia untuk freelance">Available for freelance</span></p>
   </div>
 </section>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>DISCORD BOT • TELEGRAM BOT • WHATSAPP BOT • QRIS • DASHBOARD • DM DELIVERY • STOCK LOCK • WEB TOOLS • </span><span>DISCORD BOT • TELEGRAM BOT • WHATSAPP BOT • QRIS • DASHBOARD • DM DELIVERY • STOCK LOCK • WEB TOOLS • </span></div></div>
@@ -390,88 +393,9 @@
 
 <script src="script.js"></script>
 
-<script type="importmap">
-{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
-</script>
 <script type="module">
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-const stage = document.getElementById("botStage");
-const fallback = document.getElementById("botFallback");
-const status = document.getElementById("botStatus");
-let renderer;
-try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
-catch (e) { status.textContent = "3D unavailable — showing avatar"; }
-if (renderer) {
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(stage.clientWidth, stage.clientHeight);
-  stage.prepend(renderer.domElement);
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(35, stage.clientWidth / stage.clientHeight, 0.1, 100);
-  camera.position.set(0.4, 0.4, 9.5);
-  scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(4, 6, 6); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x10b981, 1.8); rim.position.set(-5, 3, -4); scene.add(rim);
-  let model = null, pivot = null, targetY = 0, targetX = 0, dragX = 0, dragY = 0, dragging = false, px = 0, py = 0;
-  new GLTFLoader().load("hamsone-bot-hero.glb", (gltf) => {
-    model = gltf.scene;
-    const box = new THREE.Box3().setFromObject(model);
-    const center = box.getCenter(new THREE.Vector3());
-    const size = box.getSize(new THREE.Vector3());
-    const fovRad = THREE.MathUtils.degToRad(35);
-    const aspect = stage.clientWidth / stage.clientHeight;
-    const fit = Math.max(size.y / (2 * Math.tan(fovRad / 2)), size.x / (2 * Math.tan(fovRad / 2) * aspect)) * 1.15;
-    const inner = new THREE.Group();
-    inner.position.copy(center).negate();
-    inner.add(model);
-    pivot = new THREE.Group();
-    pivot.add(inner);
-    scene.add(pivot);
-    camera.position.z = fit;
-    camera.lookAt(0, 0, 0);
-    fallback.classList.add("hidden");
-    stage.classList.add("loaded");
-  }, undefined, () => { status.textContent = "3D model unavailable — showing avatar"; });
-  window.addEventListener("pointermove", (e) => {
-    targetY = (e.clientX / window.innerWidth - 0.5) * 0.6;
-    targetX = (e.clientY / window.innerHeight - 0.5) * 0.25;
-  });
-  const bubble = document.getElementById("botBubble");
-  const bubbleLines = {
-    en: ["Hi! I'm HamsOne's mascot.", "Try the demo below to see the shop run.", "I was modeled in code, not in Blender."],
-    id: ["Halo! Saya maskotnya HamsOne.", "Klik demo di bawah untuk melihat toko berjalan.", "Saya dibuat dari kode, bukan dari Blender."]
-  };
-  let bubbleIdx = 0, bubbleTimer = null, jump = 0, spinOffset = 0, spinBoost = 0;
-  stage.addEventListener("click", () => {
-    if (!pivot) return;
-    jump = 1; spinBoost = 2.4;
-    const lines = (localStorage.getItem("hamsone-lang") === "id") ? bubbleLines.id : bubbleLines.en;
-    bubble.textContent = lines[bubbleIdx % lines.length]; bubbleIdx++;
-    bubble.hidden = false;
-    clearTimeout(bubbleTimer);
-    bubbleTimer = setTimeout(() => { bubble.hidden = true; }, 3000);
-  });
-  stage.addEventListener("pointerdown", (e) => { dragging = true; px = e.clientX; py = e.clientY; stage.setPointerCapture(e.pointerId); });
-  stage.addEventListener("pointerup", () => { dragging = false; });
-  stage.addEventListener("pointermove", (e) => {
-    if (!dragging) return;
-    dragY += (e.clientX - px) * 0.008; dragX += (e.clientY - py) * 0.004; px = e.clientX; py = e.clientY;
-  });
-  const clock = new THREE.Clock();
-  const RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  (function animate() {
-    requestAnimationFrame(animate);
-    const t = clock.getElapsedTime();
-    if (pivot) {
-      pivot.rotation.y = targetY + dragY + (RM ? 0 : Math.sin(t * 0.25) * 0.12) + spinOffset;
-      pivot.rotation.x = targetX + dragX;
-      pivot.position.y = (RM ? 0 : Math.sin(t * 1.4) * 0.06) + (jump > 0 ? Math.sin((1 - jump) * Math.PI) * 0.35 : 0);
-      if (jump > 0) { jump -= 0.02; if (jump < 0) jump = 0; }
-      if (spinBoost > 0.01) { spinOffset += spinBoost * 0.02; spinBoost *= 0.92; }
-    }
-    renderer.render(scene, camera);
-  })();
-}
+// A failed module download must leave the static desk illustration visible.
+import("./hero-scene.js").catch(() => {});
 </script>
 </body>
 </html>

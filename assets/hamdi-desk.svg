@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="780" viewBox="0 0 900 780">
+  <defs>
+    <linearGradient id="skin" x2=".9" y2="1"><stop stop-color="#d09a75"/><stop offset="1" stop-color="#b57a57"/></linearGradient>
+    <linearGradient id="hair" x2=".8" y2="1"><stop stop-color="#3e4445"/><stop offset="1" stop-color="#1e262a"/></linearGradient>
+    <linearGradient id="desk" x2="0" y2="1"><stop stop-color="#fffaec"/><stop offset="1" stop-color="#e2d6bc"/></linearGradient>
+    <radialGradient id="shadow"><stop stop-color="#66745a" stop-opacity=".23"/><stop offset="1" stop-color="#66745a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="460" cy="668" rx="359" ry="81" fill="url(#shadow)"/>
+  <path d="m97 535 393-154 326 173v28L424 737 97 564Z" fill="#c9cdb1"/>
+  <path d="m97 535 393-154 326 173-392 154Z" fill="#dce0c8"/>
+  <path d="m144 535 342-131 284 151-341 130Z" fill="#b3cc94"/>
+  <path d="m175 536 309-117 255 136-309 116Z" fill="#c8dda8"/>
+  <!-- Cushioned chair -->
+  <path d="M424 340v183l113 21 27-202Z" fill="#536a67"/>
+  <rect x="434" y="291" width="119" height="179" rx="28" fill="#3d5557" transform="rotate(8 434 291)"/>
+  <path d="m472 513 2 101m0-20-60 42m60-42 64 28" stroke="#657d77" stroke-width="13" stroke-linecap="round"/>
+  <!-- Seated avatar -->
+  <path d="m438 457 33 76 6 94m47-173 27 77-1 80" fill="none" stroke="#314650" stroke-width="49" stroke-linecap="round"/>
+  <path d="m462 620 32-4 23 28q3 19-22 21l-49-11q-12-17 16-34m74-15 32-4 23 28q4 19-22 21l-49-11q-12-17 16-34" fill="#f8f2e4" stroke="#d0d5c0" stroke-width="5"/>
+  <rect x="413" y="321" width="133" height="155" rx="42" fill="#293e45"/>
+  <path d="m471 332 14 95 31-98" fill="#efe6d4"/>
+  <path d="m458 331-12 28 23 47m58-75 11 25-21 44" fill="none" stroke="#435a5d" stroke-width="8"/>
+  <path d="M463 316v32q23 17 43-2v-34" fill="#b77d59"/>
+  <ellipse cx="405" cy="242" rx="17" ry="27" fill="#b9805b"/>
+  <ellipse cx="562" cy="241" rx="17" ry="27" fill="#b9805b"/>
+  <ellipse cx="485" cy="237" rx="82" ry="91" fill="url(#skin)"/>
+  <path d="M405 242q-28-80 25-110 23-40 70-25 72-13 70 85l-14 52-9-61q-71 23-113-12l-17 72Z" fill="url(#hair)"/>
+  <path d="M425 165q-3-51 54-49-5 32-54 49m22 0q18-63 64-45-5 25-64 45m38-2q45-55 65-20l8 32Z" fill="#2d3539"/>
+  <path d="m433 226 26-3m50 0 26 4" stroke="#3c342c" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="449" cy="245" rx="15" ry="20" fill="#fff6e6"/>
+  <ellipse cx="524" cy="245" rx="15" ry="20" fill="#fff6e6"/>
+  <ellipse cx="452" cy="246" rx="8" ry="12" fill="#392e26"/>
+  <ellipse cx="527" cy="246" rx="8" ry="12" fill="#392e26"/>
+  <circle cx="455" cy="240" r="3.5" fill="#fff"/><circle cx="530" cy="240" r="3.5" fill="#fff"/>
+  <ellipse cx="489" cy="266" rx="11" ry="16" fill="#b87a57"/>
+  <path d="m471 286 14-3m6 0 14 3" stroke="#584030" stroke-width="5" stroke-linecap="round"/>
+  <path d="M471 299q18 13 35-1" fill="none" stroke="#7a4c35" stroke-width="4" stroke-linecap="round"/>
+  <path d="m481 315 13 1" stroke="#594231" stroke-width="5" stroke-linecap="round"/>
+  <!-- Desk legs and tabletop -->
+  <path d="m203 493-8 131m465-119 6 128m-351-228-2 125m331-116 7 129" stroke="#354c4d" stroke-width="21" stroke-linecap="round"/>
+  <path d="m151 450 346-129 245 139v22L395 612 151 473Z" fill="#bea17c"/>
+  <path d="m151 450 346-129 245 139-347 130Z" fill="url(#desk)" stroke="#eee4d0" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Arms rest on the desk -->
+  <path d="m427 363-17 49 72 29m57-82 31 50-34 40" stroke="#c48b63" stroke-width="25" fill="none" stroke-linecap="round"/>
+  <path d="m427 354-16 35m126-36 20 32" stroke="#2c4147" stroke-width="39" stroke-linecap="round"/>
+  <!-- Desk mat and keyboard -->
+  <path d="m384 461 155-57 94 52-155 59Z" fill="#819c90"/>
+  <path d="m404 460 109-40 61 34-110 42Z" fill="#f2eedf" stroke="#d6d9c8" stroke-width="3"/>
+  <g stroke="#b5c2ad" stroke-width="4"><path d="m419 460 94-34m-82 42 95-35m-82 42 95-34m-85-4 35 21m-19-27 35 21m-19-27 35 21m-19-27 35 21"/></g>
+  <ellipse cx="586" cy="456" rx="15" ry="10" fill="#f7f0df" transform="rotate(-18 586 456)"/>
+  <!-- Monitor -->
+  <path d="m297 424 53-20 41 23-53 20Z" fill="#344a4c"/>
+  <path d="M341 402v-53" stroke="#344a4c" stroke-width="14"/>
+  <path d="m239 259 179-28q14-2 14 13v131q0 12-12 15l-177 33q-13 2-13-12V275q0-14 9-16Z" fill="#2e434a"/>
+  <path d="m246 274 169-27v126l-169 31Z" fill="#142d35"/>
+  <path d="m257 291 142-23" stroke="#3b5557" stroke-width="12"/>
+  <g stroke-width="5" stroke-linecap="round"><path d="m261 316 95-16m-81 53 112-19m-126 39 65-12" stroke="#b9dd91"/><path d="m275 332 115-20m-115 59 106-19" stroke="#dbca9e"/></g>
+  <!-- Robot figure -->
+  <rect x="265" y="422" width="35" height="40" rx="8" fill="#bed999"/>
+  <rect x="260" y="392" width="44" height="36" rx="10" fill="#eff0dc"/>
+  <rect x="266" y="403" width="31" height="15" rx="5" fill="#36504e"/>
+  <path d="M281 391v-12" stroke="#65775c" stroke-width="3"/><circle cx="281" cy="377" r="5" fill="#9bbd6f"/>
+  <g fill="#c5e88e"><circle cx="275" cy="410" r="3"/><circle cx="288" cy="410" r="3"/></g>
+  <!-- Coffee -->
+  <path d="M627 436q26 0 21 18-7 14-23 2" stroke="#b7d58c" stroke-width="7" fill="none"/>
+  <path d="m602 434 4 36q13 13 28-1l3-35" fill="#bfdb94"/>
+  <ellipse cx="619" cy="434" rx="18" ry="8" fill="#d5e4b2"/><ellipse cx="619" cy="434" rx="14" ry="5" fill="#725238"/>
+  <path d="M617 418q-12-10 1-18t0-19" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- Plant -->
+  <path d="m616 355 8 41q17 14 35-1l8-40" fill="#c5a47d"/>
+  <ellipse cx="641" cy="355" rx="26" ry="11" fill="#dfc39c"/><ellipse cx="641" cy="355" rx="21" ry="7" fill="#7c694c"/>
+  <g fill="#87a767"><ellipse cx="628" cy="319" rx="10" ry="38" transform="rotate(-27 628 319)"/><ellipse cx="653" cy="320" rx="10" ry="37" transform="rotate(27 653 320)"/></g>
+  <ellipse cx="642" cy="312" rx="11" ry="43" fill="#a0be76"/>
+</svg>
