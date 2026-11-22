@@ -69,9 +69,9 @@
 .hero .btn { border-radius: 50px; font-size: 12px; padding: 13px 20px; box-shadow: none; }
 .hero .hero-primary { display: inline-flex; gap: 22px; align-items: center; background: var(--hero-ink); color: #fff!important; }
 .hero-primary > span:last-child { font-size: 20px; line-height: 1; color: var(--hero-green); }
-.hero .hero-primary:hover { background: #2d4850; }
+.hero .hero-primary:hover { background: #2d4850; color: #fff!important; }
 .hero .btn-ghost { border-color: #cbd0c3; color: var(--hero-ink)!important; background: transparent; }
-.hero .btn-ghost:hover { background: #e7ebdb; }
+.hero .btn-ghost:hover { background: #e7ebdb; color: var(--hero-ink)!important; }
 .hero .hero-chips { gap: 7px; }
 .hero .hero-chips span { background: transparent; border: 0; border-right: 1px solid #c7cbbf; color: #6d766e; font-size: 10px; font-family: "JetBrains Mono", monospace; padding: 0 9px 0 0; border-radius: 0; }
 .hero .hero-chips span:last-child { border: 0; }
