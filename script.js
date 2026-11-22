@@ -51,6 +51,7 @@ const processTexts = [
 function applyLang() {
   document.documentElement.lang = lang;
   langBtn.textContent = lang === 'en' ? 'ID' : 'EN';
+  langBtn.setAttribute('aria-label', lang === 'en' ? 'Switch to Indonesian' : 'Ganti ke bahasa Inggris');
   document.querySelectorAll('[data-en]').forEach(el => {
     el.textContent = lang === 'en' ? el.dataset.en : el.dataset.id;
   });

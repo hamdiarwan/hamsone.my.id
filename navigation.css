@@ -8,6 +8,9 @@
 .nav-toggle[aria-expanded="true"] .nav-open-icon { display: none; }
 .nav-toggle[aria-expanded="true"] .nav-close-icon { display: block; }
 .nav-toggle:focus-visible, .mobile-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* Preserve the approved header palette/geometry at every scroll position.
+   Its existing SVGs inherit the same theme ink as the navigation labels. */
+.nav .site-icon { color: inherit; }
 @media (min-width: 1101px) and (max-width: 1240px) {
   .nav { padding-inline: 20px; gap: 12px; }
   .nav-links { gap: 13px; }
@@ -74,6 +77,18 @@
     font-weight: 600;
   }
   .mobile-nav a:hover, .mobile-nav a:focus-visible { background: var(--card); color: var(--accent); }
+  .mobile-nav a.nav-menu-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+    border: 1px solid #bce784;
+    border-radius: 999px;
+    background: #bce784;
+    color: #182d36;
+  }
+  .mobile-nav a.nav-menu-cta:hover, .mobile-nav a.nav-menu-cta:focus-visible { background: #cbedab; }
 }
 @media (max-width: 400px) {
   .nav { padding-inline: 14px; gap: 8px; }

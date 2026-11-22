@@ -45,11 +45,11 @@
     <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
   </nav>
   <div class="nav-actions">
-    <button id="langBtn" class="pill" type="button">ID</button>
+    <button id="langBtn" class="pill" type="button" aria-label="Switch to Indonesian">ID</button>
     <button id="themeBtn" class="theme-pill" type="button" aria-label="Toggle theme"><svg class="site-icon sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><svg class="site-icon moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 13.1A9 9 0 0 1 10.9 3.2a9 9 0 1 0 9.9 9.9Z"/></svg><span class="knob" aria-hidden="true"></span></button>
     <a class="btn btn-small nav-cta" href="#contact" data-en="Start a project" data-id="Mulai proyek">Start a project</a>
     <button class="nav-toggle" id="navToggle" type="button" aria-controls="mobileNavigation" aria-expanded="false" aria-label="Menu" hidden>
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="nav-open-icon" d="M4 6h16M4 12h16M4 18h16"/><path class="nav-close-icon" d="m6 6 12 12M18 6 6 18"/></svg>
+      <svg class="site-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="nav-open-icon" d="M4 6h16M4 12h16M4 18h16"/><path class="nav-close-icon" d="m6 6 12 12M18 6 6 18"/></svg>
     </button>
   </div>
   <nav class="mobile-nav" id="mobileNavigation" aria-label="Mobile navigation">
@@ -60,6 +60,7 @@
     <a href="#demo" data-en="Live Demo" data-id="Demo Langsung">Live Demo</a>
     <a href="#process" data-en="Process" data-id="Proses">Process</a>
     <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
+    <a class="nav-menu-cta" href="#contact"><span data-en="Start a project" data-id="Mulai proyek">Start a project</span><svg class="site-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
   </nav>
 </header>
 
@@ -81,7 +82,7 @@
     <div class="hero-orbit" aria-hidden="true"></div>
     <span class="hero-spark spark-one" aria-hidden="true"><svg class="site-icon" viewBox="0 0 24 24" focusable="false"><path d="M12 3c0 5-4 9-9 9 5 0 9 4 9 9 0-5 4-9 9-9-5 0-9-4-9-9Z"/></svg></span>
     <span class="hero-spark spark-two" aria-hidden="true"><svg class="site-icon" viewBox="0 0 24 24" focusable="false"><path d="M12 5v14M5 12h14"/></svg></span>
-    <div class="hero-name-tag"><span class="hero-tag-icon" aria-hidden="true">&lt;/&gt;</span><span data-en="Hi, I'm Hamdi!" data-id="Halo, saya Hamdi!">Hi, I'm Hamdi!</span><svg viewBox="0 0 80 55" aria-hidden="true"><path d="M4 4 Q68 0 65 44 M53 32 L65 47 L76 31"/></svg></div>
+    <div class="hero-name-tag"><span class="hero-tag-icon" aria-hidden="true">&lt;/&gt;</span><span data-en="Hi, I'm HamsOne!" data-id="Halo, saya HamsOne!">Hi, I'm HamsOne!</span><svg viewBox="0 0 80 55" aria-hidden="true"><path d="M4 4 Q68 0 65 44 M53 32 L65 47 L76 31"/></svg></div>
     <div class="hero-stage" id="heroStage" role="img" aria-label="Toy-like 3D avatar of Hamdi with swept black hair and a dark overshirt, sitting at his developer desk with a monitor, keyboard, tiny robot, coffee, and plant.">
       <img class="hero-fallback" src="assets/hamdi-desk.svg" alt="" width="900" height="780" fetchpriority="high">
     </div>
@@ -442,10 +443,10 @@
 </main>
 
 <footer>
-  <a class="footer-wordmark" href="#top" aria-label="HamsOne — back to top"><span>HamsOne<span class="footer-dot">.</span></span><span class="footer-arrow" aria-hidden="true"><svg class="site-icon" viewBox="0 0 24 24" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>
+  <a class="footer-wordmark" href="#top" aria-label="@HamsOne — back to top"><span><span class="footer-at">@</span>HamsOne</span><span class="footer-arrow" aria-hidden="true"><svg class="site-icon" viewBox="0 0 24 24" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>
   <div class="footer-meta">
     <p>© 2026 HamsOne • Jakarta, Indonesia • <span data-en="Open Freelance" data-id="Open Freelance">Open Freelance</span></p>
-    <a href="#top" data-en="Back to top ↑" data-id="Kembali ke atas ↑">Back to top ↑</a>
+    <a href="#top"><span data-en="Back to top" data-id="Kembali ke atas">Back to top</span><svg class="site-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5m-7 7 7-7 7 7"/></svg></a>
   </div>
 </footer>
 
