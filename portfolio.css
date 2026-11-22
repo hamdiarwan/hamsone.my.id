@@ -40,6 +40,10 @@ a, button, input, select, textarea, summary { touch-action: manipulation; }
 .nav .btn { font-size: 11px; }
 .nav .pill { font-size: 11px; }
 .theme-pill .sun, .theme-pill .moon { font-size: 12px; }
+.site-icon { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vertical-align: -.15em; flex-shrink: 0; }
+.theme-pill .sun, .theme-pill .moon { top: 50%; width: 14px; height: 14px; transform: translateY(-50%); color: var(--text); z-index: 1; }
+[data-theme="light"] .theme-pill .sun { color: #fcfaf4; }
+[data-theme="dark"] .theme-pill .moon { color: #182d36; }
 .btn { background: #bce784; color: #182d36 !important; border: 1px solid #bce784; border-radius: 999px; box-shadow: none; padding: 14px 23px; font-size: 12px; font-weight: 800; }
 .btn:hover { background: #cbedab; color: #182d36 !important; box-shadow: none; }
 .btn-ghost { background: transparent; border-color: var(--line); color: var(--text) !important; }

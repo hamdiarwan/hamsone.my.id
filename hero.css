@@ -86,7 +86,8 @@
 .hero-name-tag { position: absolute; left: 35%; top: 4%; z-index: 2; display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; transform: rotate(-6deg); white-space: nowrap; }
 .hero-tag-icon { display: grid; place-items: center; background: var(--hero-green); width: 32px; height: 32px; border-radius: 10px; font-size: 12px; font-family: "JetBrains Mono", monospace; }
 .hero-name-tag svg { position: absolute; width: 53px; height: 40px; top: 28px; right: -22px; fill: none; stroke: #78945c; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.hero-spark { position: absolute; color: #8aa76b; line-height: 1; pointer-events: none; }
+.hero-spark { position: absolute; color: #28765a; line-height: 1; pointer-events: none; }
+.hero-spark .site-icon { display: block; }
 .spark-one { right: 7%; top: 25%; font-size: 46px; transform: rotate(10deg); }
 .spark-two { left: 12%; top: 29%; font-size: 24px; transform: rotate(-8deg); }
 .hero-desk-label { position: absolute; right: 17%; bottom: 2%; color: #6a786c; font: 10px "JetBrains Mono", monospace; display: flex; align-items: center; gap: 7px; transform: rotate(-3deg); }
