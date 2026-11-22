@@ -26,6 +26,7 @@ if (TESTI_API_URL && navigator.doNotTrack !== '1') {
 }
 // Theme + language, remembered per visitor
 const root = document.documentElement;
+const pageMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const themeBtn = document.getElementById('themeBtn');
 const savedTheme = localStorage.getItem('hamsone-theme');
 if (savedTheme) root.setAttribute('data-theme', savedTheme);
@@ -79,22 +80,29 @@ const termLines = [
   { t: '$ /buy', c: true },
   { t: '> Stock locked for 10 minutes. Pay via QRIS.', c: false },
 ];
-let li = 0, ci = 0;
+let li = 0, ci = 0, termTimer = 0;
 function typeTerm() {
   if (!termEl) return;
+  if (pageMotion.matches) {
+    termEl.innerHTML = termLines.map(line => `<span class="${line.c ? 'cmd' : ''}">${line.t}</span>`).join('\n');
+    return;
+  }
   const line = termLines[li];
   if (ci <= line.t.length) {
     const done = termLines.slice(0, li).map(l => `<span class="${l.c ? 'cmd' : ''}">${l.t}</span>`).join('\n');
     termEl.innerHTML = done + (li > 0 ? '\n' : '') + `<span class="${line.c ? 'cmd' : ''}">${line.t.slice(0, ci)}</span><span class="caret">▌</span>`;
     ci++;
-    setTimeout(typeTerm, line.c ? 45 : 18);
+    termTimer = setTimeout(typeTerm, line.c ? 45 : 18);
   } else {
     li++; ci = 0;
-    if (li >= termLines.length) { setTimeout(() => { li = 0; typeTerm(); }, 5000); }
-    else setTimeout(typeTerm, 350);
+    if (li >= termLines.length) { termTimer = setTimeout(() => { li = 0; typeTerm(); }, 5000); }
+    else termTimer = setTimeout(typeTerm, 350);
   }
 }
 typeTerm();
+pageMotion.addEventListener('change', () => {
+  clearTimeout(termTimer); li = 0; ci = 0; typeTerm();
+});
 
 // Terminal quick commands
 const cmdOutput = document.getElementById('cmdOutput');
@@ -168,18 +176,20 @@ document.querySelectorAll('[data-demo]').forEach(btn => btn.addEventListener('cl
 
 // Service cards prefill the inquiry form
 document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('click', () => {
+  card.addEventListener('click', (event) => {
+    event.preventDefault();
     const sel = document.getElementById('platform');
-    if (sel) sel.value = card.dataset.platform;
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    if (sel) { sel.value = card.dataset.platform; sel.focus({ preventScroll: true }); }
+    document.getElementById('contact').scrollIntoView({ behavior: pageMotion.matches ? 'instant' : 'smooth' });
   });
 });
 
 // Process tabs
 document.querySelectorAll('.process-tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.process-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.process-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
     tab.classList.add('active');
+    tab.setAttribute('aria-pressed', 'true');
     activeProcess = Number(tab.dataset.process);
     const txt = processTexts[activeProcess];
     document.getElementById('processText').textContent = lang === 'en' ? txt.en : txt.id;
@@ -213,7 +223,10 @@ let selectedRating = 5;
 const starBtns = document.querySelectorAll('#starRating .star');
 const starLabel = document.getElementById('starLabel');
 function paintStars() {
-  starBtns.forEach(b => b.classList.toggle('selected', Number(b.dataset.star) <= selectedRating));
+  starBtns.forEach(b => {
+    b.classList.toggle('selected', Number(b.dataset.star) <= selectedRating);
+    b.setAttribute('aria-pressed', String(Number(b.dataset.star) === selectedRating));
+  });
   if (starLabel) starLabel.textContent = `${selectedRating} / 5`;
 }
 starBtns.forEach(b => b.addEventListener('click', () => { selectedRating = Number(b.dataset.star); paintStars(); }));
@@ -222,10 +235,13 @@ paintStars();
 // (see testimonial-backend.gs). While empty, submissions only show on the sender's own browser.
 const testiList = document.getElementById('testiList');
 let testiAuto = null;
+let syncTestiMotion = () => {};
+pageMotion.addEventListener('change', () => syncTestiMotion());
 function setupTestiCarousel(items) {
   if (!testiList) return;
   const controls = document.getElementById('testiControls');
   clearInterval(testiAuto);
+  syncTestiMotion = () => {};
   // 1 testimonial: static, no animation. 2+: horizontal auto-running carousel.
   const isCarousel = items.length >= 2;
   testiList.classList.toggle('carousel', isCarousel);
@@ -237,8 +253,9 @@ function setupTestiCarousel(items) {
     if (testiList.scrollLeft + testiList.clientWidth >= testiList.scrollWidth - 10) testiList.scrollTo({ left: 0, behavior: 'smooth' });
     else testiList.scrollBy({ left: w, behavior: 'smooth' });
   };
-  const start = () => { clearInterval(testiAuto); if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; testiAuto = setInterval(step, 4000); };
+  const start = () => { clearInterval(testiAuto); if (pageMotion.matches || testiList.matches(':hover, :focus-within')) return; testiAuto = setInterval(step, 4000); };
   const stop = () => clearInterval(testiAuto);
+  syncTestiMotion = start;
   start();
   testiList.onmouseenter = stop; testiList.onmouseleave = start;
   testiList.onfocusin = stop; testiList.onfocusout = start;
@@ -346,6 +363,7 @@ if (testiForm) {
   function go(n) { current = (n + cards.length) % cards.length; render(); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
   function auto() { stop(); if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(function () { go(current + 1); }, 4000); }
+  pageMotion.addEventListener('change', auto);
   cards.forEach(function (card, i) { card.addEventListener('click', function () { go(i); }); });
   if (prevBtn) prevBtn.addEventListener('click', function () { go(current - 1); });
   if (nextBtn) nextBtn.addEventListener('click', function () { go(current + 1); });
@@ -376,15 +394,6 @@ if (termForm && termInput) {
   });
 }
 
-// Card spotlight follows the cursor
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('pointermove', (e) => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  });
-});
-
 // Scroll progress + scrollspy nav + magnetic buttons
 const scrollProgress = document.getElementById('scrollProgress');
 function updateProgress() {
@@ -408,6 +417,7 @@ if (spySections.length && spyLinks.length && 'IntersectionObserver' in window) {
 }
 document.querySelectorAll('.btn').forEach((btn) => {
   btn.addEventListener('pointermove', (e) => {
+    if (pageMotion.matches) return;
     const r = btn.getBoundingClientRect();
     const dx = Math.max(-5, Math.min(5, (e.clientX - (r.left + r.width / 2)) * 0.08));
     const dy = Math.max(-5, Math.min(5, (e.clientY - (r.top + r.height / 2)) * 0.08));
