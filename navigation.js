@@ -38,4 +38,5 @@
     closeMenu(mobile.matches && focusedLink);
     if (!mobile.matches && focusedLink) document.querySelector('.nav-links a')?.focus({ preventScroll: true });
   });
+  toggle.closest('.nav')?.classList.add('nav-enhanced');
 })();
