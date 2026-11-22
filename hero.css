@@ -1,4 +1,7 @@
 /* Phase 1 only. These styles deliberately stop at the hero boundary. */
+/* The logo targets main#top; leave room for the existing sticky navigation. */
+#top { scroll-margin-top: 90px; }
+@media (max-width: 860px) { #top { scroll-margin-top: 140px; } }
 .hero {
   --hero-ink: #182d36;
   --hero-muted: #5d6867;
