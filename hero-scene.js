@@ -181,13 +181,19 @@ function startScene() {
   }
   function syncAnimation() {
     cancelAnimationFrame(frame); frame = 0;
+    // The canvas is viewport-fixed while travelling between sections. Hide it
+    // immediately on an instant anchor/End jump, before pausing its RAF.
+    renderer.domElement.style.visibility = visible && !document.hidden && !failed ? 'visible' : 'hidden';
     if (motion.matches) {
       world.rotation.set(0, 0, 0); hamdi.head.rotation.z = 0;
       hamdi.body.position.y = 0; hamdi.body.scale.set(1, 1, 1);
       hamdi.typingArms.forEach(arm => { arm.rotation.x = 0; });
       hamdi.head.position.y = 2.94; hamdi.eyes.scale.y = 1; steam.position.y = 0;
       renderStill();
-    } else if (visible && !document.hidden && !failed) frame = requestAnimationFrame(animate);
+    } else if (visible && !document.hidden && !failed) {
+      renderStill();
+      frame = requestAnimationFrame(animate);
+    }
   }
   const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(stage);
   const intersections = new Map();
