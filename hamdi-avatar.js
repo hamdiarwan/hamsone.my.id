@@ -54,16 +54,24 @@ export function createToyKit() {
 export function createHamdiAvatar(kit) {
   const { box, ball, limb, curve } = kit;
   const avatar = new THREE.Group();
+  const body = new THREE.Group();
+  const typingArms = [];
+  avatar.add(body);
   const skin = '#bb805b', skinLight = '#c58b65', hair = '#202329';
   // Seated pose: overshirt, cream tee, denim, and chunky trainers.
-  box(avatar, [0.91, 0.83, 0.51], '#25343b', [0, 1.92, -0.28], 0.18);
-  box(avatar, [0.28, 0.62, 0.045], '#f0e8d9', [0, 1.98, 0], 0.04);
+  box(body, [0.91, 0.83, 0.51], '#25343b', [0, 1.92, -0.28], 0.18);
+  box(body, [0.28, 0.62, 0.045], '#f0e8d9', [0, 1.98, 0], 0.04);
   for (const side of [-1, 1]) {
-    const collar = box(avatar, [0.15, 0.33, 0.07], '#34464c', [side * 0.20, 2.16, 0.01], 0.035);
+    const collar = box(body, [0.15, 0.33, 0.07], '#34464c', [side * 0.20, 2.16, 0.01], 0.035);
     collar.rotation.z = side * -0.28;
-    limb(avatar, [side * 0.4, 2.14, -0.25], [side * 0.62, 1.77, -0.03], 0.18, '#25343b');
-    limb(avatar, [side * 0.62, 1.77, -0.03], [side * 0.36, 1.79, 0.44], 0.12, skinLight);
-    ball(avatar, [0.15, 0.085, 0.17], skinLight, [side * 0.36, 1.80, 0.50]);
+    limb(body, [side * 0.4, 2.14, -0.25], [side * 0.62, 1.77, -0.03], 0.18, '#25343b');
+    // Pivot each forearm at its elbow so key taps keep the arm connected.
+    const forearm = new THREE.Group();
+    forearm.position.set(side * 0.62, 1.77, -0.03);
+    body.add(forearm);
+    limb(forearm, [0, 0, 0], [-side * 0.26, 0.02, 0.47], 0.12, skinLight);
+    ball(forearm, [0.15, 0.085, 0.17], skinLight, [-side * 0.26, 0.03, 0.53]);
+    typingArms.push(forearm);
     limb(avatar, [side * 0.24, 1.51, -0.23], [side * 0.29, 1.19, 0.46], 0.205, '#324550');
     limb(avatar, [side * 0.29, 1.19, 0.46], [side * 0.29, 0.48, 0.58], 0.17, '#324550');
     box(avatar, [0.35, 0.12, 0.35], '#263942', [side * 0.29, 0.47, 0.58], 0.04);
@@ -71,12 +79,12 @@ export function createHamdiAvatar(kit) {
     box(avatar, [0.41, 0.075, 0.67], '#d5d9c7', [side * 0.29, 0.19, 0.73], 0.03);
     box(avatar, [0.23, 0.05, 0.18], '#b3dc83', [side * 0.29, 0.39, 0.75], 0.02);
   }
-  ball(avatar, [0.18, 0.24, 0.17], skin, [0, 2.41, -0.25]);
+  ball(body, [0.18, 0.24, 0.17], skin, [0, 2.41, -0.25]);
   const head = new THREE.Group();
   head.position.set(0, 2.94, -0.23);
   // Look slightly down and left toward the screen, not out at the viewer.
   head.rotation.set(0.18, -0.10, 0);
-  avatar.add(head);
+  body.add(head);
   ball(head, [0.57, 0.62, 0.49], skinLight, [0, 0, 0]);
   for (const side of [-1, 1]) {
     ball(head, [0.12, 0.18, 0.11], skin, [side * 0.55, -0.06, 0]);
@@ -112,5 +120,5 @@ export function createHamdiAvatar(kit) {
   }
   curve(head, [[-0.115, -0.31, 0.405], [0, -0.345, 0.426], [0.115, -0.31, 0.405]], 0.018, '#754532');
   ball(head, [0.065, 0.033, 0.017], '#513a2e', [0, -0.43, 0.347]);
-  return { avatar, head, eyes };
+  return { avatar, body, head, eyes, typingArms };
 }

@@ -167,8 +167,16 @@ function startScene() {
       const t = now * 0.001;
       world.rotation.y += (targetX - world.rotation.y) * 0.065;
       world.rotation.x += (targetY - world.rotation.x) * 0.065;
+      const breath = Math.sin(t * 1.4);
+      hamdi.body.position.y = breath * 0.014;
+      hamdi.body.scale.set(1, 1 + breath * 0.003, 1 + breath * 0.012);
       hamdi.head.rotation.z = Math.sin(t * 0.8) * 0.017;
-      hamdi.head.position.y = 2.94 + Math.sin(t * 1.4) * 0.012;
+      hamdi.head.position.y = 2.94 + breath * 0.008;
+      // Alternate short elbow-led taps with a pause between typing bursts.
+      const typing = t % 8 < 5.6;
+      hamdi.typingArms.forEach((arm, index) => {
+        arm.rotation.x = typing ? -Math.max(0, Math.sin(t * 8.5 + index * Math.PI)) * 0.075 : 0;
+      });
       const blink = t % 5.7;
       hamdi.eyes.scale.y = blink > 5.5 ? 0.15 + Math.abs(blink - 5.6) * 8.5 : 1;
       steam.position.y = Math.sin(t * 1.2) * 0.035;
@@ -180,6 +188,8 @@ function startScene() {
     cancelAnimationFrame(frame); frame = 0;
     if (motion.matches) {
       world.rotation.set(0, 0, 0); hamdi.head.rotation.z = 0;
+      hamdi.body.position.y = 0; hamdi.body.scale.set(1, 1, 1);
+      hamdi.typingArms.forEach(arm => { arm.rotation.x = 0; });
       hamdi.head.position.y = 2.94; hamdi.eyes.scale.y = 1; steam.position.y = 0;
       renderStill();
     } else if (visible && !document.hidden && !failed) frame = requestAnimationFrame(animate);
