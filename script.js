@@ -177,10 +177,12 @@ document.querySelectorAll('[data-demo]').forEach(btn => btn.addEventListener('cl
 // Service cards prefill the inquiry form
 document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('click', (event) => {
-    event.preventDefault();
     const sel = document.getElementById('platform');
-    if (sel) { sel.value = card.dataset.platform; sel.focus({ preventScroll: true }); }
-    document.getElementById('contact').scrollIntoView({ behavior: pageMotion.matches ? 'instant' : 'smooth' });
+    if (!sel) return;
+    event.preventDefault();
+    sel.value = card.dataset.platform;
+    sel.focus({ preventScroll: true });
+    sel.scrollIntoView({ behavior: pageMotion.matches ? 'instant' : 'smooth', block: 'center' });
   });
 });
 
