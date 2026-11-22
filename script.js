@@ -177,6 +177,7 @@ document.querySelectorAll('[data-demo]').forEach(btn => btn.addEventListener('cl
 // Service cards prefill the inquiry form
 document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('click', (event) => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     const sel = document.getElementById('platform');
     if (!sel) return;
     event.preventDefault();
