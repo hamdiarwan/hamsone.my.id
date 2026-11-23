@@ -61,3 +61,33 @@ and testimonial submissions otherwise write to a live Google Apps Script.
 Use an intercepted response for submission tests, never publish test data.
 Reduced motion stops terminal typing, coverflow/testimonial auto-advance,
 marquee/reveals and magnetic pointer motion as well as the 3D scene.
+
+## Motion polish
+
+`motion.css` / `motion.js` progressively enhance the same readable HTML:
+
+- Finite entrances, reveals and UI transitions share a 720ms expo-out curve.
+  The existing continuous avatar, typing and ticker loops keep their cadence.
+- Lenis 1.3.15 is pinned locally in `assets/vendor/` with its MIT license.
+  It loads only above 1100px with a fine, hover-capable pointer, when reduced
+  motion is off. Only unmodified vertical wheel input is smoothed; touch,
+  keyboard, anchor links, scrollbar dragging and nested controls stay native.
+  It updates actual `window.scrollY`, not a virtual wrapper, so About keeps
+  its existing scan/orbit calculation. Failed loading leaves native scrolling.
+- The hero letters, role, copy, actions and avatar enter in sequence. A failed
+  enhancement never hides the hero for longer than the 1.8s fail-safe.
+- Section headings and cards reveal individually. Desktop panels have a
+  bounded 64px sticky hold; tall panels pin at their bottom so all content
+  stays reachable. About's internal sticky scene is unchanged. Stacking,
+  parallax, tilt, magnets and spotlights are disabled on phone/tablet layouts.
+- The existing capability ticker is reused between Hero and About. Native
+  cursors and instant access are kept instead of an optional cursor/preloader.
+- Reduced motion cancels active entrance/reveal animations, destroys Lenis,
+  reveals all content and disables sticky stacking and pointer motion.
+
+Verify first-load entrances and wheel smoothing in both themes, then use a
+touch-capable phone context to confirm non-canceled native touch scrolling.
+Scroll About forward/back and compare its counter to actual scroll geometry;
+also check deep links, reverse navigation, reduced-motion changes, no-JS/
+blocked-module/WebGL fallbacks, nested controls, overflow and keyboard access.
+Use DNT and block POSTs as described above; do not send real inquiries.

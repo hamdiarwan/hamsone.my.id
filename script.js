@@ -65,11 +65,8 @@ langBtn.addEventListener('click', () => {
 });
 applyLang();
 
-// Scroll reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// Progressive, staggered reveals are owned by motion.js. HTML stays visible
+// when that optional module is unavailable.
 
 // Terminal typing loop — real commands only, no invented counts
 const termEl = document.getElementById('typedTerminal');
@@ -398,34 +395,4 @@ if (termForm && termInput) {
   });
 }
 
-// Scroll progress + scrollspy nav + magnetic buttons
-const scrollProgress = document.getElementById('scrollProgress');
-function updateProgress() {
-  if (!scrollProgress) return;
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  scrollProgress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-}
-window.addEventListener('scroll', updateProgress, { passive: true });
-updateProgress();
-const spySections = document.querySelectorAll('section[id]');
-const spyLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
-if (spySections.length && spyLinks.length && 'IntersectionObserver' in window) {
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (!e.isIntersecting) return;
-      const id = '#' + e.target.id;
-      spyLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  spySections.forEach((s) => spy.observe(s));
-}
-document.querySelectorAll('.btn').forEach((btn) => {
-  btn.addEventListener('pointermove', (e) => {
-    if (pageMotion.matches) return;
-    const r = btn.getBoundingClientRect();
-    const dx = Math.max(-5, Math.min(5, (e.clientX - (r.left + r.width / 2)) * 0.08));
-    const dy = Math.max(-5, Math.min(5, (e.clientY - (r.top + r.height / 2)) * 0.08));
-    btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
-  });
-  btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
-});
+// Progress, scrollspy, magnetic buttons and spotlight share the motion module.

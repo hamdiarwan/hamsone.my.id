@@ -25,6 +25,14 @@
 <link rel="stylesheet" href="hero.css">
 <link rel="stylesheet" href="about.css">
 <link rel="stylesheet" href="portfolio.css">
+<link rel="stylesheet" href="motion.css">
+<script>
+// Only the entrance waits for enhancement; a failed/slow module never hides it.
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('motion-boot');
+  setTimeout(() => document.documentElement.classList.remove('motion-boot'), 1800);
+}
+</script>
 <script src="navigation.js" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hamsone.my.id/#person","name":"Muhammad Hamdi Arwan Faruki","alternateName":"HamsOne","givenName":"Hamdi","familyName":"Arwan","jobTitle":"Bot & Website Developer","url":"https://hamsone.my.id/","sameAs":["https://github.com/hamdiarwan","https://discord.com/users/406423375377072148"]},{"@type":"ProfessionalService","name":"HamsOne","founder":{"@id":"https://hamsone.my.id/#person"},"description":"Bot & Website Developer — Discord, Telegram, WhatsApp bots and websites.","areaServed":"Jakarta, Indonesia","url":"https://hamsone.my.id/"}]}
@@ -451,6 +459,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script type="module" src="motion.js"></script>
 
 <script type="module">
 // A failed module download must leave the static desk illustration visible.
