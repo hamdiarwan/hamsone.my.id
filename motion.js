@@ -159,7 +159,10 @@ async function syncWheel() {
       lerp: undefined,
       allowNestedScroll: true,
       anchors: false,
-      virtualScroll: ({ event }) => event.type === 'wheel' && !event.ctrlKey && !event.shiftKey,
+      // Only enhance vertical gestures. Trackpads need their native horizontal
+      // scroll (including a small vertical delta) for the testimonial carousel.
+      virtualScroll: ({ event, deltaX, deltaY }) => event.type === 'wheel' &&
+        !event.ctrlKey && !event.shiftKey && Math.abs(deltaY) > Math.abs(deltaX),
       prevent: node => node.matches('input, textarea, select, [contenteditable], .mobile-nav'),
     });
   } catch { /* Failed optional dependency = ordinary native scrolling. */ }
