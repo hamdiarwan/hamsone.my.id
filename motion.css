@@ -56,7 +56,13 @@ html.lenis, html.lenis body { height: auto; }
   }
   .hero-shell + .marquee { margin-top: -64px; position: relative; z-index: 4; }
   .motion-stack-shell > .proof-strip { background: var(--card2); }
-  .motion-stack-shell > .terminal-section { background: var(--bg); }
+  /* The terminal is a capped window, not a full-width panel: viewport-sized
+     gutters would consume its 780px content box on wide displays. */
+  .motion-stack-shell > .terminal-section {
+    margin-inline: auto;
+    padding-inline: 0;
+    background: var(--bg);
+  }
 }
 .scroll-progress {
   width: 100%;
