@@ -1,0 +1,121 @@
+/* One vocabulary for finite UI motion; continuous scene/ticker loops keep
+   their natural cadence. No virtual scroll container or body transform. */
+:root {
+  --motion-ease: cubic-bezier(.16, 1, .3, 1);
+  --motion-duration: 720ms;
+  --motion-travel: 24px;
+  --panel-inset: max(40px, calc((100vw - 1160px) / 2));
+}
+*, *::before, *::after {
+  transition-timing-function: var(--motion-ease) !important;
+}
+/* Only retime existing transitions. A universal nonzero duration would
+   accidentally tween fixed-canvas top/left/size as the document scrolls. */
+.theme-pill .knob, .btn, .card, .js .reveal, .cf-card, .card::before,
+.shot-gallery img, .service-card, .hero-stage canvas {
+  transition-duration: var(--motion-duration) !important;
+}
+/* A missing motion module must leave all ordinary content readable. */
+.js .reveal { opacity: 1; transform: none; }
+.motion-boot .hero-text, .motion-boot .hero-visual,
+.motion-boot .portfolio-canvas { opacity: 0; }
+.hero-letter { display: inline-block; }
+
+/* Lenis changes window.scrollY itself. Anchors, keys, scrollbar and touch
+   remain browser-owned, and nested scrollable controls are never captured. */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+/* Each desktop panel can hold for only 64px, bounded by its own shell.
+   Tall panels pin at their bottom: no hidden content or long scroll traps. */
+.motion-stack-shell { position: relative; }
+@media (min-width: 1101px) and (prefers-reduced-motion: no-preference) {
+  .motion-stack-shell {
+    margin-inline: calc(50% - 50vw);
+    display: flow-root;
+  }
+  .motion-stack-shell::after {
+    content: "";
+    display: block;
+    height: 64px;
+    pointer-events: none;
+  }
+  .motion-stack-shell + .motion-stack-shell { margin-top: -64px; }
+  .motion-stack-shell > section {
+    position: sticky;
+    top: var(--pin-top, 84px);
+    margin-inline: 0;
+    background: var(--bg);
+    padding-inline: var(--panel-inset);
+    border-radius: 36px 36px 0 0;
+  }
+  .motion-stack-shell.hero-shell > .hero {
+    padding-inline: max(32px, calc((100vw - 1240px) / 2));
+    border-radius: 0 0 44px 44px;
+    background: #f5f1e8;
+  }
+  .hero-shell + .marquee { margin-top: -64px; position: relative; z-index: 4; }
+  .motion-stack-shell > .proof-strip { background: var(--card2); }
+  /* The terminal is a capped window, not a full-width panel: viewport-sized
+     gutters would consume its 780px content box on wide displays. */
+  .motion-stack-shell > .terminal-section {
+    margin-inline: auto;
+    padding-inline: 0;
+    background: var(--bg);
+  }
+}
+.scroll-progress {
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: none;
+  pointer-events: none;
+}
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  inset: auto 0 -7px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-duration) var(--motion-ease);
+}
+.nav-links a.active::after { transform: scaleX(1); }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .btn { transition-property: translate, transform, background-color, color, border-color; }
+  .shot-gallery .browser-frame {
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform var(--motion-duration) var(--motion-ease);
+  }
+  .card, .project, .about-card, .testi-card { position: relative; }
+  .card::after, .project::after, .about-card::after, .testi-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), #bce78424, transparent 70%);
+    transition: opacity var(--motion-duration) var(--motion-ease);
+  }
+  .card:hover::after, .project:hover::after, .about-card:hover::after,
+  .testi-card:hover::after { opacity: 1; }
+}
+@media (max-width: 1100px) { :root { --motion-travel: 12px; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .motion-boot .hero-text, .motion-boot .hero-visual,
+  .motion-boot .portfolio-canvas { opacity: 1; }
+  .hero-letter, .hero-visual, .hero-orbit, .btn { translate: none !important; }
+  .motion-stack-shell > section { position: relative; }
+}
+@media print {
+  .motion-stack-shell { padding: 0; margin: 0; }
+  .motion-stack-shell::after { display: none; }
+  .motion-stack-shell > section { position: static; }
+  .motion-boot .hero-text, .motion-boot .hero-visual { opacity: 1; }
+}
