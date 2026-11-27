@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cek pesanan — HamsOne Store</title>
+<link rel="icon" href="assets/logo-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div style="background:#C8FF2E;color:#0B0F00;text-align:center;font:600 13px/1.4 'Plus Jakarta Sans',system-ui,sans-serif;padding:9px 16px;position:relative;z-index:100">Mode pratinjau &mdash; pembayaran belum aktif. Toko segera buka.</div>
+
+<header class="nav"><div class="wrap nav-in">
+<a class="logo" href="index.html"><img src="assets/logo-icon.svg" alt="">HamsOne<b>Store</b></a>
+<nav class="nav-links" id="nav">
+<a href="index.html#produk">Produk</a><a href="index.html#cara">Cara beli</a><a href="index.html#garansi">Garansi</a><a href="index.html#faq">FAQ</a><a href="cek-pesanan.html">Cek pesanan</a>
+</nav>
+<div class="row"><a class="btn btn-primary btn-sm" href="index.html#produk">Beli sekarang</a>
+<button class="menu-btn" data-toggle="#nav" aria-label="Menu">☰</button></div>
+</div></header>
+
+<div class="narrow" style="padding-top:56px">
+<div class="center"><span class="eyebrow">Cek pesanan</span><h2 style="margin-top:10px">Lacak pesanan kamu</h2><p class="muted" style="margin-top:10px">Masukkan nomor invoice. Tanpa login.</p></div>
+<form class="row" style="margin:28px 0 36px" onsubmit="return false"><input class="input mono" placeholder="INV-20261127-0042" value="INV-20261127-0042"><button class="btn btn-primary">Cek</button></form>
+<p class="dim center" style="font-size:.8rem;margin-bottom:12px">Contoh tiap status untuk kebutuhan desain</p>
+<div class="center" style="margin-bottom:22px"><div class="tabs"><button class="on" data-tab="ok">Selesai</button><button data-tab="wait">Menunggu bayar</button><button data-tab="proc">Diproses</button><button data-tab="exp">Kedaluwarsa</button><button data-tab="none">Tidak ditemukan</button></div></div>
+<div data-pane="ok" class="on"><div class="card pad-lg"><div class="row between wrapf"><div><span class="mono muted" style="font-size:.86rem">INV-20261127-0042</span><h3 style="margin-top:6px">Netflix Premium 4K Shared × 2</h3></div><span class="badge ok">Selesai</span></div><div class="divider"></div>
+<div class="grid-2"><div><div class="state-ico ok" style="margin:0 0 16px;width:60px;height:60px;font-size:1.5rem">✓</div><h3>Pesanan terkirim</h3><p class="muted" style="margin-top:8px;font-size:.93rem">Detail akun sudah dikirim. Garansi berlaku sampai 27 Des 2026.</p><div class="row wrapf" style="margin-top:18px"><a class="btn btn-primary btn-sm" href="sukses.html">Lihat detail akun</a><a class="btn btn-ghost btn-sm" href="#">Klaim garansi</a></div></div>
+<ul class="timeline"><li class="done">Pesanan dibuat<small>27 Nov 2026, 17:02</small></li><li class="done">Pembayaran diterima<small>27 Nov 2026, 17:04 · QRIS</small></li><li class="done">Pesanan dikirim<small>27 Nov 2026, 17:04</small></li></ul></div></div></div>
+<div data-pane="wait"><div class="card pad-lg"><div class="row between wrapf"><div><span class="mono muted" style="font-size:.86rem">INV-20261127-0042</span><h3 style="margin-top:6px">Netflix Premium 4K Shared × 2</h3></div><span class="badge warn">Menunggu pembayaran</span></div><div class="divider"></div>
+<div class="grid-2"><div><div class="state-ico warn" style="margin:0 0 16px;width:60px;height:60px;font-size:1.5rem"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></div><h3>Belum dibayar</h3><p class="muted" style="margin-top:8px;font-size:.93rem">Selesaikan pembayaran sebelum 17:17 WIB.</p><div class="row wrapf" style="margin-top:18px"><a class="btn btn-primary btn-sm" href="pembayaran.html">Bayar sekarang</a></div></div>
+<ul class="timeline"><li class="done">Pesanan dibuat<small>27 Nov 2026, 17:02</small></li><li class="">Pembayaran diterima<small>Menunggu</small></li><li class="">Pesanan dikirim<small>—</small></li></ul></div></div></div>
+<div data-pane="proc"><div class="card pad-lg"><div class="row between wrapf"><div><span class="mono muted" style="font-size:.86rem">INV-20261127-0042</span><h3 style="margin-top:6px">Netflix Premium 4K Shared × 2</h3></div><span class="badge info">Diproses</span></div><div class="divider"></div>
+<div class="grid-2"><div><div class="state-ico info" style="margin:0 0 16px;width:60px;height:60px;font-size:1.5rem"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg></div><h3>Sedang diproses</h3><p class="muted" style="margin-top:8px;font-size:.93rem">Reff Muse AI sedang diproses otomatis: 34 dari 50 reff sudah masuk.</p><div class="row wrapf" style="margin-top:18px"><a class="btn btn-ghost btn-sm" href="#">Hubungi admin</a></div></div>
+<ul class="timeline"><li class="done">Pesanan dibuat<small>27 Nov 2026, 17:02</small></li><li class="done">Pembayaran diterima<small>27 Nov 2026, 17:04 · QRIS</small></li><li class="done">Diproses<small>34 / 50 reff</small></li><li class="">Selesai<small>—</small></li></ul></div></div></div>
+<div data-pane="exp"><div class="card pad-lg"><div class="row between wrapf"><div><span class="mono muted" style="font-size:.86rem">INV-20261127-0042</span><h3 style="margin-top:6px">Netflix Premium 4K Shared × 2</h3></div><span class="badge bad">Kedaluwarsa</span></div><div class="divider"></div>
+<div class="grid-2"><div><div class="state-ico bad" style="margin:0 0 16px;width:60px;height:60px;font-size:1.5rem">✕</div><h3>Waktu pembayaran habis</h3><p class="muted" style="margin-top:8px;font-size:.93rem">Pesanan dibatalkan otomatis. Silakan buat pesanan baru.</p><div class="row wrapf" style="margin-top:18px"><a class="btn btn-primary btn-sm" href="netflix.html">Pesan lagi</a></div></div>
+<ul class="timeline"><li class="done">Pesanan dibuat<small>27 Nov 2026, 17:02</small></li><li class="done">Kedaluwarsa<small>27 Nov 2026, 17:17</small></li></ul></div></div></div>
+<div data-pane="none"><div class="card pad-lg center"><div class="state-ico bad">?</div><h3>Invoice tidak ditemukan</h3><p class="muted" style="margin:8px auto 18px;max-width:380px">Periksa lagi nomor invoice kamu, atau hubungi admin.</p><a class="btn btn-ghost btn-sm" href="#">WhatsApp admin</a></div></div>
+</div>
+<footer class="footer"><div class="wrap footer-in">
+<div><a class="logo" href="index.html"><img src="assets/logo-icon.svg" alt="">HamsOne<b>Store</b></a><p style="margin-top:10px">Produk digital premium, kirim otomatis.</p></div>
+<div class="row wrapf" style="gap:22px"><a href="cek-pesanan.html">Cek pesanan</a><a href="index.html#faq">FAQ</a><a href="#">Syarat &amp; ketentuan</a><a href="#">WhatsApp admin</a></div>
+<div class="dim">© 2026 HamsOne Store</div>
+</div></footer>
+<script src="assets/app.js"></script></body></html>

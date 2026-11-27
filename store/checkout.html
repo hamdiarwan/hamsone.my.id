@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout — HamsOne Store</title>
+<link rel="icon" href="assets/logo-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div style="background:#C8FF2E;color:#0B0F00;text-align:center;font:600 13px/1.4 'Plus Jakarta Sans',system-ui,sans-serif;padding:9px 16px;position:relative;z-index:100">Mode pratinjau &mdash; pembayaran belum aktif. Toko segera buka.</div>
+
+<header class="nav"><div class="wrap nav-in">
+<a class="logo" href="index.html"><img src="assets/logo-icon.svg" alt="">HamsOne<b>Store</b></a>
+<nav class="nav-links" id="nav">
+<a href="index.html#produk">Produk</a><a href="index.html#cara">Cara beli</a><a href="index.html#garansi">Garansi</a><a href="index.html#faq">FAQ</a><a href="cek-pesanan.html">Cek pesanan</a>
+</nav>
+<div class="row"><a class="btn btn-primary btn-sm" href="index.html#produk">Beli sekarang</a>
+<button class="menu-btn" data-toggle="#nav" aria-label="Menu">☰</button></div>
+</div></header>
+
+<div class="wrap"><div class="steps-bar"><span class="on"><i>1</i>Pesanan</span><hr><span class=""><i>2</i>Pembayaran</span><hr><span class=""><i>3</i>Selesai</span></div>
+<div class="co">
+<div class="stack">
+<div class="card pad-lg"><h3 style="margin-bottom:6px">Kontak pengiriman</h3><p class="muted" style="font-size:.9rem;margin-bottom:20px">Pesanan dan invoice dikirim ke sini. Tanpa bikin akun.</p>
+<div class="field"><label class="label">Nomor WhatsApp</label><input class="input" placeholder="08xxxxxxxxxx" inputmode="tel"></div>
+<div class="field"><label class="label">Email <span class="dim">(opsional)</span></label><input class="input" type="email" placeholder="nama@email.com"></div></div>
+<div class="card pad-lg"><h3>Metode pembayaran</h3>
+<div class="group-title">QRIS</div><div class="methods"><label class="method"><input type="radio" name="pay" value="qris" checked><div><b>QRIS</b><span>Semua e-wallet &amp; m-banking</span></div></label></div>
+<div class="group-title">E-wallet</div><div class="methods"><label class="method"><input type="radio" name="pay" value="gopay" ><div><b>GoPay</b><span>Bayar di aplikasi</span></div></label><label class="method"><input type="radio" name="pay" value="ovo" ><div><b>OVO</b><span>Bayar di aplikasi</span></div></label><label class="method"><input type="radio" name="pay" value="dana" ><div><b>DANA</b><span>Bayar di aplikasi</span></div></label><label class="method"><input type="radio" name="pay" value="spay" ><div><b>ShopeePay</b><span>Bayar di aplikasi</span></div></label></div>
+<div class="group-title">Virtual account</div><div class="methods"><label class="method"><input type="radio" name="pay" value="bca" ><div><b>BCA</b><span>Virtual account</span></div></label><label class="method"><input type="radio" name="pay" value="bni" ><div><b>BNI</b><span>Virtual account</span></div></label><label class="method"><input type="radio" name="pay" value="bri" ><div><b>BRI</b><span>Virtual account</span></div></label><label class="method"><input type="radio" name="pay" value="mdr" ><div><b>Mandiri</b><span>Virtual account</span></div></label></div>
+</div>
+</div>
+<aside class="card pad-lg buy"><h3>Ringkasan</h3><div class="divider"></div>
+<div class="row" style="gap:14px"><div class="ico" style="margin:0;background:rgba(229,9,20,.15);color:var(--netflix);font-weight:800">N</div><div><b>Netflix Premium 4K Shared</b><div class="dim" style="font-size:.84rem">2 profile · Garansi 25–30 hari</div></div></div>
+<div class="divider"></div>
+<div class="kv"><span>Harga</span><span>2 × Rp24.000</span></div>
+<div class="kv"><span>Biaya layanan</span><span>Rp0</span></div>
+<div class="kv total"><span>Total bayar</span><span>Rp48.000</span></div>
+<a class="btn btn-primary btn-lg btn-block" style="margin-top:18px" href="pembayaran.html">Bayar Rp48.000 →</a><p class="hint center" style="margin-top:14px">Dengan membayar kamu setuju dengan syarat &amp; ketentuan.</p></aside>
+</div></div>
+<footer class="footer"><div class="wrap footer-in">
+<div><a class="logo" href="index.html"><img src="assets/logo-icon.svg" alt="">HamsOne<b>Store</b></a><p style="margin-top:10px">Produk digital premium, kirim otomatis.</p></div>
+<div class="row wrapf" style="gap:22px"><a href="cek-pesanan.html">Cek pesanan</a><a href="index.html#faq">FAQ</a><a href="#">Syarat &amp; ketentuan</a><a href="#">WhatsApp admin</a></div>
+<div class="dim">© 2026 HamsOne Store</div>
+</div></footer>
+<script src="assets/app.js"></script></body></html>

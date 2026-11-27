@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 40" fill="none">
+  <rect width="40" height="40" rx="11" fill="#C8FF2E"/>
+  <path d="M10 9h5.5v8.6h9V14l-4.6 3v-5.2L24.5 9H30v22h-5.5v-8.4h-9V31H10V9Z" fill="#0B0F00"/>
+  <text x="52" y="27.5" font-family="'Plus Jakarta Sans','Inter',Arial,sans-serif" font-size="22" font-weight="800" letter-spacing="-.6" fill="#F4F4F5">HamsOne<tspan font-weight="500" fill="#C8FF2E"> Store</tspan></text>
+</svg>
