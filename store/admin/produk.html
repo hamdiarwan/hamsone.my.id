@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Produk · Admin — HamsOne Store</title>
+<link rel="icon" href="../assets/logo-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div style="background:#C8FF2E;color:#0B0F00;text-align:center;font:600 13px/1.4 'Plus Jakarta Sans',system-ui,sans-serif;padding:9px 16px;position:relative;z-index:100">Mode pratinjau &mdash; pembayaran belum aktif. Toko segera buka.</div>
+
+
+<div class="adm"><aside class="side" id="side"><a class="logo" href="../admin/index.html"><img src="../assets/logo-icon.svg" alt="">HamsOne<b>Store</b></a><div class="cap">Menu</div><a class="it " href="index.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Dashboard</a><a class="it " href="pesanan.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6M9 12h6"/></svg></span>Pesanan<em>3</em></a><a class="it on" href="produk.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 8v8l9 5 9-5V8"/></svg></span>Produk</a><a class="it " href="stok.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>Stok</a><a class="it " href="pembayaran.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span>Pembayaran</a><a class="it " href="pengaturan.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>Pengaturan</a>
+<div class="me"><div class="ava">H</div><div><b>Hamdi</b><div class="dim" style="font-size:.76rem">Admin</div></div><a href="login.html" style="margin-left:auto" class="muted" title="Keluar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/></svg></a></div></aside>
+<main class="main"><div class="top"><div class="row"><button class="side-toggle" data-toggle="#side" aria-label="Menu">☰</button><div><h1>Produk</h1><p>Atur harga, deskripsi, dan status jual</p></div></div><div class="row wrapf"><a class="btn btn-primary btn-sm" href="#">+ Produk baru</a></div></div>
+
+<div class="grid-2 split-a">
+<div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Produk</th><th>Harga</th><th>Stok</th><th>Terjual</th><th>Aktif</th><th></th></tr></thead><tbody><tr><td><b>Netflix Premium 4K Shared</b><div class="dim" style="font-size:.8rem">Kirim otomatis dari stok</div></td><td>Rp24.000 / profile</td><td><span class="badge warn">12</span></td><td>86</td><td><label class="switch"><input type="checkbox" checked><i></i></label></td><td><a class="accent" href="#">Edit</a></td></tr><tr><td><b>Reff Muse AI</b><div class="dim" style="font-size:.8rem">Otomatis via API supplier</div></td><td>Rp2.000 / reff</td><td><span class="badge ok">Tersedia</span></td><td>1.240</td><td><label class="switch"><input type="checkbox" checked><i></i></label></td><td><a class="accent" href="#">Edit</a></td></tr></tbody></table></div></div>
+<div class="card"><h3 style="margin-bottom:18px">Edit produk</h3>
+<div class="field"><label class="label">Nama produk</label><input class="input" value="Netflix Premium 4K Shared"></div>
+<div class="grid-2" style="gap:12px;margin-top:18px"><div><label class="label">Harga</label><input class="input" value="24000"></div><div><label class="label">Satuan</label><input class="input" value="profile"></div></div>
+<div class="field"><label class="label">Garansi</label><input class="input" value="25–30 hari"></div>
+<div class="field"><label class="label">Tipe pengiriman</label><select class="select"><option>Otomatis dari stok</option><option>Otomatis via API supplier</option><option>Manual</option></select></div>
+<div class="grid-2" style="gap:12px;margin-top:18px"><div><label class="label">Maks. per pesanan</label><input class="input" value="5"></div><div><label class="label">Batas stok minimum</label><input class="input" value="15"></div></div>
+<div class="field"><label class="label">Deskripsi</label><textarea class="textarea" style="font-family:var(--font);min-height:90px">Satu profile pribadi di akun Premium, 4K UHD + HDR.</textarea></div>
+<div class="row" style="margin-top:18px"><a class="btn btn-primary btn-sm" href="#">Simpan perubahan</a><a class="btn btn-ghost btn-sm" href="#">Batal</a></div></div>
+</div></main></div><script src="../assets/app.js"></script></body></html>

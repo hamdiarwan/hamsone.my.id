@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pengaturan · Admin — HamsOne Store</title>
+<link rel="icon" href="../assets/logo-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div style="background:#C8FF2E;color:#0B0F00;text-align:center;font:600 13px/1.4 'Plus Jakarta Sans',system-ui,sans-serif;padding:9px 16px;position:relative;z-index:100">Mode pratinjau &mdash; pembayaran belum aktif. Toko segera buka.</div>
+
+
+<div class="adm"><aside class="side" id="side"><a class="logo" href="../admin/index.html"><img src="../assets/logo-icon.svg" alt="">HamsOne<b>Store</b></a><div class="cap">Menu</div><a class="it " href="index.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Dashboard</a><a class="it " href="pesanan.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6M9 12h6"/></svg></span>Pesanan<em>3</em></a><a class="it " href="produk.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 8v8l9 5 9-5V8"/></svg></span>Produk</a><a class="it " href="stok.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>Stok</a><a class="it " href="pembayaran.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span>Pembayaran</a><a class="it on" href="pengaturan.html"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>Pengaturan</a>
+<div class="me"><div class="ava">H</div><div><b>Hamdi</b><div class="dim" style="font-size:.76rem">Admin</div></div><a href="login.html" style="margin-left:auto" class="muted" title="Keluar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/></svg></a></div></aside>
+<main class="main"><div class="top"><div class="row"><button class="side-toggle" data-toggle="#side" aria-label="Menu">☰</button><div><h1>Pengaturan</h1><p>Info toko, API supplier, notifikasi, dan keamanan</p></div></div><div class="row wrapf"><a class="btn btn-primary btn-sm" href="#">Simpan</a></div></div>
+
+<div class="grid-2" style="align-items:start">
+<div class="card"><h3 style="margin-bottom:18px">Info toko</h3>
+<div class="field"><label class="label">Nama toko</label><input class="input" value="HamsOne Store"></div>
+<div class="field"><label class="label">WhatsApp admin</label><input class="input" placeholder="08xxxxxxxxxx"></div>
+<div class="field"><label class="label">Teks pengumuman</label><input class="input" value="Reff Muse AI sekarang tersedia"></div>
+<div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Toko buka</b><div class="dim" style="font-size:.8rem">Matikan untuk mode maintenance</div></div><label class="switch"><input type="checkbox" checked><i></i></label></div></div>
+<div class="stack">
+<div class="card"><h3 style="margin-bottom:8px">Notifikasi</h3><div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Kirim pesanan ke WhatsApp pembeli</b><div class="dim" style="font-size:.8rem">Otomatis setelah bayar</div></div><label class="switch"><input type="checkbox" checked><i></i></label></div><div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Kirim invoice ke email</b><div class="dim" style="font-size:.8rem">Kalau pembeli isi email</div></div><label class="switch"><input type="checkbox" checked><i></i></label></div><div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Notifikasi stok menipis</b><div class="dim" style="font-size:.8rem">Ke WhatsApp admin</div></div><label class="switch"><input type="checkbox" checked><i></i></label></div><div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Notifikasi pesanan baru</b><div class="dim" style="font-size:.8rem">Ke WhatsApp admin</div></div><label class="switch"><input type="checkbox" ><i></i></label></div></div>
+<div class="card"><div class="row between" style="margin-bottom:18px"><h3>API supplier · Reff Muse AI</h3><span class="badge ok">Terhubung</span></div>
+<div class="field"><label class="label">URL API</label><input class="input mono" placeholder="https://api.supplier.com/v1"></div>
+<div class="field"><label class="label">API key reseller</label><input class="input mono" type="password" value="••••••••••••••••"></div>
+<div class="grid-2" style="gap:12px;margin-top:18px"><div><label class="label">Harga modal / reff</label><input class="input" placeholder="mis. 1500"></div><div><label class="label">Saldo supplier</label><input class="input" value="Rp350.000" readonly></div></div>
+<div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Kirim order otomatis setelah bayar</b><div class="dim" style="font-size:.8rem">Order langsung diteruskan ke API supplier</div></div><label class="switch"><input type="checkbox" checked><i></i></label></div><div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Notifikasi saldo supplier menipis</b><div class="dim" style="font-size:.8rem">Ke WhatsApp admin</div></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+<div class="row" style="margin-top:16px"><a class="btn btn-ghost btn-sm" href="#">Tes koneksi</a></div></div>
+<div class="card"><h3 style="margin-bottom:18px">Keamanan</h3>
+<div class="field"><label class="label">Password lama</label><input class="input" type="password"></div>
+<div class="field"><label class="label">Password baru</label><input class="input" type="password"></div>
+<div class="row between" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b style="font-size:.94rem">Verifikasi 2 langkah</b><div class="dim" style="font-size:.8rem">Kode OTP saat login</div></div><label class="switch"><input type="checkbox" ><i></i></label></div></div>
+</div></div></main></div><script src="../assets/app.js"></script></body></html>
